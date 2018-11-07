@@ -8,4 +8,4 @@ Este repositorio corresponde al grupo para la realización del TP2 conformado po
 
 * Gimenez, Lorenzo (101807)
 
-Fue construído a partir del repositorio ejemplo brindado por la cátedra, modificando algunos detalles de rutas y la integración contínua está lograda con Jetkins
+Fue construído a partir del repositorio ejemplo brindado por la cátedra, modificando algunos detalles de rutas y la integración contínua está lograda con Travis
