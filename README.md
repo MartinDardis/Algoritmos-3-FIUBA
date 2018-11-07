@@ -1,4 +1,4 @@
-# Algoritmos 3 - TP2
+# Algoritmos 3 - TP2 [![Build Status](https://travis-ci.com/MartinDardis/algoritmos3.svg?token=W44BvixYPbXvs2kaMRJu&branch=master)](https://travis-ci.com/MartinDardis/algoritmos3)
 
 Este repositorio corresponde al grupo para la realización del TP2 conformado por:
 
