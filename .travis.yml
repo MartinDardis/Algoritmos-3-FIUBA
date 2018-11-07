@@ -1,0 +1,5 @@
+language: java
+jvm:
+        1.8
+        junit
+
