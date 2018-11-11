@@ -41,7 +41,7 @@ public class Mapa{
     public Unidad removerUnidad(Coordenada coord)throws PosicionFueraDeCampoError,LugarVacioError{
         if(!this.posicionDentroCampo(coord))
             throw new PosicionFueraDeCampoError();
-        if(this.campo.containsKey(coord))
+        if(!this.campo.containsKey(coord))
             throw new LugarVacioError();
         else
             return (Unidad)this.campo.remove(coord);
