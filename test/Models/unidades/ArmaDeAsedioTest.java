@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class ArmaDeAsedioTest {
 
     @Test
-    public void test01_verificarVidaArmaDeAsedioCreada() {
+    public void test01verificarVidaArmaDeAsedioCreada() {
 
         ArmaDeAsedio unAsedio = new ArmaDeAsedio();
         assertEquals(unAsedio.getVida(), 150);

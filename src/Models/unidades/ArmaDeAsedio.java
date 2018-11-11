@@ -1,6 +1,6 @@
 package Models.unidades;
 
-public class ArmaDeAsedio {
+public class ArmaDeAsedio implements Unidad{
 
     private int vida;
 

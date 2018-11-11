@@ -1,6 +1,6 @@
 package Models.unidades;
 
-public class Aldeano {
+public class Aldeano implements Unidad {
 
     private int vida;
 
