@@ -45,7 +45,7 @@ public class escenarioUnidadTest {
         Mapa unMapa = new Mapa();
         Arquero unArquero = new Arquero();
         Coordenada origen = new Coordenada(0,0);
-        Coordenada nuevaPosicion = new Coordenada(3,3);
+        Coordenada nuevaPosicion = new Coordenada(4,4);
 
         unMapa.colocarUnidad(unArquero, origen);
         unMapa.moverUnidad(origen, nuevaPosicion);
