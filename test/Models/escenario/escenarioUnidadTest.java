@@ -1,10 +1,9 @@
 package Models.escenario;
 
 
-import junit.framework.*;
-import org.junit.*;
+import org.junit.Test;
 
-import sun.jvm.hotspot.utilities.Assert;
+import static junit.framework.TestCase.*;
 
 public class escenarioUnidadTest {
 
