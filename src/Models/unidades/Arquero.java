@@ -1,6 +1,6 @@
 package Models.unidades;
 
-public class Arquero {
+public class Arquero implements Unidad {
 
     private int vida;
 

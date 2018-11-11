@@ -1,6 +1,6 @@
 package Models.unidades;
 
-public class Espadachin {
+public class Espadachin implements Unidad {
 
     private int vida;
 
