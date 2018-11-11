@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="analysis">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/analysis/pmd.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/icu4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/dom4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/xalan.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/xml-apis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/asm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/ant.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/xmlParserAPIs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/xercesImpl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/junit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/jaxen.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/xom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/analysis/jdom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
