@@ -10,17 +10,18 @@ public class Mapa{
     private int filas;
     private Map <Coordenada,Unidad> campo;
 
-    public void mapa(){
-        filas = 50;
-        columnas = 50;
-        campo = new HashMap<Coordenada,Unidad>();
+    public Mapa(){
+        this.filas = 50;
+        this.columnas = 50;
+        this.campo = new HashMap<Coordenada,Unidad>();
     }
 
-    private boolean poscionDentroCampo(Coordenada posicion){
+    private boolean posicionDentroCampo(Coordenada posicion){
         return posicion.estaDentroDe(this.filas,this.columnas);
     }
+
     public void colocarUnidad(Unidad nuevo,Coordenada posicion)throws LugarOcupadoError,PosicionFueraDeCampoError{
-        if(!this.poscionDentroCampo(posicion))
+        if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
         if(this.campo.containsKey(posicion))
             this.campo.put(posicion,nuevo);
@@ -29,7 +30,7 @@ public class Mapa{
     }
 
     public Unidad obtenerUnidad(Coordenada posc)throws PosicionFueraDeCampoError,LugarVacioError{
-        if(!this.poscionDentroCampo(posc))
+        if(!this.posicionDentroCampo(posc))
             throw new PosicionFueraDeCampoError();
         if(this.campo.containsKey(posc))
             throw new LugarVacioError();
@@ -38,7 +39,7 @@ public class Mapa{
     }
 
     public Unidad removerUnidad(Coordenada coord)throws PosicionFueraDeCampoError,LugarVacioError{
-        if(!this.poscionDentroCampo(coord))
+        if(!this.posicionDentroCampo(coord))
             throw new PosicionFueraDeCampoError();
         if(this.campo.containsKey(coord))
             throw new LugarVacioError();
@@ -56,6 +57,14 @@ public class Mapa{
             }
         } else
             throw new LugarOcupadoError();
+    }
+
+    public int getFilas(){
+        return this.filas;
+    }
+
+    public int getColumnas(){
+        return this.columnas;
     }
 
 }

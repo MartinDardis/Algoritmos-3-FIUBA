@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="libs" level="application" />
-    <orderEntry type="module-library" scope="TEST">
+    <orderEntry type="library" exported="" name="libs" level="application" />
+    <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/junit-4.12.jar!/" />
@@ -20,5 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="libs" level="project" />
   </component>
 </module>

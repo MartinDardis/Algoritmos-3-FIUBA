@@ -15,4 +15,13 @@ public class Coordenada {
         }
         return true;
     }
+
+    public int getFila(){
+        return this.fila;
+    }
+
+    public int getColumna(){
+        return this.columna;
+    }
+
 }
