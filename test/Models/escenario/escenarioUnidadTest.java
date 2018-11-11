@@ -1,14 +1,16 @@
 package Models.escenario;
 
-import org.junit.Test;
 
-import static org.jUnit.Assert.*;
+import junit.framework.*;
+import org.junit.*;
+
+import sun.jvm.hotspot.utilities.Assert;
 
 public class escenarioUnidadTest {
 
     @Test
     public void test01CrearUnMapa(){
-        Mapa map = new Mapa();
-        assertNotNull('No se pudo crear el mapa',map);
+        Mapa mp = new Mapa();
+        assertNotNull(mp);
     }
 }
