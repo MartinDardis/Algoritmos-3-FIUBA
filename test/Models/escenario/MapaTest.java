@@ -13,7 +13,7 @@ import static junit.framework.TestCase.*;
 public class MapaTest {
 
     @Test
-    public void test01crearMapaYVerificarTamañoDefinido() {
+    public void test01crearMapaYVerificarTamanioDefinido() {
 
         Mapa unMapa = new Mapa();
 
@@ -108,5 +108,17 @@ public class MapaTest {
 
         Unidad unidadRemovida = (Unidad)unMapa.remover(origen);
         unidadRemovida = (Unidad)unMapa.remover(origen); //Borro por segunda vez
+    }
+
+    @Test public void test09DosAldeanosColocadosSonDistintos() {
+
+        Mapa unMapa = new Mapa();
+        Aldeano unAldeano = new Aldeano();
+        Aldeano otroAldeano = new Aldeano();
+        Coordenada origen = new Coordenada(0, 0);
+        Coordenada otraPosicion = new Coordenada(1,1);
+        unMapa.colocar(unAldeano, origen);
+        unMapa.colocar(otroAldeano,otraPosicion);
+        assertNotSame(unAldeano,otroAldeano);
     }
 }
