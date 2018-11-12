@@ -1,6 +1,8 @@
 package Models.unidades;
 
-public interface Unidad {
+import Models.Posicionable;
+
+public interface Unidad extends Posicionable {
 
     int vida = 0;
 

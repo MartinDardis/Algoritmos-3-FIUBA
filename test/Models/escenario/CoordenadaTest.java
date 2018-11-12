@@ -1,5 +1,8 @@
 package Models.escenario;
 
+import Models.Posicionable;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class CoordenadaTest {
@@ -27,6 +30,7 @@ public class CoordenadaTest {
         Coordenada unaCoordenada = new Coordenada(20,20);
         assertFalse(unaCoordenada.estaDentroDe(5,5));
     }
+
 
 
 }
