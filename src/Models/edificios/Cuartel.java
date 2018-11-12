@@ -3,7 +3,7 @@ package Models.edificios;
 import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
 
-public class Cuartel {
+public class Cuartel extends Edificio {
     private int vida;
     private int costo;
     private int turnosConstruccion;
@@ -15,9 +15,6 @@ public class Cuartel {
         costo = 50;
         turnosConstruccion = 3;
         restauracionVidaPorTurno = 25;
-    }
-    public int getVida() {
-        return this.vida;
     }
 
     public int getCosto() {

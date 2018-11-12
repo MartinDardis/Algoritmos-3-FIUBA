@@ -2,7 +2,7 @@ package Models.edificios;
 
 import Models.unidades.ArmaDeAsedio;
 
-public class Castillo {
+public class Castillo extends Edificio{
     private int vida;
     private int restauracionVidaPorTurno; //escucho sugerencias para un mejor nombre
 
@@ -10,9 +10,7 @@ public class Castillo {
         vida = 1000;
         restauracionVidaPorTurno = 15;
     }
-    public int getVida() {
-        return this.vida;
-    }
+
     public int getReparacionPorTurno () {return this.restauracionVidaPorTurno;}
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroJugador){

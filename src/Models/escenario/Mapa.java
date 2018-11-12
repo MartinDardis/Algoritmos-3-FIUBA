@@ -30,6 +30,8 @@ public class Mapa{
         return posicion.estaDentroDe(this.filas,this.columnas);
     }
 
+
+
     public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError,PosicionFueraDeCampoError{
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
@@ -40,6 +42,7 @@ public class Mapa{
             this.campo.put(posicion,nuevo);
     }
 
+
     public Posicionable obtener(Coordenada posc)throws PosicionFueraDeCampoError,LugarVacioError{
         if(!this.posicionDentroCampo(posc))
             throw new PosicionFueraDeCampoError();
@@ -48,6 +51,8 @@ public class Mapa{
         else
             return this.campo.get(posc);
     }
+
+
 
     public Posicionable remover(Coordenada coord)throws PosicionFueraDeCampoError,LugarVacioError{
         if(!this.posicionDentroCampo(coord))
@@ -58,6 +63,8 @@ public class Mapa{
             return (Posicionable)this.campo.remove(coord);
         }
     }
+
+
 
     public void mover(Coordenada viejaPosc,Coordenada nuevaPosc)throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
         if(!this.campo.containsKey(nuevaPosc)) {

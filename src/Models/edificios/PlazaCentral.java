@@ -2,7 +2,7 @@ package Models.edificios;
 
 import Models.unidades.Aldeano;
 
-public class PlazaCentral {
+public class PlazaCentral extends Edificio {
 
     private int vida;
     private int costo;
@@ -14,9 +14,6 @@ public class PlazaCentral {
         costo = 100;
         turnosConstruccion = 3;
         restauracionVidaPorTurno    = 50;
-    }
-    public int getVida() {
-        return this.vida;
     }
 
     public int getCosto() {

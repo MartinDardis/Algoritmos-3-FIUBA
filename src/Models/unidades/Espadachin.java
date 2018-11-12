@@ -1,14 +1,10 @@
 package Models.unidades;
 
-public class Espadachin implements Unidad {
+public class Espadachin extends Unidad {
 
     private int vida;
 
     public Espadachin(){ vida = 100;
-    }
-
-    public int getVida() {
-        return this.vida;
     }
 
 }
