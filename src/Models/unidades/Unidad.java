@@ -4,7 +4,7 @@ import Models.Posicionable;
 
 public class Unidad implements Posicionable {
 
-    private int vida;
+    protected int vida;
 
     public int getVida(){
         return this.vida;
