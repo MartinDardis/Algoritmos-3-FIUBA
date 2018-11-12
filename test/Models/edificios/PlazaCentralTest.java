@@ -12,4 +12,12 @@ public class PlazaCentralTest {
         PlazaCentral unaPlaza = new PlazaCentral();
         assertEquals(unaPlaza.getVida(), 450);
     }
+    @Test (expected = OroInsuficienteError.class)
+    public void Test02CrearAldeanoConOroInsuficiente(){
+
+        PlazaCentral unaPlaza = new PlazaCentral();
+        unaPlaza.crearAldeano(5);
+
+
+    }
 }
