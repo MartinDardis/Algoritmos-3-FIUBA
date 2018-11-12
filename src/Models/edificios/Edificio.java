@@ -4,7 +4,7 @@ import Models.Posicionable;
 
 public class Edificio implements Posicionable {
 
-    private int vida;
+    protected int vida;
 
     public int getAncho(){
         return this.ancho;

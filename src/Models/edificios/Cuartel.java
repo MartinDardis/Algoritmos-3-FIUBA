@@ -4,7 +4,7 @@ import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
 
 public class Cuartel extends Edificio {
-    private int vida;
+
     private int costo;
     private int turnosConstruccion;
     private int restauracionVidaPorTurno;

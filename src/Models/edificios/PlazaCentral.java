@@ -4,7 +4,6 @@ import Models.unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
 
-    private int vida;
     private int costo;
     private int turnosConstruccion;
     private int restauracionVidaPorTurno;

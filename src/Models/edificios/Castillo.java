@@ -3,7 +3,7 @@ package Models.edificios;
 import Models.unidades.ArmaDeAsedio;
 
 public class Castillo extends Edificio{
-    private int vida;
+
     private int restauracionVidaPorTurno; //escucho sugerencias para un mejor nombre
 
     public Castillo() {
