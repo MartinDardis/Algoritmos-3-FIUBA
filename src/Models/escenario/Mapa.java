@@ -3,8 +3,6 @@ package Models.escenario;
 import Models.Posicionable;
 
 import java.util.HashMap;
-import java.util.Map;
-import Models.unidades.Unidad;
 
 public class Mapa{
 
