@@ -5,12 +5,14 @@ import Models.edificios.Edificio;
 import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.unidades.Unidad;
+import javafx.geometry.Pos;
+
 import java.util.HashMap;
 
 
 public class MapaController {
-    private HashMap <Coordenada, Unidad> unidades;
-    private HashMap <Coordenada, Edificio> edificios;
+    private HashMap <Posicionable,Coordenada> unidades;
+    private HashMap <Posicionable,Coordenada> edificios;
     private Mapa campo;
 
     public MapaController(){
@@ -22,23 +24,43 @@ public class MapaController {
     public void colocar(Posicionable elemento, int fila, int columna){
         Coordenada posc = new Coordenada(fila,columna);
         if(elemento instanceof Unidad){
-            //Unidad unaUnidad = elemento;
-            //unidades.put(posc,unaUnidad);
             campo.colocar(elemento,posc);
-        }
-
-        else{
-            //edificios.put(posc,elemento);
+            unidades.put(elemento,posc);
+        }else{
             for(int i=0; i < elemento.getAlto(); i++){
                 for(int j=0; j < elemento.getAncho();j++){
-                    Coordenada aux = new Coordenada(i,j);
+                    Coordenada aux = new Coordenada(i+fila,j+columna);
                     campo.colocar(elemento,aux);
+                }
+            }
+            edificios.put(elemento,posc);
+        }
+    }
+
+    public void remover(Posicionable elemento){
+        if(elemento instanceof Unidad){
+            if(unidades.containsKey(elemento)){
+                campo.remover(unidades.get(elemento));
+            }
+        }else{
+            if(edificios.containsKey(elemento)){
+                for(int i=0; i < elemento.getAlto(); i++){
+                    for(int j=0; j < elemento.getAncho();j++){
+                        Coordenada aux = new Coordenada(i,j);//Creo una coord aux con el i,j
+                        aux.sumarCoordenda(edificios.get(elemento));//Le sumo la posc inicial del edificio
+                        campo.remover(aux);
+                    }
                 }
             }
         }
     }
 
-
-
+    public void mover(Posicionable elemento,int nuevaFila,int nuevaColumna){
+        if(elemento instanceof Unidad){
+            Coordenada nuevaPosc = new Coordenada(nuevaFila,nuevaColumna);
+            Coordenada viejaPosc = unidades.get(elemento);
+            campo.mover(viejaPosc,nuevaPosc);
+        }
+    }
     
 }

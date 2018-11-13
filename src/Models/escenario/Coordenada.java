@@ -24,4 +24,9 @@ public class Coordenada {
         return this.columna;
     }
 
+    public void sumarCoordenda(Coordenada a){
+        this.fila += a.getFila();
+        this.columna += a.getColumna();
+    }
+
 }
