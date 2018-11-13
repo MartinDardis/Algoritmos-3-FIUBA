@@ -10,7 +10,6 @@ import javafx.geometry.Pos;
 
 import java.util.HashMap;
 
-
 public class MapaController {
     private HashMap <Posicionable,Coordenada> elementos;
     private Mapa campo;
@@ -20,18 +19,31 @@ public class MapaController {
         campo = new Mapa();
     }
 
-    public void colocar(Posicionable elemento, int fila, int columna){
+    public Mapa getCampo(){//Only for test
+        return campo;
+    }
+
+    public Coordenada getPosicion(Posicionable elemento){
+        return elementos.get(elemento);
+    }
+
+    public void colocar(Posicionable elemento, int fila, int columna)throws PosicionFueraDeCampoError,LugarOcupadoError{
         Coordenada posc = new Coordenada(fila,columna);
         for(int i=0; i < elemento.getAlto(); i++){
             for(int j=0; j < elemento.getAncho();j++){
                 Coordenada aux = new Coordenada(i+fila,j+columna);
-                campo.colocar(elemento,aux);
+                try{
+                    campo.colocar(elemento,aux);
+                }catch(PosicionFueraDeCampoError | LugarOcupadoError e){
+                    throw e;
+                }
             }
         }
+
         elementos.put(elemento,posc);
     }
 
-    public void remover(Posicionable elemento){
+    public void remover(Posicionable elemento)throws NoExisteElementoError{
         if(elementos.containsKey(elemento)){
             for(int i=0; i < elemento.getAlto(); i++){
                 for(int j=0; j < elemento.getAncho();j++){
@@ -40,6 +52,8 @@ public class MapaController {
                     campo.remover(aux);
                 }
             }
+        }else{
+            throw new NoExisteElementoError();
         }
     }
 
