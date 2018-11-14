@@ -53,7 +53,9 @@ public class MapaControllerTest {
         mp.colocar(cuartel,4,4);
         Coordenada posc0= new Coordenada(4,4);
         Coordenada posc1= new Coordenada(5,5);
-        Coordenada posc2= new Coordenada(4,6);
+        Coordenada posc2= new Coordenada(4,5);
+        Coordenada posc3 = new Coordenada(5,4);
+        Coordenada posInvalida =  new Coordenada(6,6);
         Mapa campo = mp.getCampo();
 
         assertEquals(cuartel,campo.obtener(posc0));
@@ -61,6 +63,16 @@ public class MapaControllerTest {
         assertEquals(cuartel,campo.obtener(posc2));
 
     }
+    @Test(expected = LugarVacioError.class)
+    public void test05VerificarEdificioNoEstaFueraDeSusDimensiones(){
+        MapaController mp = new MapaController();
+        Cuartel cuartel = new Cuartel();
 
+        mp.colocar(cuartel,4,4);
+        Coordenada posInvalida = new Coordenada(3,3);
+        Mapa campo = mp.getCampo();
+
+        assertEquals(cuartel,campo.obtener(posInvalida));
+    }
 
 }
