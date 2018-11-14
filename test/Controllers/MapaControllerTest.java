@@ -12,6 +12,7 @@ import static junit.framework.TestCase.*;
 
 
 public class MapaControllerTest {
+
     @Test
     public void test01CrearUnControllerContieneUnMapa(){
         MapaController mp = new MapaController();
@@ -55,12 +56,12 @@ public class MapaControllerTest {
         Coordenada posc1= new Coordenada(5,5);
         Coordenada posc2= new Coordenada(4,5);
         Coordenada posc3 = new Coordenada(5,4);
-        Coordenada posInvalida =  new Coordenada(6,6);
         Mapa campo = mp.getCampo();
 
         assertEquals(cuartel,campo.obtener(posc0));
         assertEquals(cuartel,campo.obtener(posc1));
         assertEquals(cuartel,campo.obtener(posc2));
+        assertEquals(cuartel,campo.obtener(posc3));
 
     }
     @Test(expected = LugarVacioError.class)
