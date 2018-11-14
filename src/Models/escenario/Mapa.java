@@ -8,7 +8,7 @@ public class Mapa{
 
     private int columnas;
     private int filas;
-    private HashMap<Coordenada, Posicionable> campo;
+    private HashMap<String, Posicionable> campo;
 
     public int getFilas(){
         return this.filas;
@@ -21,7 +21,7 @@ public class Mapa{
     public Mapa(){
         this.filas = 50;
         this.columnas = 50;
-        this.campo = new HashMap<Coordenada, Posicionable>();
+        this.campo = new HashMap<String,Posicionable>();
     }
 
     private boolean posicionDentroCampo(Coordenada posicion){
@@ -33,21 +33,21 @@ public class Mapa{
     public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError,PosicionFueraDeCampoError{
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
-        if(this.campo.containsKey(posicion)){
+        if(this.campo.containsKey(posicion.asKey())){
             throw new LugarOcupadoError();
         }
         else
-            this.campo.put(posicion,nuevo);
+            this.campo.put(posicion.asKey(),nuevo);
     }
 
 
     public Posicionable obtener(Coordenada posc)throws PosicionFueraDeCampoError,LugarVacioError{
         if(!this.posicionDentroCampo(posc))
             throw new PosicionFueraDeCampoError();
-        if(!this.campo.containsKey(posc))
+        if(!this.campo.containsKey(posc.asKey()))
             throw new LugarVacioError();
         else
-            return this.campo.get(posc);
+            return this.campo.get(posc.asKey());
     }
 
 
@@ -55,19 +55,19 @@ public class Mapa{
     public Posicionable remover(Coordenada coord)throws PosicionFueraDeCampoError,LugarVacioError{
         if(!this.posicionDentroCampo(coord))
             throw new PosicionFueraDeCampoError();
-        if(!this.campo.containsKey(coord))
+        if(!this.campo.containsKey(coord.asKey()))
             throw new LugarVacioError();
         else {
-            return (Posicionable)this.campo.remove(coord);
+            return (Posicionable)this.campo.remove(coord.asKey());
         }
     }
 
 
 
     public void mover(Coordenada viejaPosc,Coordenada nuevaPosc)throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
-        if(!this.campo.containsKey(nuevaPosc)) {
+        if(!this.campo.containsKey(nuevaPosc.asKey())) {
             try {
-                Posicionable temp = remover(viejaPosc);
+                Posicionable temp = this.remover(viejaPosc);
                 colocar(temp, nuevaPosc);
             } catch (LugarVacioError | PosicionFueraDeCampoError e) {
                 throw e;

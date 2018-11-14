@@ -24,8 +24,7 @@ public class MapaControllerTest {
         Aldeano aldeano = new Aldeano();
 
         mp.colocar(aldeano,4,4);
-
-        Coordenada posc = mp.getPosicion(aldeano);
+        Coordenada posc= new Coordenada(4,4);
         Mapa campo = mp.getCampo();
 
         assertEquals(aldeano,campo.obtener(posc));

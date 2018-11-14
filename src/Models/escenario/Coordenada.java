@@ -29,4 +29,10 @@ public class Coordenada {
         this.columna += a.getColumna();
     }
 
+    public String asKey(){
+        String sfila = String.valueOf(this.fila);
+        String scolumna = String.valueOf(this.columna);
+        return sfila+scolumna;
+    }
+
 }
