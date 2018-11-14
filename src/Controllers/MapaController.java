@@ -29,7 +29,7 @@ public class MapaController {
 
     public void colocar(Posicionable elemento, int fila, int columna)throws PosicionFueraDeCampoError,LugarOcupadoError{
         Coordenada posc = new Coordenada(fila,columna);
-       /* for(int i=0; i < elemento.getAlto(); i++){
+       for(int i=0; i < elemento.getAlto(); i++){
             for(int j=0; j < elemento.getAncho();j++){
                 Coordenada aux = new Coordenada(i+fila,j+columna);
                 try{
@@ -38,10 +38,9 @@ public class MapaController {
                     throw e;
                 }
             }
-        }*/
+        }
 
         elementos.put(elemento,posc);
-        campo.colocar(elemento,posc);
     }
 
     public void remover(Posicionable elemento)throws NoExisteElementoError{

@@ -17,6 +17,12 @@ public class Cuartel extends Edificio {
         restauracionVidaPorTurno = 25;
     }
 
+    public int getAncho(){
+        return 2;
+    }
+    public int getAlto(){
+        return 2;
+    }
     public int getCosto() {
         return costo;
     }
