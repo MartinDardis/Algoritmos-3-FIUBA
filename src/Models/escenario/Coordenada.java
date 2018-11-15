@@ -1,5 +1,7 @@
 package Models.escenario;
 
+import java.lang.Math;
+
 public class Coordenada {
     private int fila;
     private int columna;
@@ -33,6 +35,17 @@ public class Coordenada {
         String sfila = String.valueOf(this.fila);
         String scolumna = String.valueOf(this.columna);
         return sfila+scolumna;
+    }
+
+    public int distanciaHasta(Coordenada otraCoordenada){
+
+        int distanciaHorizontal = Math.abs(this.fila - otraCoordenada.getFila());
+        int distanciaVertical = Math.abs(this.columna - otraCoordenada.getColumna());
+
+        if(distanciaHorizontal > distanciaVertical)
+            return distanciaHorizontal;
+        else
+            return distanciaVertical;
     }
 
 }
