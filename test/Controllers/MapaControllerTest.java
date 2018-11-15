@@ -182,18 +182,60 @@ public class MapaControllerTest {
     }
 
     @Test
-    public void test12ContruirArmaAsedioYColocarEnPosicionVacia() {
+    public void test12ContruirArmaAsedioConOroSuficienteYColocarEnPosicionVacia() {
 
         MapaController mp = new MapaController();
 
         Castillo unCastillo = new Castillo();
         mp.colocar(unCastillo,0,0);
 
-        mp.crearAsedioEn(unCastillo,1000);
+        mp.crearAsedioEn(unCastillo,1000); //Simula oro suficiente
         Mapa campo = mp.getCampo();
         Coordenada posSupuesta = new Coordenada(5,5);
 
         assertEquals(campo.obtener(posSupuesta).getClass(),ArmaDeAsedio.class);
+    }
+
+    @Test
+    public void test13CrearAldeanoConOroSuficienteYColocarEnPosicionVacia() {
+
+        MapaController mp = new MapaController();
+        PlazaCentral unaPlaza = new PlazaCentral();
+
+        mp.colocar(unaPlaza,0,0);
+        mp.crearAldeanoEn(unaPlaza,5000); //Simula oro suficiente
+        Mapa campo = mp.getCampo();
+        Coordenada posSupuesta = new Coordenada(3,3);
+
+        assertEquals(campo.obtener(posSupuesta).getClass(),Aldeano.class);
+    }
+
+    @Test
+    public void test14CrearArqueroConOroSuficienteYColocarEnPosicionVacia() {
+
+        MapaController mp = new MapaController();
+        Cuartel unCuartel = new Cuartel();
+
+        mp.colocar(unCuartel,0,0);
+        mp.crearArqueroEn(unCuartel,5000); //Simula oro suficiente
+        Mapa campo = mp.getCampo();
+        Coordenada posSupuesta = new Coordenada(3,3);
+
+        assertEquals(campo.obtener(posSupuesta).getClass(),Arquero.class);
+    }
+
+    @Test
+    public void test15CrearEspadachinConOroSuficienteYColocarEnPosicionVacia() {
+
+        MapaController mp = new MapaController();
+        Cuartel unCuartel = new Cuartel();
+
+        mp.colocar(unCuartel,0,0);
+        mp.crearEspadachinEn(unCuartel,5000); //Simula oro suficiente
+        Mapa campo = mp.getCampo();
+        Coordenada posSupuesta = new Coordenada(3,3);
+
+        assertEquals(campo.obtener(posSupuesta).getClass(),Espadachin.class);
     }
 
 }

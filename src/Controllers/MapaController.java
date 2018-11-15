@@ -1,8 +1,10 @@
 package Controllers;
 
 import Models.Posicionable;
+import Models.edificios.PlazaCentral;
 import Models.edificios.Castillo;
 import Models.edificios.Edificio;
+import Models.edificios.Cuartel;
 import Models.escenario.*;
 import Models.unidades.*;
 
@@ -101,15 +103,52 @@ public class MapaController {
         return acumulado;
     }
 
-    public void crearAsedioEn(Castillo unCastillo, int oroJugador){
+    public void crearAsedioEn(Castillo unCastillo, int oroJugador) throws LugarOcupadoError{
         Coordenada posCastillo = elementos.get(unCastillo);
-        Coordenada posAsedio =  new Coordenada(posCastillo.getFila()+unCastillo.getAncho()+1,posCastillo.getColumna()+unCastillo.getAlto()+1);
+        Coordenada posAsedio =  new Coordenada(posCastillo.getFila()+unCastillo.getAncho()+1,
+                                               posCastillo.getColumna()+unCastillo.getAlto()+1);
         if (!campo.posicionVacia(posAsedio)){
             throw new LugarOcupadoError();
         }
         ArmaDeAsedio nuevaArma = unCastillo.crearArmaDeAsedio(oroJugador);
         this.colocar(nuevaArma,posAsedio.getFila(),posAsedio.getColumna());
+    }
 
+    public void crearAldeanoEn(PlazaCentral unaPlaza, int oroJugador) throws LugarOcupadoError{
+        Coordenada posPlaza = elementos.get(unaPlaza);
+        Coordenada posAldeano =  new Coordenada(posPlaza.getFila()+unaPlaza.getAncho()+1,
+                                                posPlaza.getColumna()+unaPlaza.getAlto()+1);
+
+        if (!campo.posicionVacia(posAldeano)){
+            throw new LugarOcupadoError();
+        }
+
+        Aldeano nuevoAldeano = unaPlaza.crearAldeano(oroJugador);
+        this.colocar(nuevoAldeano,posAldeano.getFila(),posAldeano.getColumna());
+    }
+
+    public void crearArqueroEn(Cuartel unCuartel, int oroJugador) throws LugarOcupadoError{
+        Coordenada posCuartel = elementos.get(unCuartel);
+        Coordenada posArquero =  new Coordenada(posCuartel.getFila()+unCuartel.getAncho()+1,
+                                                posCuartel.getColumna()+unCuartel.getAlto()+1);
+        if (!campo.posicionVacia(posArquero)){
+            throw new LugarOcupadoError();
+        }
+
+        Arquero nuevoArquero = unCuartel.crearArquero(oroJugador);
+        this.colocar(nuevoArquero,posArquero.getFila(),posArquero.getColumna());
+    }
+
+    public void crearEspadachinEn(Cuartel unCuartel, int oroJugador) throws LugarOcupadoError{
+        Coordenada posCuartel = elementos.get(unCuartel);
+        Coordenada posEspadachin =  new Coordenada(posCuartel.getFila()+unCuartel.getAncho()+1,
+                posCuartel.getColumna()+unCuartel.getAlto()+1);
+        if (!campo.posicionVacia(posEspadachin)){
+            throw new LugarOcupadoError();
+        }
+
+        Espadachin nuevoEspadachin = unCuartel.crearEspadachin(oroJugador);
+        this.colocar(nuevoEspadachin,posEspadachin.getFila(),posEspadachin.getColumna());
     }
 
 }

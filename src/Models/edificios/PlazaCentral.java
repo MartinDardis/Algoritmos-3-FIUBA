@@ -34,4 +34,11 @@ public class PlazaCentral extends Edificio {
             return nuevoAldeano;
         }
     }
+
+    public int getAncho(){
+        return 2;
+    }
+    public int getAlto(){
+        return 2;
+    }
 }
