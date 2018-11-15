@@ -54,22 +54,7 @@ public class MapaController {
         }
     }
 
-    public void mover(Posicionable elemento,int nuevaFila,int nuevaColumna)throws EdificioNoPuedeMoverseError, NoExisteElementoError{
-        if(elemento instanceof Unidad){
-            if(!elementos.containsKey(elemento))
-                throw new NoExisteElementoError();
-            Coordenada nuevaPosc = new Coordenada(nuevaFila,nuevaColumna);
-            Coordenada viejaPosc = elementos.get(elemento);
-            try{
-                campo.mover(viejaPosc,nuevaPosc);
-            }catch (LugarOcupadoError | PosicionFueraDeCampoError e){
-                throw e;
-            }
-        }else
-            throw new EdificioNoPuedeMoverseError();
-    }
-
-    public void moverUnidad(Posicionable unidad, int nuevaFila, int nuevaColumna) throws SuperaDistanciaMaximaError, EdificioNoPuedeMoverseError, PosicionFueraDeCampoError{
+    public void mover(Posicionable unidad, int nuevaFila, int nuevaColumna) throws SuperaDistanciaMaximaError, EdificioNoPuedeMoverseError, PosicionFueraDeCampoError{
         if (unidad instanceof Edificio){
             throw new EdificioNoPuedeMoverseError();
         }

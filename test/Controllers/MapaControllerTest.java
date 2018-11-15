@@ -151,7 +151,7 @@ public class MapaControllerTest {
 
         mp.colocar(unAldeano, 0, 0);
         Coordenada posAledania = new Coordenada(1, 1);
-        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
+        mp.mover(unAldeano, posAledania.getFila(), posAledania.getColumna());
         Mapa campo = mp.getCampo();
 
         assertEquals(unAldeano, campo.obtener(posAledania));
@@ -166,7 +166,7 @@ public class MapaControllerTest {
 
         mp.colocar(unAldeano, 0, 0);
         Coordenada posAledania = new Coordenada(2, 1);
-        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
+        mp.mover(unAldeano, posAledania.getFila(), posAledania.getColumna());
     }
 
     @Test (expected = PosicionFueraDeCampoError.class)
@@ -178,7 +178,7 @@ public class MapaControllerTest {
 
         mp.colocar(unAldeano, 0, 0);
         Coordenada posAledania = new Coordenada(-1, 0);
-        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
+        mp.mover(unAldeano, posAledania.getFila(), posAledania.getColumna());
     }
 
 }
