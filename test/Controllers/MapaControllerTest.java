@@ -4,6 +4,7 @@ import Models.Posicionable;
 import Models.escenario.Coordenada;
 import Models.escenario.LugarVacioError;
 import Models.escenario.Mapa;
+import Models.escenario.PosicionFueraDeCampoError;
 import Models.unidades.*;
 import Models.edificios.*;
 
@@ -139,6 +140,45 @@ public class MapaControllerTest {
 
         assertEquals(oroRecogido, 60);
 
+    }
+
+    @Test
+    public void test09MoverAldeanoAPosicionValida() {
+
+        MapaController mp = new MapaController();
+
+        Aldeano unAldeano = new Aldeano();
+
+        mp.colocar(unAldeano, 0, 0);
+        Coordenada posAledania = new Coordenada(1, 1);
+        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
+        Mapa campo = mp.getCampo();
+
+        assertEquals(unAldeano, campo.obtener(posAledania));
+    }
+
+    @Test (expected = SuperaDistanciaMaximaError.class)
+    public void test10MoverAldeanoAPosicionInvalidaLanzaError() {
+
+        MapaController mp = new MapaController();
+
+        Aldeano unAldeano = new Aldeano();
+
+        mp.colocar(unAldeano, 0, 0);
+        Coordenada posAledania = new Coordenada(2, 1);
+        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
+    }
+
+    @Test (expected = PosicionFueraDeCampoError.class)
+    public void test11MoverAldeanoAPosicionAledaniaFueraDeCampoLanzaError() {
+
+        MapaController mp = new MapaController();
+
+        Aldeano unAldeano = new Aldeano();
+
+        mp.colocar(unAldeano, 0, 0);
+        Coordenada posAledania = new Coordenada(-1, 0);
+        mp.moverUnidad(unAldeano, posAledania.getFila(), posAledania.getColumna());
     }
 
 }

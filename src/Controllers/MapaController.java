@@ -1,12 +1,11 @@
 package Controllers;
 
 import Models.Posicionable;
+import Models.edificios.Edificio;
 import Models.escenario.*;
 import Models.unidades.*;
-import javafx.geometry.Pos;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class MapaController {
     private HashMap <Posicionable,Coordenada> elementos;
@@ -69,6 +68,27 @@ public class MapaController {
         }else
             throw new EdificioNoPuedeMoverseError();
     }
+
+    public void moverUnidad(Posicionable unidad, int nuevaFila, int nuevaColumna) throws SuperaDistanciaMaximaError, EdificioNoPuedeMoverseError, PosicionFueraDeCampoError{
+        if (unidad instanceof Edificio){
+            throw new EdificioNoPuedeMoverseError();
+        }
+        Coordenada posActual = elementos.get(unidad);
+        Coordenada nuevaPosicion = new Coordenada(nuevaFila,nuevaColumna);
+        if (posActual.distanciaHasta(nuevaPosicion) > 1){
+            throw new SuperaDistanciaMaximaError();
+        }
+        else{
+            try {
+                campo.mover(posActual, nuevaPosicion);
+            }catch (LugarOcupadoError | PosicionFueraDeCampoError e){
+                throw e;
+            }
+            elementos.put(unidad,nuevaPosicion);
+        }
+
+    }
+
 
     public void restaurarAldeanos() {
 
