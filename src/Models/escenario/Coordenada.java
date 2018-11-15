@@ -12,7 +12,7 @@ public class Coordenada {
     }
 
     public boolean estaDentroDe(int filas,int columnas){
-        if(fila > filas || columna > columnas || filas < 0 || columnas < 0){
+        if(fila > filas || columna > columnas || this.fila < 0 || this.columna < 0){
             return false;
         }
         return true;
