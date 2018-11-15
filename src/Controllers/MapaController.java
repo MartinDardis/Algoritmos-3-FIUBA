@@ -1,14 +1,12 @@
 package Controllers;
 
 import Models.Posicionable;
-import Models.escenario.Coordenada;
-import Models.escenario.LugarOcupadoError;
-import Models.escenario.Mapa;
-import Models.escenario.PosicionFueraDeCampoError;
-import Models.unidades.Unidad;
+import Models.escenario.*;
+import Models.unidades.*;
 import javafx.geometry.Pos;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapaController {
     private HashMap <Posicionable,Coordenada> elementos;
@@ -19,7 +17,7 @@ public class MapaController {
         campo = new Mapa();
     }
 
-    public Mapa getCampo(){//Only for test
+    public Mapa getCampo(){
         return campo;
     }
 
@@ -71,5 +69,30 @@ public class MapaController {
         }else
             throw new EdificioNoPuedeMoverseError();
     }
-    
+
+    public void restaurarAldeanos() {
+
+        for (HashMap.Entry<Posicionable, Coordenada> unElemento : elementos.entrySet()) {
+            Posicionable unPosicionable = unElemento.getKey();
+            if (unPosicionable instanceof Aldeano) {
+                Estado nuevoEstado = new EstadoInactivo();
+                ((Aldeano) unPosicionable).setEstado(nuevoEstado);
+            }
+        }
+    }
+
+    public int recolectarOro(){
+
+        int acumulado = 0;
+
+        for (HashMap.Entry<Posicionable, Coordenada> unElemento : elementos.entrySet()) {
+            Posicionable unPosicionable = unElemento.getKey();
+            if (unPosicionable instanceof Aldeano) {
+               acumulado += ((Aldeano) unPosicionable).generarOro();
+            }
+        }
+
+        return acumulado;
+    }
+
 }

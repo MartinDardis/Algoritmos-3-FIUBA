@@ -64,6 +64,7 @@ public class MapaControllerTest {
         assertEquals(cuartel,campo.obtener(posc3));
 
     }
+
     @Test(expected = LugarVacioError.class)
     public void test05VerificarEdificioNoEstaFueraDeSusDimensiones(){
         MapaController mp = new MapaController();
@@ -74,6 +75,70 @@ public class MapaControllerTest {
         Mapa campo = mp.getCampo();
 
         assertEquals(cuartel,campo.obtener(posInvalida));
+    }
+
+    @Test
+    public void test06VerificarRecaudacionDe3AldeanosInactivos(){
+
+        MapaController mp = new MapaController();
+        Aldeano aldeano1 = new Aldeano();
+        Aldeano aldeano2 = new Aldeano();
+        Aldeano aldeano3 = new Aldeano();
+
+        mp.colocar(aldeano1,0,0);
+        mp.colocar(aldeano2,1,1);
+        mp.colocar(aldeano3,2,2);
+
+        int oroRecogido = mp.recolectarOro();
+
+        assertEquals(oroRecogido, 60);
+
+    }
+
+    @Test
+    public void test07VerificarRecaudacionDe2AldeanosInactivosY1Construyendo(){
+
+        MapaController mp = new MapaController();
+        Aldeano aldeano1 = new Aldeano();
+        Aldeano aldeano2 = new Aldeano();
+        Aldeano aldeano3 = new Aldeano();
+        Estado estadoConstructor = new EstadoConstructor();
+
+        aldeano3.setEstado(estadoConstructor);
+        mp.colocar(aldeano1,0,0);
+        mp.colocar(aldeano2,1,1);
+        mp.colocar(aldeano3,2,2);
+
+        int oroRecogido = mp.recolectarOro();
+
+        assertEquals(oroRecogido, 40);
+
+    }
+
+    @Test
+    public void test08VerificarRecaudacionDe3AldeanosRestaurados(){
+
+        MapaController mp = new MapaController();
+
+        Aldeano aldeano1 = new Aldeano();
+        Aldeano aldeano2 = new Aldeano();
+        Aldeano aldeano3 = new Aldeano();
+        Estado estadoConstructor = new EstadoConstructor();
+
+        aldeano1.setEstado(estadoConstructor);
+        aldeano2.setEstado(estadoConstructor);
+        aldeano3.setEstado(estadoConstructor);
+
+        mp.colocar(aldeano1,0,0);
+        mp.colocar(aldeano2,1,1);
+        mp.colocar(aldeano3,2,2);
+
+        mp.restaurarAldeanos();
+
+        int oroRecogido = mp.recolectarOro();
+
+        assertEquals(oroRecogido, 60);
+
     }
 
 }
