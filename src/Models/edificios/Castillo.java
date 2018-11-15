@@ -8,7 +8,9 @@ public class Castillo extends Edificio{
 
     public Castillo() {
         vida = 1000;
+        vidaMaxima = 1000;
         restauracionVidaPorTurno = 15;
+        estadoReparacion = new EstadoVidaCompleta();
 
     }
     public int getAncho(){

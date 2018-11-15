@@ -10,9 +10,11 @@ public class PlazaCentral extends Edificio {
 
     public PlazaCentral() {
         vida = 450;
+        vidaMaxima = 450;
         costo = 100;
         turnosConstruccion = 3;
         restauracionVidaPorTurno    = 50;
+        estadoReparacion = new EstadoVidaCompleta();
     }
 
     public int getCosto() {

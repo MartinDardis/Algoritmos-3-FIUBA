@@ -12,9 +12,11 @@ public class Cuartel extends Edificio {
 
     public Cuartel() {
         vida = 250;
+        vidaMaxima = 250;
         costo = 50;
         turnosConstruccion = 3;
         restauracionVidaPorTurno = 25;
+        estadoReparacion = new EstadoVidaCompleta();
     }
 
     public int getAncho(){
