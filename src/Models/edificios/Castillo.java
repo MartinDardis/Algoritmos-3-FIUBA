@@ -9,6 +9,13 @@ public class Castillo extends Edificio{
     public Castillo() {
         vida = 1000;
         restauracionVidaPorTurno = 15;
+
+    }
+    public int getAncho(){
+        return 4;
+    }
+    public int getAlto(){
+        return 4;
     }
 
     public int getReparacionPorTurno () {return this.restauracionVidaPorTurno;}

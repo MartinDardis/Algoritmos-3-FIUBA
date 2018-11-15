@@ -181,4 +181,19 @@ public class MapaControllerTest {
         mp.mover(unAldeano, posAledania.getFila(), posAledania.getColumna());
     }
 
+    @Test
+    public void test12ContruirArmaAsedioYColocarEnPosicionVacia() {
+
+        MapaController mp = new MapaController();
+
+        Castillo unCastillo = new Castillo();
+        mp.colocar(unCastillo,0,0);
+
+        mp.crearAsedioEn(unCastillo,1000);
+        Mapa campo = mp.getCampo();
+        Coordenada posSupuesta = new Coordenada(5,5);
+
+        assertEquals(campo.obtener(posSupuesta).getClass(),ArmaDeAsedio.class);
+    }
+
 }

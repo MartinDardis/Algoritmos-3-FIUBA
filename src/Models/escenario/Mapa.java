@@ -76,6 +76,8 @@ public class Mapa{
             throw new LugarOcupadoError();
     }
 
-
+    public boolean posicionVacia(Coordenada unaPosicion){
+        return (!this.campo.containsKey(unaPosicion.asKey()));
+    }
 
 }

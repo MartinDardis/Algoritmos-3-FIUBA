@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.Posicionable;
+import Models.edificios.Castillo;
 import Models.edificios.Edificio;
 import Models.escenario.*;
 import Models.unidades.*;
@@ -98,6 +99,17 @@ public class MapaController {
         }
 
         return acumulado;
+    }
+
+    public void crearAsedioEn(Castillo unCastillo, int oroJugador){
+        Coordenada posCastillo = elementos.get(unCastillo);
+        Coordenada posAsedio =  new Coordenada(posCastillo.getFila()+unCastillo.getAncho()+1,posCastillo.getColumna()+unCastillo.getAlto()+1);
+        if (!campo.posicionVacia(posAsedio)){
+            throw new LugarOcupadoError();
+        }
+        ArmaDeAsedio nuevaArma = unCastillo.crearArmaDeAsedio(oroJugador);
+        this.colocar(nuevaArma,posAsedio.getFila(),posAsedio.getColumna());
+
     }
 
 }
