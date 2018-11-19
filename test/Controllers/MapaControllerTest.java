@@ -243,7 +243,6 @@ public class MapaControllerTest {
 
         MapaController mp = new MapaController();
         Aldeano unAldeano = new Aldeano();
-        Aldeano otroAldeano = new Aldeano();
 
         mp.colocar(unAldeano,0,0);
         mp.remover(unAldeano);
