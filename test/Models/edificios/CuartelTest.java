@@ -1,5 +1,9 @@
 package Models.edificios;
 
+import Models.edificios.Errores.EdificioVidaCompletaError;
+import Models.edificios.Errores.EdificioYaReparadoError;
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -39,7 +43,8 @@ public class CuartelTest {
     public void Test05NoPuedeSerReparadoSiYaFueReparado(){
 
         Cuartel unCuartel = new Cuartel();
-        EstadoReparacion estadoYaReparado = new EstadoYaReparado();
+        int vidaActual = 100;
+        EstadoReparacion estadoYaReparado = new EstadoYaReparado(vidaActual);
         unCuartel.setEstadoReparacion(estadoYaReparado);
 
         unCuartel.reparar();
@@ -50,9 +55,10 @@ public class CuartelTest {
     public void Test06SerReparadoSumaVidaPedida(){
 
         Cuartel unCuartel = new Cuartel();
-        EstadoReparacion estadoDaniado = new EstadoCuartelDaniado();
+        int vidaActual = 150;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
-        unCuartel.setVida(150);
+
         unCuartel.setEstadoReparacion(estadoDaniado);
         unCuartel.reparar();
 
@@ -63,14 +69,14 @@ public class CuartelTest {
     public void Test07ExcedenteDeReparacionLoDejaEnVidaMaxima(){
 
         Cuartel unCuartel = new Cuartel();
-        EstadoReparacion estadoDaniado = new EstadoCuartelDaniado();
+        int vidaActual = 240;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
-        unCuartel.setVida(240);
         unCuartel.setEstadoReparacion(estadoDaniado);
         unCuartel.reparar();
 
         assertEquals(unCuartel.getVida(),250);
-        assertEquals(unCuartel.getEstadoReparacion().getClass(),EstadoVidaCompleta.class);
+        assertEquals(unCuartel.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 
 }

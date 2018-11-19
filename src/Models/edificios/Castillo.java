@@ -1,26 +1,22 @@
 package Models.edificios;
 
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.unidades.ArmaDeAsedio;
 
 public class Castillo extends Edificio{
 
-    private int restauracionVidaPorTurno; //escucho sugerencias para un mejor nombre
 
     public Castillo() {
-        vida = 1000;
-        vidaMaxima = 1000;
-        restauracionVidaPorTurno = 15;
-        estadoReparacion = new EstadoVidaCompleta();
+        this.vidaMaxima = 1000;
+        this.vidaPorReparacion = 15;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.alto = 4;
+        this.ancho = 4;
 
     }
-    public int getAncho(){
-        return 4;
-    }
-    public int getAlto(){
-        return 4;
-    }
 
-    public int getReparacionPorTurno () {return this.restauracionVidaPorTurno;}
+    public int getReparacionPorTurno () {return this.vidaPorReparacion;}
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroJugador){
         if (oroJugador < 200){//Remplazar por getCosto?

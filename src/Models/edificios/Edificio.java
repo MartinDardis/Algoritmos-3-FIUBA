@@ -1,11 +1,16 @@
 package Models.edificios;
-import Models.edificios.*;
 import Models.Posicionable;
+import Models.edificios.Errores.EdificioNoReparableError;
+import Models.edificios.Estados.EstadoReparacion;
+import Models.edificios.Estados.EstadoVidaCompleta;
+import Models.edificios.Estados.EstadoYaReparado;
 
 public class Edificio implements Posicionable {
 
-    protected int vida;
     protected int vidaMaxima;
+    protected int vidaPorReparacion;
+    protected int alto;
+    protected int ancho;
 
     protected EstadoReparacion estadoReparacion;
 
@@ -18,38 +23,31 @@ public class Edificio implements Posicionable {
     }
 
     public int getVida(){
-        return this.vida;
-    }
-
-    public void reparar(){
-
-        try{
-            int vidaExtra = this.estadoReparacion.obtenerReparacion();
-
-            if((this.vida + vidaExtra) >= vidaMaxima){
-                this.estadoReparacion = new EstadoVidaCompleta();
-                this.vida = this.vidaMaxima;
-            }
-
-            else {
-                this.estadoReparacion = new EstadoYaReparado();
-                this.vida += vidaExtra;
-            }
-        }
-        catch(EdificioNoReparableError e){
-            throw e;
-        }
+        return this.estadoReparacion.getVida();
     }
 
     public void setEstadoReparacion(EstadoReparacion nuevoEstado){
         this.estadoReparacion = nuevoEstado;
     }
-
     public EstadoReparacion getEstadoReparacion(){
         return this.estadoReparacion;
     }
+
     public void setVida(int nuevaVida){
-        this.vida = nuevaVida;
+        this.estadoReparacion.setVida(nuevaVida);
     }
+
+    public void reparar(){
+        this.estadoReparacion.reparar(this.vidaPorReparacion);
+        this.actualizarEstado();
+    }
+
+    public void actualizarEstado(){
+        int vidaActual = this.estadoReparacion.getVida();
+        if( vidaActual >= this.vidaMaxima){ this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima); }
+        else{ this.estadoReparacion = new EstadoYaReparado(vidaActual); }
+    }
+
+
 
 }

@@ -1,4 +1,4 @@
-package Models.edificios;
+package Models.edificios.Errores;
 
 public class EdificioYaReparadoError extends EdificioNoReparableError {
 }

@@ -1,5 +1,7 @@
 package Models.edificios;
 
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
@@ -8,13 +10,14 @@ public class PlazaCentral extends Edificio {
     private int turnosConstruccion;
     private int restauracionVidaPorTurno;
 
+
     public PlazaCentral() {
-        vida = 450;
-        vidaMaxima = 450;
-        costo = 100;
-        turnosConstruccion = 3;
-        restauracionVidaPorTurno    = 50;
-        estadoReparacion = new EstadoVidaCompleta();
+        this.vidaMaxima = 450;
+        this.vidaPorReparacion = 25;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.costo = 100;
+        this.alto = 2;
+        this.ancho = 2;
     }
 
     public int getCosto() {
@@ -37,10 +40,4 @@ public class PlazaCentral extends Edificio {
         }
     }
 
-    public int getAncho(){
-        return 2;
-    }
-    public int getAlto(){
-        return 2;
-    }
 }

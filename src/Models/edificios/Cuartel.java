@@ -1,5 +1,7 @@
 package Models.edificios;
 
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
 
@@ -7,24 +9,17 @@ public class Cuartel extends Edificio {
 
     private int costo;
     private int turnosConstruccion;
-    private int restauracionVidaPorTurno;
-
 
     public Cuartel() {
-        vida = 250;
-        vidaMaxima = 250;
-        costo = 50;
-        turnosConstruccion = 3;
-        restauracionVidaPorTurno = 25;
-        estadoReparacion = new EstadoVidaCompleta();
+        this.vidaMaxima = 250;
+        this.vidaPorReparacion = 50;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.costo = 50;
+        this.turnosConstruccion = 3;
+        this.alto = 2;
+        this.ancho = 2;
     }
 
-    public int getAncho(){
-        return 2;
-    }
-    public int getAlto(){
-        return 2;
-    }
     public int getCosto() {
         return costo;
     }
@@ -33,7 +28,7 @@ public class Cuartel extends Edificio {
         return turnosConstruccion;
     }
 
-    public int getReparacionPorTurno () {return this.restauracionVidaPorTurno;}
+    public int getReparacionPorTurno () {return this.vidaPorReparacion;}
 
     public Espadachin crearEspadachin(int oroJugador){
         if (oroJugador < 50)

@@ -1,6 +1,10 @@
 package Models.edificios;
 
-import Models.edificios.*;
+import Models.edificios.Errores.EdificioVidaCompletaError;
+import Models.edificios.Errores.EdificioYaReparadoError;
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.*;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,11 +33,12 @@ public class CastilloTest {
     public void Test04NoPuedeSerReparadoSiYaFueReparado(){
 
         Castillo unCastillo = new Castillo();
-        EstadoReparacion estadoYaReparado = new EstadoYaReparado();
+        int vidaActual = 500;
+
+        EstadoReparacion estadoYaReparado = new EstadoYaReparado(vidaActual);
         unCastillo.setEstadoReparacion(estadoYaReparado);
 
         unCastillo.reparar();
-
     }
 
 
@@ -41,13 +46,13 @@ public class CastilloTest {
     public void Test05SerReparadoSumaVidaPedida(){
 
         Castillo unCastillo = new Castillo();
-        EstadoReparacion estadoDaniado = new EstadoCastilloDaniado();
+        int vidaActual = 500;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
-        unCastillo.setVida(900);
         unCastillo.setEstadoReparacion(estadoDaniado);
         unCastillo.reparar();
 
-        assertEquals(unCastillo.getVida(),915);
+        assertEquals(unCastillo.getVida(),515);
     }
 
 
@@ -55,14 +60,14 @@ public class CastilloTest {
     public void Test06ExcedenteDeReparacionLoDejaEnVidaMaxima(){
 
         Castillo unCastillo = new Castillo();
-        EstadoReparacion estadoDaniado = new EstadoCastilloDaniado();
+        int vidaActual = 995;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
-        unCastillo.setVida(995);
         unCastillo.setEstadoReparacion(estadoDaniado);
         unCastillo.reparar();
 
         assertEquals(unCastillo.getVida(),1000);
-        assertEquals(unCastillo.getEstadoReparacion().getClass(),EstadoVidaCompleta.class);
+        assertEquals(unCastillo.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 
 }

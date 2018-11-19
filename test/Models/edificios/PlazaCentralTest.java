@@ -1,5 +1,9 @@
 package Models.edificios;
 
+import Models.edificios.Errores.EdificioVidaCompletaError;
+import Models.edificios.Errores.EdificioYaReparadoError;
+import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -33,7 +37,8 @@ public class PlazaCentralTest {
     public void Test04NoPuedeSerReparadoSiYaFueReparado(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
-        EstadoReparacion estadoYaReparado = new EstadoYaReparado();
+        int vidaActual = 400;
+        EstadoReparacion estadoYaReparado = new EstadoYaReparado(vidaActual);
         unaPlaza.setEstadoReparacion(estadoYaReparado);
 
         unaPlaza.reparar();
@@ -43,10 +48,10 @@ public class PlazaCentralTest {
     public void Test05SerReparadoSumaVidaPedida(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
-        EstadoReparacion estadoDaniado = new EstadoPlazaDaniada();
-        unaPlaza.setVida(400);
-        unaPlaza.setEstadoReparacion(estadoDaniado);
+        int vidaActual = 400;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
+        unaPlaza.setEstadoReparacion(estadoDaniado);
         unaPlaza.reparar();
 
         assertEquals(unaPlaza.getVida(),425);
@@ -56,14 +61,14 @@ public class PlazaCentralTest {
     public void Test07ExcedenteDeReparacionLoDejaEnVidaMaxima(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
-        EstadoReparacion estadoDaniado = new EstadoCuartelDaniado();
+        int vidaActual = 445;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
 
-        unaPlaza.setVida(445);
         unaPlaza.setEstadoReparacion(estadoDaniado);
         unaPlaza.reparar();
 
         assertEquals(unaPlaza.getVida(),450);
-        assertEquals(unaPlaza.getEstadoReparacion().getClass(),EstadoVidaCompleta.class);
+        assertEquals(unaPlaza.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 
 
