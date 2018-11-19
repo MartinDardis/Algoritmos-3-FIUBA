@@ -5,6 +5,7 @@ import Models.Posicionable;
 public class Unidad implements Posicionable {
 
     protected int vida;
+    protected String pertenece;
 
     public int getVida(){
         return this.vida;
@@ -18,5 +19,14 @@ public class Unidad implements Posicionable {
         return this.alto;
     }
 
+    public String perteneceA(){
+        return this.pertenece;
+    }
 
+    public boolean dentroRadioDeAtaque(int unaDistancia){
+        if(rango > unaDistancia){
+            return false;
+        }
+        return true;
+    }
 }

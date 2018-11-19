@@ -16,6 +16,15 @@ public class Castillo extends Edificio{
 
     }
 
+    public Castillo(String jugador) {
+        this.vidaMaxima = 1000;
+        this.vidaPorReparacion = 15;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.alto = 4;
+        this.ancho = 4;
+        this.pertenece = jugador;
+    }
+
     public int getReparacionPorTurno () {return this.vidaPorReparacion;}
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroJugador){

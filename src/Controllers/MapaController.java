@@ -7,7 +7,9 @@ import Models.edificios.Edificio;
 import Models.edificios.Cuartel;
 import Models.escenario.*;
 import Models.unidades.*;
+import javafx.geometry.Pos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MapaController {
@@ -149,6 +151,24 @@ public class MapaController {
 
         Espadachin nuevoEspadachin = unCuartel.crearEspadachin(oroJugador);
         this.colocar(nuevoEspadachin,posEspadachin.getFila(),posEspadachin.getColumna());
+    }
+
+    public ArrayList <Posicionable> obtenerAledaneaos(Posicionable unElemento){
+        ArrayList <Posicionable> lista = new ArrayList<Posicionable>();
+        Coordenada poscElemento = elementos.get(unElemento);
+        for(int i=0; i<campo.getFilas();i++){
+            for (int j=0; j<campo.getColumnas();j++){
+                try{
+                    Coordenada tmp = new Coordenada(i,j);
+                    int distancia = poscElemento.distanciaHasta(tmp);
+                    if(unElemento.dentroRadioDeAtaque(distancia)){
+                        Posicionable posicionable = campo.obtener(tmp);
+                        lista.add(posicionable);
+                    }
+                }catch (PosicionFueraDeCampoError | LugarVacioError)
+            }
+        }
+        return lista;
     }
 
 }

@@ -6,4 +6,9 @@ public class Arquero extends Unidad {
         this.vida = 75;
     }
 
+    public Arquero(String jugador){
+        this.pertenece = jugador;
+        this.vida = 75;
+    }
+
 }

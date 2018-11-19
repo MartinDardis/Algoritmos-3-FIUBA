@@ -11,6 +11,7 @@ public class Edificio implements Posicionable {
     protected int vidaPorReparacion;
     protected int alto;
     protected int ancho;
+    protected String pertenece;
 
     protected EstadoReparacion estadoReparacion;
 
@@ -48,6 +49,15 @@ public class Edificio implements Posicionable {
         else{ this.estadoReparacion = new EstadoYaReparado(vidaActual); }
     }
 
+    public String perteneceA(){
+        return pertenece;
+    }
 
+    public boolean dentroRadioDeAtaque(int unaDistancia){
+        if(rango > unaDistancia){
+            return false;
+        }
+        return true;
+    }
 
 }

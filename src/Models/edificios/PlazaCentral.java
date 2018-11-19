@@ -20,6 +20,16 @@ public class PlazaCentral extends Edificio {
         this.ancho = 2;
     }
 
+    public PlazaCentral(String jugador) {
+        this.vidaMaxima = 450;
+        this.vidaPorReparacion = 25;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.costo = 100;
+        this.alto = 2;
+        this.ancho = 2;
+        this.pertenece = jugador;
+    }
+
     public int getCosto() {
         return costo;
     }

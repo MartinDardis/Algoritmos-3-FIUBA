@@ -20,6 +20,17 @@ public class Cuartel extends Edificio {
         this.ancho = 2;
     }
 
+    public Cuartel(String jugador) {
+        this.vidaMaxima = 250;
+        this.vidaPorReparacion = 50;
+        this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
+        this.costo = 50;
+        this.turnosConstruccion = 3;
+        this.alto = 2;
+        this.ancho = 2;
+        this.pertenece = jugador;
+    }
+
     public int getCosto() {
         return costo;
     }
