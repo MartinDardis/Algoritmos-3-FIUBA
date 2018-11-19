@@ -57,6 +57,7 @@ public class MapaController {
         }else{
             throw new NoExisteElementoError();
         }
+        elementos.remove(elemento);
     }
 
     public void mover(Posicionable unidad, int nuevaFila, int nuevaColumna) throws SuperaDistanciaMaximaError, EdificioNoPuedeMoverseError, PosicionFueraDeCampoError{

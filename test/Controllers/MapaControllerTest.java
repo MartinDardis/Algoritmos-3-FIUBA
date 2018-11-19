@@ -238,4 +238,16 @@ public class MapaControllerTest {
         assertEquals(campo.obtener(posSupuesta).getClass(),Espadachin.class);
     }
 
+    @Test (expected = NoExisteElementoError.class)
+    public void test16RemoverMismaUnidadDosVecesLanzaError() {
+
+        MapaController mp = new MapaController();
+        Aldeano unAldeano = new Aldeano();
+        Aldeano otroAldeano = new Aldeano();
+
+        mp.colocar(unAldeano,0,0);
+        mp.remover(unAldeano);
+        mp.remover(unAldeano);
+    }
+
 }
