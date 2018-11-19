@@ -8,5 +8,5 @@ public interface Posicionable {
 
     int getAlto();
     int getAncho();
-    boolean dentroRadioDeAtaque();
+    boolean dentroRadioDeAtaque(int distancia);
 }

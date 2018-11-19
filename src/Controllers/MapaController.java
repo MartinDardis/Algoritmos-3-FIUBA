@@ -165,7 +165,9 @@ public class MapaController {
                         Posicionable posicionable = campo.obtener(tmp);
                         lista.add(posicionable);
                     }
-                }catch (PosicionFueraDeCampoError | LugarVacioError)
+                }catch (PosicionFueraDeCampoError | LugarVacioError error){
+
+                }
             }
         }
         return lista;
