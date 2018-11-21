@@ -164,7 +164,9 @@ public class MapaController {
                     int distancia = poscElemento.distanciaHasta(tmp);
                     if(unElemento.dentroRadioDeAtaque(distancia)){
                         Posicionable posicionable = campo.obtener(tmp);
-                        lista.add(posicionable);
+                        if (!lista.contains(posicionable)){
+                            lista.add(posicionable);
+                        }
                     }
                 }catch (PosicionFueraDeCampoError | LugarVacioError error){
 
