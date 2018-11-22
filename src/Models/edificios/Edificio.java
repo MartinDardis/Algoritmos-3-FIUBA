@@ -4,6 +4,7 @@ import Models.edificios.Errores.EdificioNoReparableError;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.edificios.Estados.EstadoYaReparado;
+import Models.juego.Jugador;
 
 public class Edificio implements Posicionable {
 
@@ -12,7 +13,7 @@ public class Edificio implements Posicionable {
     protected int alto;
     protected int ancho;
     protected int rango;
-    protected String pertenece;
+    protected Jugador propietario;
 
     protected EstadoReparacion estadoReparacion;
 
@@ -51,7 +52,7 @@ public class Edificio implements Posicionable {
     }
 
     public String perteneceA(){
-        return pertenece;
+        return propietario.getNombre();
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){

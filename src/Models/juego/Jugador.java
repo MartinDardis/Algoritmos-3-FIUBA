@@ -20,6 +20,10 @@ public class Jugador {
         this.oro += cantOro;
     }
 
+    public String getNombre(){
+        return this.nombre;
+    }
+
     public int getOro(){
         return this.oro;
     }
@@ -48,4 +52,5 @@ public class Jugador {
             throw new NoHayPoblacionError();
         }
     }
+
 }

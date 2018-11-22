@@ -153,14 +153,14 @@ public class MapaController {
         Espadachin nuevoEspadachin = unCuartel.crearEspadachin(oroJugador);
         this.colocar(nuevoEspadachin,posEspadachin.getFila(),posEspadachin.getColumna());
     }
-
+/*
     public ArrayList <Posicionable> obtenerAledaneaos(Posicionable unElemento){
         ArrayList <Posicionable> lista = new ArrayList<Posicionable>();
         Coordenada poscElemento = elementos.get(unElemento);
         int fila = poscElemento.getFila();
         int columna = poscElemento.getColumna();
-        for(int i=fila; i<fila + campo.getFilas();i++){
-            for (int j=columna; j<columna + campo.getColumnas();j++){
+        for(int i=fila; i<fila + campo.getFilas();i++){                //RECORRO TODA EL AREA
+            for (int j=columna; j<columna + campo.getColumnas();j++){  //DEL ED
                 try{
                     Coordenada tmp = new Coordenada(i,j);
                     int distancia = poscElemento.distanciaHasta(tmp);
@@ -176,9 +176,45 @@ public class MapaController {
             }
         }
         return lista;
+    }*/
+
+    public ArrayList<Posicionable> obtenerAtacables(Posicionable atacante){
+        ArrayList <Posicionable> listaAtacables = new ArrayList<>();
+        Coordenada posicionAtacante = elementos.get(atacante);
+        int fila = posicionAtacante.getFila();
+        int columna = posicionAtacante.getColumna();
+        int alto = atacante.getAlto();
+        int ancho = atacante.getAncho();
+        int rango = 3; //get rango castillo
+
+        for (int i = fila; i<fila+alto;i++){
+            for (int j = columna; j<columna+ancho;j++){//con esto recorro toda la superficie del atacante
+                agregarAtacablesDesdePosicion(i,j,listaAtacables,rango);
+            }
+        }
+        return listaAtacables;
     }
+
+    private void agregarAtacablesDesdePosicion(int i, int j, ArrayList<Posicionable> listaAtacables, int rango) {
+        int vueltas = 0;
+        for (int fila = i/rango; fila<=i+rango;fila++){
+            for (int col= j/rango; col<=j+rango;col++ ){
+               try{
+                    Coordenada posActual = new Coordenada(fila,col);
+                    Posicionable posicionable = campo.obtener(posActual);
+                    if (!listaAtacables.contains(posicionable) && posicionable.getClass()!=Castillo.class){
+                        listaAtacables.add(posicionable);
+                    }
+                }catch (PosicionFueraDeCampoError|LugarVacioError error){
+
+               }
+
+            }
+        }
+    }
+
     public void ataqueCastillo(Castillo unCastillo){
-        ArrayList<Posicionable> atacables = obtenerAledaneaos(unCastillo);
+        ArrayList<Posicionable> atacables = obtenerAtacables(unCastillo);
         for (int i = 0;i<atacables.size();i++){
             Posicionable actual = atacables.get(i);
             actual.recibirDanio(20);//cambiar por getter de daño de castillo, supongo

@@ -2,6 +2,7 @@ package Models.edificios;
 
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.Estados.EstadoVidaCompleta;
+import Models.juego.Jugador;
 import Models.unidades.Aldeano;
 
 public class PlazaCentral extends Edificio {
@@ -20,14 +21,14 @@ public class PlazaCentral extends Edificio {
         this.ancho = 2;
     }
 
-    public PlazaCentral(String jugador) {
+    public PlazaCentral(Jugador jugador) {
         this.vidaMaxima = 450;
         this.vidaPorReparacion = 25;
         this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
         this.costo = 100;
         this.alto = 2;
         this.ancho = 2;
-        this.pertenece = jugador;
+        this.propietario = jugador;
     }
 
     public int getCosto() {

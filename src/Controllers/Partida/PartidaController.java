@@ -14,12 +14,15 @@ public class PartidaController {
     private MapaController campo;
     private Jugador actual;
 
-    public PartidaController(){
-        jugador1 = new Jugador("j1");
-        jugador2 = new Jugador("j2");
+    public PartidaController(String jugadorUno, String jugadorDos){
+        jugador1 = new Jugador(jugadorUno);
+        jugador2 = new Jugador(jugadorDos);
         campo = new MapaController();
         actual = jugador1;
     }
+
+    //Iniciar el juego
+
 
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual(){

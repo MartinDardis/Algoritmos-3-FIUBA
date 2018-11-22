@@ -2,6 +2,7 @@ package Models.edificios;
 
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.Estados.EstadoVidaCompleta;
+import Models.juego.Jugador;
 import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
 
@@ -20,7 +21,7 @@ public class Cuartel extends Edificio {
         this.ancho = 2;
     }
 
-    public Cuartel(String jugador) {
+    public Cuartel(Jugador jugador) {
         this.vidaMaxima = 250;
         this.vidaPorReparacion = 50;
         this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
@@ -28,7 +29,7 @@ public class Cuartel extends Edificio {
         this.turnosConstruccion = 3;
         this.alto = 2;
         this.ancho = 2;
-        this.pertenece = jugador;
+        this.propietario = jugador;
     }
 
     public int getCosto() {

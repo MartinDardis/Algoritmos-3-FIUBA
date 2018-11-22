@@ -1,12 +1,13 @@
 package Models.unidades;
 
 import Models.Posicionable;
+import Models.juego.Jugador;
 
 public class Unidad implements Posicionable {
 
     protected int vida;
     protected int rango;
-    protected String pertenece;
+    protected Jugador propietario;
 
     public int getVida(){
         return this.vida;
@@ -21,7 +22,7 @@ public class Unidad implements Posicionable {
     }
 
     public String perteneceA(){
-        return this.pertenece;
+        return this.propietario.getNombre();
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){

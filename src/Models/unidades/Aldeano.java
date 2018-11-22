@@ -1,7 +1,6 @@
 package Models.unidades;
 
-import Controllers.MapaController;
-import Models.edificios.PlazaCentral;
+import Models.juego.Jugador;
 
 public class Aldeano extends Unidad {
 
@@ -12,8 +11,8 @@ public class Aldeano extends Unidad {
         this.estado = new EstadoInactivo();
     }
 
-    public Aldeano(String jugador) {
-        this.pertenece = jugador;
+    public Aldeano(Jugador jugador) {
+        this.propietario = jugador;
         this.vida = 50;
         this.estado = new EstadoInactivo();
     }

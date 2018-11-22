@@ -1,5 +1,7 @@
 package Models.unidades;
 
+import Models.juego.Jugador;
+
 public class ArmaDeAsedio extends Unidad{
 
     private EstadoArma estado;
@@ -7,8 +9,8 @@ public class ArmaDeAsedio extends Unidad{
     public ArmaDeAsedio(){
         this.vida = 150;
     }
-    public ArmaDeAsedio(String jugador){
-        this.pertenece = jugador;
+    public ArmaDeAsedio(Jugador jugador){
+        this.propietario = jugador;
         this.vida = 150;
         this.estado =  new EstadoNoMontada();
     }
