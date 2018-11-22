@@ -274,7 +274,7 @@ public class MapaControllerTest {
         controladorMapa.colocar(unAldeano,20,20);
         controladorMapa.ataqueCastillo(unCastillo);
 
-        assertEquals(unAldeano.getVida(),vidaInicialAldeano-20);//CAMBIAR
+        assertEquals(vidaInicialAldeano,unAldeano.getVida());//CAMBIAR
 
     }
 

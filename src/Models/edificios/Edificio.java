@@ -55,7 +55,7 @@ public class Edificio implements Posicionable {
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){
-        if(rango > unaDistancia){
+        if(rango < unaDistancia){
             return false;
         }
         return true;
