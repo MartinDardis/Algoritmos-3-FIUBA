@@ -29,4 +29,7 @@ public class Unidad implements Posicionable {
         }
         return true;
     }
+    public void recibirDanio(int danio){
+        this.vida -= danio;
+    }
 }

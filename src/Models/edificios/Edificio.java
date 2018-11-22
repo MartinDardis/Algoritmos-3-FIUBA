@@ -59,5 +59,8 @@ public class Edificio implements Posicionable {
         }
         return true;
     }
-
+    public void recibirDanio(int danio){
+        int vidaActual = getVida();
+        setVida(vidaActual-danio);
+    }
 }

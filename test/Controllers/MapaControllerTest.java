@@ -249,4 +249,17 @@ public class MapaControllerTest {
         mp.remover(unAldeano);
     }
 
+    @Test
+    public void test17CastilloAtacaUnidadEnRango(){
+        MapaController controladorMapa = new MapaController();
+        Aldeano unAldeano = new Aldeano();
+        Castillo unCastillo = new Castillo();
+        int vidaInicialAldeano = unAldeano.getVida();
+
+        controladorMapa.colocar(unCastillo,0,0);
+        controladorMapa.colocar(unAldeano,4,4);
+        controladorMapa.ataqueCastillo(unCastillo);
+
+        assertEquals(unAldeano.getVida(),vidaInicialAldeano-20);
+    }
 }

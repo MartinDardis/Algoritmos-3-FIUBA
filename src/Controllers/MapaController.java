@@ -175,5 +175,11 @@ public class MapaController {
         }
         return lista;
     }
-
+    public void ataqueCastillo(Castillo unCastillo){
+        ArrayList<Posicionable> atacables = obtenerAledaneaos(unCastillo);
+        for (int i = 0;i<atacables.size();i++){
+            Posicionable actual = atacables.get(i);
+            actual.recibirDanio(20);//cambiar por getter de daño de castillo, supongo
+        }
+    }
 }
