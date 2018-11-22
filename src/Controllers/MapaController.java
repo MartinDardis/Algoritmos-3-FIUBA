@@ -157,14 +157,16 @@ public class MapaController {
     public ArrayList <Posicionable> obtenerAledaneaos(Posicionable unElemento){
         ArrayList <Posicionable> lista = new ArrayList<Posicionable>();
         Coordenada poscElemento = elementos.get(unElemento);
-        for(int i=0; i<campo.getFilas();i++){
-            for (int j=0; j<campo.getColumnas();j++){
+        int fila = poscElemento.getFila();
+        int columna = poscElemento.getColumna();
+        for(int i=fila; i<fila + campo.getFilas();i++){
+            for (int j=columna; j<columna + campo.getColumnas();j++){
                 try{
                     Coordenada tmp = new Coordenada(i,j);
                     int distancia = poscElemento.distanciaHasta(tmp);
                     if(unElemento.dentroRadioDeAtaque(distancia)){
                         Posicionable posicionable = campo.obtener(tmp);
-                        if (!lista.contains(posicionable)){
+                        if (!lista.contains(posicionable) && posicionable!=unElemento){
                             lista.add(posicionable);
                         }
                     }

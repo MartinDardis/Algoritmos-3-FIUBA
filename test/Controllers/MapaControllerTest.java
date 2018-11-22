@@ -262,4 +262,24 @@ public class MapaControllerTest {
 
         assertEquals(unAldeano.getVida(),vidaInicialAldeano-20);
     }
+
+    @Test
+    public void test18CastilloNoAtacaUnidadFueraDeRango(){
+        MapaController controladorMapa = new MapaController();
+        Aldeano unAldeano = new Aldeano();
+        Castillo unCastillo = new Castillo();
+        int vidaInicialAldeano = unAldeano.getVida();
+
+        controladorMapa.colocar(unCastillo,0,0);
+        controladorMapa.colocar(unAldeano,20,20);
+        controladorMapa.ataqueCastillo(unCastillo);
+
+        assertEquals(unAldeano.getVida(),vidaInicialAldeano-20);//CAMBIAR
+
+    }
+
+    @Test
+    public void test19CastilloAtacaEdificioEnRango(){
+
+    }
 }

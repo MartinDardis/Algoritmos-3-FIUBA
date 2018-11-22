@@ -15,9 +15,9 @@ public class PartidaController {
     private Jugador actual;
 
     public PartidaController(){
-        jugador1 = new Jugador('j1');
-        jugador2 = new Jugador('j2');
-        campo = new MapaController()
+        jugador1 = new Jugador("j1");
+        jugador2 = new Jugador("j2");
+        campo = new MapaController();
         actual = jugador1;
     }
 
@@ -31,30 +31,30 @@ public class PartidaController {
 
     //Realiza las acciones antes de terminar el turno del jugador actual
     public void terminarTurno(){
-        actual.recolectarOro();
+        //actual.recolectarOro();
         this.actualizarActual();
     }
 
     //+++++++++++++++++++++ CREACION DE UNIDADES +++++++++++++++++++++++++++++++++++++//
 
     public void crearAldeanoEn(int i,int j){
-        Aldeano aldeano = actual.crearAldeano();
-        campo.colocar(aldeano,i,j);
+        //Aldeano aldeano = actual.crearAldeano();
+        //campo.colocar(aldeano,i,j);
     }
 
     public void crearArmaDeAsedioEn(int i,int j){
-        ArmaDeAsedio arma = actual.crearArmaDeAsedio();
-        campo.colocar(arma,i,j);
+        //ArmaDeAsedio arma = actual.crearArmaDeAsedio();
+        //campo.colocar(arma,i,j);
     }
 
     public void crearArqueroEn(int i, int j){
-        Arquero arq = actual.crearArquero();
-        campo.colocar(arq,i,j);
+        //Arquero arq = actual.crearArquero();
+        //campo.colocar(arq,i,j);
     }
 
     public void crearEspadachinEn(int i,int j){
-        Espadachin esp = actual.crearEspadachin();
-        campo.colocar(esp,i,j);
+    //    Espadachin esp = actual.crearEspadachin();
+    //    campo.colocar(esp,i,j);
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//

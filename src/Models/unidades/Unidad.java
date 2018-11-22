@@ -5,6 +5,7 @@ import Models.Posicionable;
 public class Unidad implements Posicionable {
 
     protected int vida;
+    protected int rango;
     protected String pertenece;
 
     public int getVida(){

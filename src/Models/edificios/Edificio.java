@@ -11,6 +11,7 @@ public class Edificio implements Posicionable {
     protected int vidaPorReparacion;
     protected int alto;
     protected int ancho;
+    protected int rango;
     protected String pertenece;
 
     protected EstadoReparacion estadoReparacion;
