@@ -212,25 +212,15 @@ public class MapaController {
             }
         }
     }
+    public void realizarAtaque(Posicionable atacante, Posicionable objetivo){
+
+    }
 
     public void ataqueCastillo(Castillo unCastillo){
         ArrayList<Posicionable> atacables = obtenerAtacables(unCastillo);
         for (int i = 0;i<atacables.size();i++){
             Posicionable actual = atacables.get(i);
             actual.recibirDanio(20);//cambiar por getter de daño de castillo, supongo
-        }
-    }
-
-    public void ataqueEspadachin(Espadachin unEspadachin){ //SOLO PARA PRUEBAS. BORRAR
-        ArrayList<Posicionable> atacables = obtenerAtacables(unEspadachin);
-        for (int i = 0;i<atacables.size();i++){
-            Posicionable actual = atacables.get(i);
-            if (actual.getClass() == Edificio.class){
-                actual.recibirDanio(15);
-            }
-            else{
-                actual.recibirDanio(25);//cambiar por getter de daño de castillo, supongo
-            }
         }
     }
 

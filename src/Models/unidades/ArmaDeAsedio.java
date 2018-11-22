@@ -13,6 +13,8 @@ public class ArmaDeAsedio extends Unidad{
         this.propietario = jugador;
         this.vida = 150;
         this.estado =  new EstadoNoMontada();
+        this.danioAEdificio = 75;
+        this.danioAUnidad = 0; //No aplica, deberia lanzar excepcion cuando movamos el comportamiento aca
     }
 
     public void montar(){

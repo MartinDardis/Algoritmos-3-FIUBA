@@ -6,6 +6,8 @@ public class Arquero extends Unidad {
 
     public Arquero(){
         this.vida = 75;
+        this.danioAUnidad = 15;
+        this.danioAEdificio = 10;
     }
 
     public Arquero(Jugador jugador){

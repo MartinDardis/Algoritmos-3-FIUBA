@@ -12,6 +12,8 @@ public class Edificio implements Posicionable {
     protected int alto;
     protected int ancho;
     protected int rangoAtaque;
+    protected int danioAEdificio;
+    protected int danioAUnidad;
     protected Jugador propietario;
 
     protected EstadoReparacion estadoReparacion;
@@ -67,5 +69,13 @@ public class Edificio implements Posicionable {
 
     public int getRangoAtaque() {
         return rangoAtaque;
+    }
+
+    public int getDanioAEdificio() {
+        return danioAEdificio;
+    }
+
+    public int getDanioAUnidad() {
+        return danioAUnidad;
     }
 }

@@ -7,6 +7,8 @@ public class Unidad implements Posicionable {
 
     protected int vida;
     protected int rangoAtaque;
+    protected int danioAEdificio;
+    protected int danioAUnidad;
     protected Jugador propietario;
 
     public int getVida(){
@@ -38,5 +40,13 @@ public class Unidad implements Posicionable {
     @Override
     public int getRangoAtaque() {
         return rangoAtaque;
+    }
+
+    public int getDanioAUnidad() {
+        return danioAUnidad;
+    }
+
+    public int getDanioAEdificio() {
+        return danioAEdificio;
     }
 }

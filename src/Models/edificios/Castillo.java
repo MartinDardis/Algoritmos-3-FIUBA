@@ -15,6 +15,8 @@ public class Castillo extends Edificio{
         this.alto = 4;
         this.ancho = 4;
         this.rangoAtaque = 3;
+        this.danioAEdificio = 20;
+        this.danioAUnidad = 20;
 
     }
 

@@ -292,17 +292,5 @@ public class MapaControllerTest {
         assertEquals(vidaInicialCuartel-20,unCuartel.getVida());//CAMBIAR
 
     }
-    @Test
-    public void test20EspadachinAtacaAldeano(){//SOLO DE PRUEBA. BORRAR
-        MapaController controladorMapa = new MapaController();
-        Aldeano unAldeano = new Aldeano();
-        Espadachin unEspadachin = new Espadachin();
-        int vidaInicialAldeano = unAldeano.getVida();
 
-        controladorMapa.colocar(unEspadachin,0,0);
-        controladorMapa.colocar(unAldeano,1,1);
-        controladorMapa.ataqueEspadachin(unEspadachin);
-
-        assertEquals(vidaInicialAldeano,unAldeano.getVida());//CAMBIAR
-    }
 }
