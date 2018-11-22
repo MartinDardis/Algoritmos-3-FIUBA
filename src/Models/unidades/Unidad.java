@@ -6,7 +6,7 @@ import Models.juego.Jugador;
 public class Unidad implements Posicionable {
 
     protected int vida;
-    protected int rango;
+    protected int rangoAtaque;
     protected Jugador propietario;
 
     public int getVida(){
@@ -26,12 +26,17 @@ public class Unidad implements Posicionable {
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){
-        if(rango > unaDistancia){
+        if(rangoAtaque > unaDistancia){
             return false;
         }
         return true;
     }
     public void recibirDanio(int danio){
         this.vida -= danio;
+    }
+
+    @Override
+    public int getRangoAtaque() {
+        return rangoAtaque;
     }
 }

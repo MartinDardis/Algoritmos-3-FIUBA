@@ -1,6 +1,5 @@
 package Models.edificios;
 import Models.Posicionable;
-import Models.edificios.Errores.EdificioNoReparableError;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.edificios.Estados.EstadoYaReparado;
@@ -12,7 +11,7 @@ public class Edificio implements Posicionable {
     protected int vidaPorReparacion;
     protected int alto;
     protected int ancho;
-    protected int rango;
+    protected int rangoAtaque;
     protected Jugador propietario;
 
     protected EstadoReparacion estadoReparacion;
@@ -56,7 +55,7 @@ public class Edificio implements Posicionable {
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){
-        if(rango < unaDistancia){
+        if(rangoAtaque < unaDistancia){
             return false;
         }
         return true;
@@ -64,5 +63,9 @@ public class Edificio implements Posicionable {
     public void recibirDanio(int danio){
         int vidaActual = getVida();
         setVida(vidaActual-danio);
+    }
+
+    public int getRangoAtaque() {
+        return rangoAtaque;
     }
 }

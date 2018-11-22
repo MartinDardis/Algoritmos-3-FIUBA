@@ -185,7 +185,7 @@ public class MapaController {
         int columna = posicionAtacante.getColumna();
         int alto = atacante.getAlto();
         int ancho = atacante.getAncho();
-        int rango = 3; //get rango castillo
+        int rango = atacante.getRangoAtaque();
 
         for (int i = fila; i<fila+alto;i++){
             for (int j = columna; j<columna+ancho;j++){//con esto recorro toda la superficie del atacante
@@ -197,8 +197,8 @@ public class MapaController {
 
     private void agregarAtacablesDesdePosicion(int i, int j, ArrayList<Posicionable> listaAtacables, int rango) {
         int vueltas = 0;
-        for (int fila = i/rango; fila<=i+rango;fila++){
-            for (int col= j/rango; col<=j+rango;col++ ){
+        for (int fila = i-rango; fila<=i+rango;fila++){
+            for (int col= j-rango; col<=j+rango;col++ ){
                try{
                     Coordenada posActual = new Coordenada(fila,col);
                     Posicionable posicionable = campo.obtener(posActual);
@@ -220,4 +220,18 @@ public class MapaController {
             actual.recibirDanio(20);//cambiar por getter de daño de castillo, supongo
         }
     }
+
+    public void ataqueEspadachin(Espadachin unEspadachin){ //SOLO PARA PRUEBAS. BORRAR
+        ArrayList<Posicionable> atacables = obtenerAtacables(unEspadachin);
+        for (int i = 0;i<atacables.size();i++){
+            Posicionable actual = atacables.get(i);
+            if (actual.getClass() == Edificio.class){
+                actual.recibirDanio(15);
+            }
+            else{
+                actual.recibirDanio(25);//cambiar por getter de daño de castillo, supongo
+            }
+        }
+    }
+
 }

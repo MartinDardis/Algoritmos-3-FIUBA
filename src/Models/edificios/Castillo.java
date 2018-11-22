@@ -14,7 +14,7 @@ public class Castillo extends Edificio{
         this.estadoReparacion = new EstadoVidaCompleta(vidaMaxima);
         this.alto = 4;
         this.ancho = 4;
-        this.rango = 3;
+        this.rangoAtaque = 3;
 
     }
 
@@ -39,5 +39,6 @@ public class Castillo extends Edificio{
             return nuevaArmaDeAsedio;
         }
     }
+    public int getRangoAtaque(){return this.rangoAtaque;}
 
 }

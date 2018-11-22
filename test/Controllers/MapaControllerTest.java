@@ -279,7 +279,30 @@ public class MapaControllerTest {
     }
 
     @Test
-    public void test19CastilloAtacaEdificioEnRango(){
+    public void test19CastilloAtacaEdificioEnRangoSoloUnaVez(){
+        MapaController controladorMapa = new MapaController();
+        Cuartel unCuartel = new Cuartel();
+        Castillo unCastillo = new Castillo();
+        int vidaInicialCuartel = unCuartel.getVida();
 
+        controladorMapa.colocar(unCastillo,0,0);
+        controladorMapa.colocar(unCuartel,4,4);
+        controladorMapa.ataqueCastillo(unCastillo);
+
+        assertEquals(vidaInicialCuartel-20,unCuartel.getVida());//CAMBIAR
+
+    }
+    @Test
+    public void test20EspadachinAtacaAldeano(){//SOLO DE PRUEBA. BORRAR
+        MapaController controladorMapa = new MapaController();
+        Aldeano unAldeano = new Aldeano();
+        Espadachin unEspadachin = new Espadachin();
+        int vidaInicialAldeano = unAldeano.getVida();
+
+        controladorMapa.colocar(unEspadachin,0,0);
+        controladorMapa.colocar(unAldeano,1,1);
+        controladorMapa.ataqueEspadachin(unEspadachin);
+
+        assertEquals(vidaInicialAldeano,unAldeano.getVida());//CAMBIAR
     }
 }
