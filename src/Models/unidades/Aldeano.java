@@ -7,17 +7,18 @@ public class Aldeano extends Unidad {
 
     private Estado estado;
 
-    public Aldeano(){
+    public Aldeano() {
         this.vida = 50;
         this.estado = new EstadoInactivo();
     }
-    public Aldeano(String jugador){
+
+    public Aldeano(String jugador) {
         this.pertenece = jugador;
         this.vida = 50;
         this.estado = new EstadoInactivo();
     }
 
-    public int generarOro(){
+    public int generarOro() {
         return this.estado.generarOro();
     }
 

@@ -5,7 +5,7 @@ import Models.edificios.Errores.OroInsuficienteError;
 public class Jugador {
 
     private int oro;
-    private int poblacionActual;
+    private int poblacionActual;//Array de unidades ??
     private String nombre;
     //Refactorizar bool esTurnoActual o estado JugadorActual
 
