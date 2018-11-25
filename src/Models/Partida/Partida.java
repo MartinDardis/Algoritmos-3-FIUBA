@@ -4,11 +4,7 @@ import Models.Posicionable;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
-import Models.unidades.Aldeano;
-import Models.unidades.ArmaDeAsedio;
-import Models.unidades.Arquero;
-import Models.unidades.Espadachin;
-import Models.unidades.Unidad;
+import Models.unidades.*;
 
 import java.util.ArrayList;
 
@@ -55,12 +51,23 @@ public class Partida{
         actual.crearAldeano(unaPlaza);
     }
 
-    public void crearEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
+    public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
         actual.crearEdificio(edificio,unAldeano,x,y);
     }
 
     public void moverUnidad(Unidad unaUnidad,int x,int y){
         actual.moverUnidad(unaUnidad,x,y);
+    }
+
+    public ArrayList objetivosAtacables(){
+        if(actual == jugador1)
+            return jugador2.listaElementos();
+        else
+            return jugador1.listaElementos();
+    }
+
+    public void atacar(Unidad unidadActual, Unidad unidadEnemiga){
+        actual.atacarA(unidadActual,unidadEnemiga);
     }
 
 

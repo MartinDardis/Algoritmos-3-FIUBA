@@ -7,13 +7,14 @@ public class Jugador {
     private int oro;
     private int poblacionActual;//Array de unidades ??
     private String nombre;
+    private Mapa campo;
     //Refactorizar bool esTurnoActual o estado JugadorActual
 
-    public Jugador(String nuevoNombre){
+    public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
         this.oro = 100;
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
-
+        this.campo = campo;
     }
 
     public void sumarOro(int cantOro){
@@ -51,6 +52,28 @@ public class Jugador {
         if(poblacionActual <= 0){
             throw new NoHayPoblacionError();
         }
+    }
+
+    public void recolectarOro() {
+    }
+
+    public ArrayList listaElementos() {
+    }
+
+    public boolean poseeElemento(Posicionable unElemento) {
+    }
+
+    public void crearAldeano(PlazaCentral unaPlaza) {
+    }
+
+    public void crearEdificio(String edificio, Aldeano unAldeano, int x, int y) {
+    }
+
+    public void moverUnidad(Unidad unaUnidad, int x, int y) {
+    }
+
+    public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
+
     }
 
 }
