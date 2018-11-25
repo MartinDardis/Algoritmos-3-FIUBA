@@ -9,8 +9,8 @@ public class Casillero {
     protected Posicionable posicionable;
     //ver state ocupado/libre
 
-    public Casillero(Coordenada nuevaCoordenada){
-        this.ubicacion = nuevaCoordenada;
+    public Casillero(Coordenada unaCoordenada){
+        this.ubicacion = unaCoordenada;
         this.posicionable = null;
     }
 
