@@ -1,6 +1,5 @@
 package Models.escenario;
 
-import Models.Posicionable;
 import Models.unidades.Aldeano;
 import org.junit.Test;
 
@@ -10,13 +9,15 @@ public class CasilleroTest {
 
     @Test
     public void test01CasilleroNuevoEstaVacio(){
-        Casillero unCasillero =  new Casillero();
+        Coordenada unaCoordenada = new Coordenada(1,1);
+        Casillero unCasillero =  new Casillero(unaCoordenada);
 
         assertFalse(unCasillero.estaOcupado());
     }
     @Test
     public void test02CasilleroOcupadoSeMuestraOcupado(){
-        Casillero unCasillero =  new Casillero();
+        Coordenada unaCoordenada = new Coordenada(1,1);
+        Casillero unCasillero =  new Casillero(unaCoordenada);
         Aldeano unAldeano = new Aldeano();
 
         unCasillero.colocar(unAldeano);
@@ -27,7 +28,8 @@ public class CasilleroTest {
 
     @Test
     public void test03RemoverDejaVacioElCasillero(){
-        Casillero unCasillero =  new Casillero();
+        Coordenada unaCoordenada = new Coordenada(1,1);
+        Casillero unCasillero =  new Casillero(unaCoordenada);
         Aldeano unAldeano = new Aldeano();
 
         unCasillero.colocar(unAldeano);
@@ -38,7 +40,8 @@ public class CasilleroTest {
 
     @Test (expected = LugarOcupadoError.class)
     public void test04ColocarEnCasilleroOcupado(){
-        Casillero unCasillero = new Casillero();
+        Coordenada unaCoordenada = new Coordenada(1,1);
+        Casillero unCasillero =  new Casillero(unaCoordenada);
         Aldeano unAldeano = new Aldeano();
         Aldeano otroAldeano = new Aldeano();
 
