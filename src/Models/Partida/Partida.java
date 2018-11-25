@@ -1,23 +1,23 @@
-package Controllers.Partida;
+package Models.Partida;
 
-import Controllers.MapaController;
+import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.Aldeano;
 import Models.unidades.ArmaDeAsedio;
 import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
 
-public class PartidaController {
+public class Partida{
 
     private Jugador jugador1;
     private Jugador jugador2;
-    private MapaController campo;
+    private Mapa campo;
     private Jugador actual;
 
-    public PartidaController(String jugadorUno, String jugadorDos){
+    public Partida(String jugadorUno, String jugadorDos){
         jugador1 = new Jugador(jugadorUno);
         jugador2 = new Jugador(jugadorDos);
-        campo = new MapaController();
+        campo = new Mapa();
         actual = jugador1;
     }
 
