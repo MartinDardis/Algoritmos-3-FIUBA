@@ -48,4 +48,10 @@ public class Coordenada {
             return distanciaVertical;
     }
 
+    public int obtenerNumero(){
+
+        return (this.columna + ((this.fila-1) * 5));
+
+    }
+
 }

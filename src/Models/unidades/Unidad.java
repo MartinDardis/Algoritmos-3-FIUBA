@@ -51,4 +51,15 @@ public class Unidad implements Posicionable {
     public int getDanioAEdificio() {
         return danioAEdificio;
     }
+
+    public Casillero getCasillero() {
+        return posicion;
+    }
+
+    public void mover(Casillero nuevaPosicion){
+        this.posicion = nuevaPosicion;
+    }
+
+
+
 }
