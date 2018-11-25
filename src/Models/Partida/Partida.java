@@ -1,11 +1,15 @@
 package Models.Partida;
 
+import Models.Posicionable;
+import Models.edificios.PlazaCentral;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.Aldeano;
 import Models.unidades.ArmaDeAsedio;
 import Models.unidades.Arquero;
 import Models.unidades.Espadachin;
+
+import java.util.ArrayList;
 
 public class Partida{
 
@@ -15,13 +19,12 @@ public class Partida{
     private Jugador actual;
 
     public Partida(String jugadorUno, String jugadorDos){
-        jugador1 = new Jugador(jugadorUno);
-        jugador2 = new Jugador(jugadorDos);
         campo = new Mapa();
+        jugador1 = new Jugador(jugadorUno,campo);
+        jugador2 = new Jugador(jugadorDos,campo);
         actual = jugador1;
     }
 
-    //Iniciar el juego
 
 
     //Cambia el jugador actual al siguiente jugador
@@ -34,32 +37,30 @@ public class Partida{
 
     //Realiza las acciones antes de terminar el turno del jugador actual
     public void terminarTurno(){
-        //actual.recolectarOro();
+        actual.recolectarOro();
         this.actualizarActual();
     }
 
-    //+++++++++++++++++++++ CREACION DE UNIDADES +++++++++++++++++++++++++++++++++++++//
 
-    public void crearAldeanoEn(int i,int j){
-        //Aldeano aldeano = actual.crearAldeano();
-        //campo.colocar(aldeano,i,j);
+    public ArrayList obtenerUnidadesYEdificios(){
+        return actual.listaElementos();
     }
 
-    public void crearArmaDeAsedioEn(int i,int j){
-        //ArmaDeAsedio arma = actual.crearArmaDeAsedio();
-        //campo.colocar(arma,i,j);
+    public boolean perteneceAJugador(Posicionable unElemento){
+        return actual.poseeElemento(unElemento);
     }
 
-    public void crearArqueroEn(int i, int j){
-        //Arquero arq = actual.crearArquero();
-        //campo.colocar(arq,i,j);
+    public void crearAldeano(PlazaCentral unaPlaza){
+        actual.crearAldeano(unaPlaza);
     }
 
-    public void crearEspadachinEn(int i,int j){
-    //    Espadachin esp = actual.crearEspadachin();
-    //    campo.colocar(esp,i,j);
+    public void crearEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
+        actual.crearEdificio(edificio,unAldeano,x,y);
     }
 
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    public void moverUnidad(Unidad unaUnidad,int x,int y){
+        actual.moverUnidad(unaUnidad,x,y);
+    }
+
 
 }
