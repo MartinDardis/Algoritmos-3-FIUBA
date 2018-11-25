@@ -1,5 +1,10 @@
 package Models.juego;
 
+import java.util.ArrayList;
+import Models.Posicionable;
+import Models.escenario.*;
+import Models.unidades.*;
+import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
 
 public class Jugador {
@@ -57,10 +62,15 @@ public class Jugador {
     public void recolectarOro() {
     }
 
-    public ArrayList listaElementos() {
+    public ArrayList<Posicionable> listaElementos() {
+
+        ArrayList<Posicionable> listaElementos = new ArrayList<Posicionable>();
+
+        return listaElementos;
     }
 
     public boolean poseeElemento(Posicionable unElemento) {
+        return true;
     }
 
     public void crearAldeano(PlazaCentral unaPlaza) {
