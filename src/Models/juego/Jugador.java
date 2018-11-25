@@ -1,5 +1,6 @@
 package Models.juego;
 
+import Models.escenario.Mapa;
 import Models.edificios.Errores.OroInsuficienteError;
 
 public class Jugador {
@@ -7,13 +8,14 @@ public class Jugador {
     private int oro;
     private int poblacionActual;//Array de unidades ??
     private String nombre;
+    private Mapa campo;
     //Refactorizar bool esTurnoActual o estado JugadorActual
 
-    public Jugador(String nuevoNombre){
+    public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
         this.oro = 100;
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
-
+        this.campo = campo;
     }
 
     public void sumarOro(int cantOro){
@@ -51,6 +53,10 @@ public class Jugador {
         if(poblacionActual <= 0){
             throw new NoHayPoblacionError();
         }
+    }
+
+    public void recolectarOro(){
+
     }
 
 }

@@ -1,6 +1,5 @@
 package Models.juego;
 
-import Controllers.NoExisteElementoError;
 import Models.edificios.Errores.OroInsuficienteError;
 import org.junit.Test;
 
