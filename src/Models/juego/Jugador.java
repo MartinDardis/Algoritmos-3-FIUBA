@@ -1,6 +1,12 @@
 package Models.juego;
 
+import Models.Posicionable;
 import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.PlazaCentral;
+import Models.unidades.Aldeano;
+import Models.unidades.Unidad;
+
+import java.util.ArrayList;
 
 public class Jugador {
 
@@ -53,4 +59,25 @@ public class Jugador {
         }
     }
 
+    public void recolectarOro() {
+    }
+
+    public ArrayList listaElementos() {
+    }
+
+    public boolean poseeElemento(Posicionable unElemento) {
+    }
+
+    public void crearAldeano(PlazaCentral unaPlaza) {
+    }
+
+    public void crearEdificio(String edificio, Aldeano unAldeano, int x, int y) {
+    }
+
+    public void moverUnidad(Unidad unaUnidad, int x, int y) {
+    }
+
+    public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
+
+    }
 }
