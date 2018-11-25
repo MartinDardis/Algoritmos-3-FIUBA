@@ -8,12 +8,11 @@ public class Mapa{
 
     private int columnas;
     private int filas;
-    private HashMap<String, Posicionable> campo;
+    private Casillero[] posiciones;
 
     public int getFilas(){
         return this.filas;
     }
-
     public int getColumnas(){
         return this.columnas;
     }
@@ -21,7 +20,7 @@ public class Mapa{
     public Mapa(){
         this.filas = 50;
         this.columnas = 50;
-        this.campo = new HashMap<String,Posicionable>();
+        this.posiciones = new Casillero[100];
     }
 
     private boolean posicionDentroCampo(Coordenada posicion){
