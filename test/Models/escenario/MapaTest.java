@@ -75,7 +75,7 @@ public class MapaTest {
         Coordenada nuevaPosicion = new Coordenada(2, 2);
 
         unMapa.colocar(unAldeano, origen);
-        unMapa.mover(origen, nuevaPosicion);
+        unMapa.mover(unAldeano, nuevaPosicion);
         Aldeano unidadEnPosicionNueva = (Aldeano) unMapa.obtener(nuevaPosicion);
 
         assertEquals(unidadEnPosicionNueva, unAldeano);
@@ -93,7 +93,7 @@ public class MapaTest {
         unMapa.colocar(unArquero, origen);
         assertEquals(unArquero,unMapa.obtener(origen));
 
-        unMapa.mover(origen, nuevaPosicion);
+        unMapa.mover(unArquero, nuevaPosicion);
         Unidad unidadEnPosicionNueva = (Unidad) unMapa.obtener(nuevaPosicion);
 
         assertEquals(unidadEnPosicionNueva, unArquero);

@@ -1,6 +1,7 @@
 package Models.juego;
 
 import Models.edificios.Errores.OroInsuficienteError;
+import Models.escenario.Mapa;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,7 +10,8 @@ public class JugadorTest {
 
     @Test
     public void Test01JugadorCreadoTiene100DeOroInicial(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
 
         assertEquals(unJugador.getOro(),100);
 
@@ -17,7 +19,8 @@ public class JugadorTest {
 
     @Test
     public void Test02AgregarOroAUnJugadorActualizaSuCantidad(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
 
         unJugador.sumarOro(100);
 
@@ -28,7 +31,8 @@ public class JugadorTest {
 
     @Test
     public void Test03AumentarLaPoblacionActualizaLaCantidad(){
-        Jugador unJugador  = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
         int poblacionInicial = unJugador.getPoblacionActual();
 
         unJugador.incrementarPoblacion();
@@ -38,7 +42,8 @@ public class JugadorTest {
 
     @Test(expected = PoblacionMaximaError.class)
     public void Test04AumentarLaPoblacionSobreElLmiteLanzaError(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
         for (int i = 0; i<=50;i++){
             unJugador.incrementarPoblacion();//seteo la poblacion en 50, evito agregar un setter a la clase
         }
@@ -48,14 +53,16 @@ public class JugadorTest {
 
     @Test(expected = NoHayPoblacionError.class)
     public void Test05DiminuirPoblacionEnCeroLanzaError(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
 
         unJugador.disminuirPoblacion();
     }
 
     @Test
     public void Test06CobrarOroRestaLaCantidadIndicada(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
         int oroInicial = unJugador.getOro();
         int costo = 50;
 
@@ -66,7 +73,8 @@ public class JugadorTest {
     }
     @Test(expected = OroInsuficienteError.class)
     public void Test07CobrarPrecioMayorAReservaActualDevuelveError(){
-        Jugador unJugador = new Jugador("unNombre");
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Nombre", unMapa);
         int oroInicial = unJugador.getOro();
 
         unJugador.cobrar(oroInicial+1);
