@@ -15,6 +15,7 @@ public class Edificio implements Posicionable {
     protected int danioAEdificio;
     protected int danioAUnidad;
     protected Jugador propietario;
+    //
 
     protected EstadoReparacion estadoReparacion;
 
@@ -48,9 +49,9 @@ public class Edificio implements Posicionable {
 
     public void actualizarEstado(){
         int vidaActual = this.estadoReparacion.getVida();
-        if( vidaActual >= this.vidaMaxima)
-            // estadoReparacion = estadoReparacion.actualilzar()
-        else{ this.estadoReparacion = new EstadoYaReparado(vidaActual); }
+    //    if( vidaActual >= this.vidaMaxima)
+     //       estadoReparacion = estadoReparacion.actualilzar();
+      //  else{ this.estadoReparacion = new EstadoYaReparado(vidaActual); }
     }
 
     public String perteneceA(){

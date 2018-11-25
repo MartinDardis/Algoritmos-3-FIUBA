@@ -2,6 +2,7 @@ package Models.unidades;
 
 import Models.Posicionable;
 import Models.juego.Jugador;
+import Models.escenario.*;
 
 public class Unidad implements Posicionable {
 
@@ -10,6 +11,7 @@ public class Unidad implements Posicionable {
     protected int danioAEdificio;
     protected int danioAUnidad;
     protected Jugador propietario;
+    protected Casillero posicion;
 
     public int getVida(){
         return this.vida;
