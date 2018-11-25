@@ -1,7 +1,8 @@
 
 package Models.escenario;
-import Models.Posicionable;
 
+import Models.Posicionable;
+import Models.unidades.Unidad;
 import java.util.HashMap;
 
 public class Mapa{
@@ -28,55 +29,55 @@ public class Mapa{
     }
 
 
-
     public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError,PosicionFueraDeCampoError{
+
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
-        if(this.campo.containsKey(posicion.asKey())){
-            throw new LugarOcupadoError();
-        }
-        else
-            this.campo.put(posicion.asKey(),nuevo);
+
+        int numeroCasillero = posicion.obtenerNumero();
+        this.posiciones[numeroCasillero].colocar(nuevo);
+
     }
 
 
-    public Posicionable obtener(Coordenada posc)throws PosicionFueraDeCampoError,LugarVacioError{
-        if(!this.posicionDentroCampo(posc))
+    public Posicionable obtener(Coordenada posicion)throws PosicionFueraDeCampoError,LugarVacioError{
+
+        if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
-        if(!this.campo.containsKey(posc.asKey()))
-            throw new LugarVacioError();
-        else
-            return this.campo.get(posc.asKey());
+
+        int numeroCasillero = posicion.obtenerNumero();
+
+        return this.posiciones[numeroCasillero].obtenerPosicionable();
+
     }
 
 
 
-    public Posicionable remover(Coordenada coord)throws PosicionFueraDeCampoError,LugarVacioError{
-        if(!this.posicionDentroCampo(coord))
+    public Posicionable remover(Coordenada posicion)throws PosicionFueraDeCampoError,LugarVacioError{
+
+        if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
-        if(!this.campo.containsKey(coord.asKey()))
-            throw new LugarVacioError();
-        else {
-            return (Posicionable)this.campo.remove(coord.asKey());
-        }
+
+        int numeroCasillero = posicion.obtenerNumero();
+
+        return (Posicionable)this.posiciones[numeroCasillero].remover();
+
     }
 
 
+    public void mover(Unidad unaUnidad,Coordenada nuevaPosc)throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
 
-    public void mover(Coordenada viejaPosc,Coordenada nuevaPosc)throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
-        if(!this.campo.containsKey(nuevaPosc.asKey())) {
-            try {
-                Posicionable temp = this.remover(viejaPosc);
-                colocar(temp, nuevaPosc);
-            } catch (LugarVacioError | PosicionFueraDeCampoError e) {
-                throw e;
-            }
-        } else
-            throw new LugarOcupadoError();
-    }
+        int nuevoNumeroCasillero = nuevaPosc.obtenerNumero();
+        int viejoNumeroCasillero = unaUnidad.getCasillero().obtenerPosicion().obtenerNumero();
 
-    public boolean posicionVacia(Coordenada unaPosicion){
-        return (!this.campo.containsKey(unaPosicion.asKey()));
+        Casillero nuevoCasillero = posiciones[nuevoNumeroCasillero];
+        Casillero viejoCasillero = posiciones[viejoNumeroCasillero];
+
+        nuevoCasillero.colocar(unaUnidad);
+        viejoCasillero.remover();
+
+        unaUnidad.mover(nuevoCasillero);
+
     }
 
 }

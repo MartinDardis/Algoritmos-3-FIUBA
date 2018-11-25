@@ -1,25 +1,20 @@
 package Models.juego;
 
-import Models.Posicionable;
 import Models.edificios.Errores.OroInsuficienteError;
-import Models.edificios.PlazaCentral;
-import Models.unidades.Aldeano;
-import Models.unidades.Unidad;
-
-import java.util.ArrayList;
 
 public class Jugador {
 
     private int oro;
     private int poblacionActual;//Array de unidades ??
     private String nombre;
+    private Mapa campo;
     //Refactorizar bool esTurnoActual o estado JugadorActual
 
-    public Jugador(String nuevoNombre){
+    public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
         this.oro = 100;
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
-
+        this.campo = campo;
     }
 
     public void sumarOro(int cantOro){
@@ -80,4 +75,5 @@ public class Jugador {
     public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
 
     }
+
 }
