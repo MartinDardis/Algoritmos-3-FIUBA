@@ -17,8 +17,8 @@ public class MapaTest {
 
         Mapa unMapa = new Mapa();
 
-        assertEquals(50, unMapa.getColumnas());
-        assertEquals(50, unMapa.getFilas());
+        assertEquals(25, unMapa.getColumnas());
+        assertEquals(25, unMapa.getFilas());
     }
 
     @Test

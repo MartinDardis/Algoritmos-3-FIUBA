@@ -13,9 +13,10 @@ public class Jugador {
 
     private int oro;
     private int poblacionActual;//Array de unidades ??
+    
+    private ArrayList<Posicionable> elementos;
     private String nombre;
     private Mapa campo;
-    //Refactorizar bool esTurnoActual o estado JugadorActual
 
     public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
@@ -24,9 +25,6 @@ public class Jugador {
         this.campo = campo;
     }
 
-    public void sumarOro(int cantOro){
-        this.oro += cantOro;
-    }
 
     public String getNombre(){
         return this.nombre;
@@ -36,6 +34,10 @@ public class Jugador {
         return this.oro;
     }
 
+    public int getPoblacionActual() {
+        return poblacionActual;//Todavia no testeado al iniciar, ya que 0 cambiara por lo mencionado en el constructor
+    }
+
     public void cobrar(int cantOro){
         if (this.oro < cantOro){
             throw new OroInsuficienteError();//revisar si es necesario crear otro error o este va bien
@@ -43,9 +45,8 @@ public class Jugador {
         this.oro -= cantOro;
     }
 
-
-    public int getPoblacionActual() {
-        return poblacionActual;//Todavia no testeado al iniciar, ya que 0 cambiara por lo mencionado en el constructor
+    public void sumarOro(int cantOro){
+        this.oro += cantOro;
     }
 
     public void incrementarPoblacion(){
@@ -62,23 +63,26 @@ public class Jugador {
     }
 
     public void recolectarOro() {
+        for (Posicionable elem: elementos ) {
+            this.sumarOro(elem.generarOro());
+        }
     }
 
     public ArrayList<Posicionable> listaElementos() {
-
-        ArrayList<Posicionable> listaElementos = new ArrayList<Posicionable>();
-
-        return listaElementos;
+        return elementos;
     }
 
     public boolean poseeElemento(Posicionable unElemento) {
-        return true;
+        return elementos.contains(unElemento);
     }
+
 
     public void crearAldeano(PlazaCentral unaPlaza) {
+        this.incrementarPoblacion();
+
     }
 
-    public void crearEdificio(String edificio, Aldeano unAldeano, int x, int y) {
+    public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
     }
 
     public void moverUnidad(Unidad unaUnidad, int x, int y) {

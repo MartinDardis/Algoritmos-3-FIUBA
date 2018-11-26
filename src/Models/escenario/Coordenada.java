@@ -50,7 +50,7 @@ public class Coordenada {
 
     public int obtenerNumero(){
 
-        return (this.columna + ((this.fila) * 50));
+        return (this.columna + ((this.fila) * 25));
 
     }
 

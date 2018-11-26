@@ -23,7 +23,6 @@ public class Partida{
     }
 
 
-
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual(){
         if(actual == jugador1){
@@ -52,7 +51,7 @@ public class Partida{
     }
 
     public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
-        actual.crearEdificio(edificio,unAldeano,x,y);
+        actual.construirEdificio(edificio,unAldeano,x,y);
     }
 
     public void moverUnidad(Unidad unaUnidad,int x,int y){

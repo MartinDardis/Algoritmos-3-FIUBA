@@ -21,8 +21,8 @@ public class Mapa{
     }
 
     public Mapa(){
-        this.filas = 50;
-        this.columnas = 50;
+        this.filas = 25;
+        this.columnas = 25;
         this.posiciones = new Casillero[filas*columnas];
         for (int i = 0; i<filas;i++){
             for (int j = 0; j<columnas;j++){
