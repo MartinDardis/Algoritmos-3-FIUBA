@@ -44,14 +44,7 @@ public class Edificio implements Posicionable {
 
     public void reparar(){
         this.estadoReparacion.reparar(this.vidaPorReparacion);
-        this.actualizarEstado();
-    }
-
-    public void actualizarEstado(){
-        int vidaActual = this.estadoReparacion.getVida();
-    //    if( vidaActual >= this.vidaMaxima)
-     //       estadoReparacion = estadoReparacion.actualilzar();
-      //  else{ this.estadoReparacion = new EstadoYaReparado(vidaActual); }
+        this.estadoReparacion = this.estadoReparacion.actualizarEstado(this.vidaMaxima);
     }
 
     public String perteneceA(){

@@ -16,4 +16,9 @@ public class EstadoYaReparado implements EstadoReparacion{
     public int getVida(){ return this.vida;}
     public void setVida(int nuevaVida){ this.vida = nuevaVida; }
 
+    public EstadoReparacion actualizarEstado(int vidaMaxima){
+        return this;
+    }
+
+
 }
