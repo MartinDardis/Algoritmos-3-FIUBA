@@ -1,5 +1,6 @@
 package Models.unidades;
 
+import Models.escenario.Casillero;
 import Models.juego.Jugador;
 
 public class Arquero extends Unidad {
@@ -8,6 +9,10 @@ public class Arquero extends Unidad {
         this.vida = 75;
         this.danioAUnidad = 15;
         this.danioAEdificio = 10;
+    }
+
+    public Arquero(Casillero casillero){
+        this.posicion = casillero;
     }
 
     public Arquero(Jugador jugador){

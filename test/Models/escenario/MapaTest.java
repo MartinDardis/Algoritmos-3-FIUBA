@@ -70,9 +70,10 @@ public class MapaTest {
     public void test06colocarAldeanoEnElOrigenYLuegoMover() {
 
         Mapa unMapa = new Mapa();
-        Aldeano unAldeano = new Aldeano();
         Coordenada origen = new Coordenada(0, 0);
         Coordenada nuevaPosicion = new Coordenada(2, 2);
+        Casillero casilleroOrigen = new Casillero(origen);
+        Aldeano unAldeano = new Aldeano(casilleroOrigen);
 
         unMapa.colocar(unAldeano, origen);
         unMapa.mover(unAldeano, nuevaPosicion);
@@ -86,9 +87,12 @@ public class MapaTest {
     public void test07colocarArqueroEnElOrigenYLuegoMover() {
 
         Mapa unMapa = new Mapa();
-        Unidad unArquero = new Arquero();
         Coordenada origen = new Coordenada(0, 0);
         Coordenada nuevaPosicion = new Coordenada(4, 4);
+        Casillero casilleroOrigen = new Casillero(origen);
+        Unidad unArquero = new Arquero(casilleroOrigen);
+
+
 
         unMapa.colocar(unArquero, origen);
         assertEquals(unArquero,unMapa.obtener(origen));

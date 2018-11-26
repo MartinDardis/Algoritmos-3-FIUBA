@@ -21,7 +21,16 @@ public class Mapa{
     public Mapa(){
         this.filas = 50;
         this.columnas = 50;
-        this.posiciones = new Casillero[100];
+        this.posiciones = new Casillero[filas*columnas];
+        for (int i = 0; i<filas;i++){
+            for (int j = 0; j<columnas;j++){
+                Coordenada pos = new Coordenada(i,j);
+                int indice = pos.obtenerNumero();
+                //System.out.print(indice);
+                posiciones[indice]= new Casillero(pos);
+            }
+        }
+
     }
 
     private boolean posicionDentroCampo(Coordenada posicion){
@@ -46,7 +55,6 @@ public class Mapa{
             throw new PosicionFueraDeCampoError();
 
         int numeroCasillero = posicion.obtenerNumero();
-
         return this.posiciones[numeroCasillero].obtenerPosicionable();
 
     }
