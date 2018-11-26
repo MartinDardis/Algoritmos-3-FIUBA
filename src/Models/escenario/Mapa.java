@@ -40,13 +40,16 @@ public class Mapa{
     }
 
 
-    public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError, PosicionFueraDeCampoError {
+    public void colocarUnidad(Unidad unaUnidad,Coordenada posicion)throws LugarOcupadoError, PosicionFueraDeCampoError {
 
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
 
         int numeroCasillero = posicion.obtenerNumero();
-        this.posiciones[numeroCasillero].colocar(nuevo);
+        Casillero casillero = this.posiciones[numeroCasillero];
+
+        casillero.colocar(unaUnidad);
+        unaUnidad.setCasillero(casillero);
 
     }
 
@@ -75,16 +78,13 @@ public class Mapa{
     }
 
 
-    public void mover(Unidad unaUnidad,Coordenada nuevaPosc)throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
+    public void mover(Unidad unaUnidad,Coordenada nuevaPosicion) throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
 
-        int nuevoNumeroCasillero = nuevaPosc.obtenerNumero();
-        int viejoNumeroCasillero = unaUnidad.getCasillero().obtenerPosicion().obtenerNumero();
+        if(!nuevaPosicion.estaDentroDe(this.filas,this.columnas))
+            throw new PosicionFueraDeCampoError();
 
+        int nuevoNumeroCasillero = nuevaPosicion.obtenerNumero();
         Casillero nuevoCasillero = posiciones[nuevoNumeroCasillero];
-        Casillero viejoCasillero = posiciones[viejoNumeroCasillero];
-
-        nuevoCasillero.colocar(unaUnidad);
-        viejoCasillero.remover();
 
         unaUnidad.mover(nuevoCasillero);
 

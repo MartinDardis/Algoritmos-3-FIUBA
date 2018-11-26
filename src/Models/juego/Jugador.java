@@ -12,7 +12,7 @@ import Models.edificios.Errores.OroInsuficienteError;
 public class Jugador {
 
     private int oro;
-    private int poblacionActual;//Array de unidades ??
+    private int poblacionActual;//Array de unidades ?
     
     private ArrayList<Posicionable> elementos;
     private String nombre;

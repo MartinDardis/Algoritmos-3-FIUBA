@@ -42,9 +42,18 @@ public class Partida{
         return actual.listaElementos();
     }
 
+    public ArrayList objetivosAtacables(){
+        if(actual == jugador1)
+            return jugador2.listaElementos();
+        else
+            return jugador1.listaElementos();
+    }
+
     public boolean perteneceAJugador(Posicionable unElemento){
         return actual.poseeElemento(unElemento);
     }
+
+    ///////// ACCIONES DE JUGABILIDAD //////////
 
     public void crearAldeano(PlazaCentral unaPlaza){
         actual.crearAldeano(unaPlaza);
@@ -58,12 +67,6 @@ public class Partida{
         actual.moverUnidad(unaUnidad,x,y);
     }
 
-    public ArrayList objetivosAtacables(){
-        if(actual == jugador1)
-            return jugador2.listaElementos();
-        else
-            return jugador1.listaElementos();
-    }
 
     public void atacar(Unidad unidadActual, Unidad unidadEnemiga){
         actual.atacarA(unidadActual,unidadEnemiga);

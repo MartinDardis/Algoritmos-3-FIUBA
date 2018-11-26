@@ -3,6 +3,10 @@ package Models.unidades;
 import Models.Posicionable;
 import Models.juego.Jugador;
 import Models.escenario.*;
+import Models.escenario.errores.LugarOcupadoError;
+import Models.escenario.errores.LugarVacioError;
+import Models.escenario.errores.PosicionFueraDeCampoError;
+import Models.escenario.errores.CasilleroAlejadoError;
 
 public class Unidad implements Posicionable {
 
@@ -41,7 +45,6 @@ public class Unidad implements Posicionable {
 
     public int generarOro(){return 0;}
 
-    @Override
     public int getRangoAtaque() {
         return rangoAtaque;
     }
@@ -58,8 +61,24 @@ public class Unidad implements Posicionable {
         return posicion;
     }
 
-    public void mover(Casillero nuevaPosicion){
-        this.posicion = nuevaPosicion;
+    public void setCasillero(Casillero nuevoCasillero) {
+        this.posicion = nuevoCasillero;
+    }
+
+    public void mover(Casillero nuevoCasillero)throws CasilleroAlejadoError, LugarOcupadoError {
+
+        Coordenada viejaCoordenada = this.posicion.obtenerPosicion();
+        Coordenada nuevaCoordenada = nuevoCasillero.obtenerPosicion();
+
+        if(viejaCoordenada.distanciaHasta(nuevaCoordenada) > 1)
+            throw new CasilleroAlejadoError();
+        if(nuevoCasillero.estaOcupado())
+            throw new LugarOcupadoError();
+
+        this.posicion.remover();
+        nuevoCasillero.colocar(this);
+        this.posicion = nuevoCasillero;
+
     }
 
 

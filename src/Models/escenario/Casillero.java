@@ -14,23 +14,23 @@ public class Casillero {
         this.posicionable = null;
     }
 
-    boolean estaOcupado(){
+    public boolean estaOcupado(){
         return (posicionable != null);
     }
 
-    void mover(Coordenada nuevaUbicacion){
+    public void mover(Coordenada nuevaUbicacion){
         this.ubicacion = nuevaUbicacion;
     }
 
-    Coordenada obtenerPosicion(){
+    public Coordenada obtenerPosicion(){
         return this.ubicacion;
     }
 
-    Posicionable obtenerPosicionable(){
+    public Posicionable obtenerPosicionable(){
         return this.posicionable;
     }
 
-    Posicionable remover(){
+    public Posicionable remover(){
         if (!this.estaOcupado()){
             throw new LugarVacioError();
         }
@@ -39,7 +39,7 @@ public class Casillero {
         return aux;
     }
 
-    void colocar(Posicionable nuevoPosicionable){
+    public void colocar(Posicionable nuevoPosicionable){
         //solucion temporal a arreglar con un state
         if (this.estaOcupado()){
             throw new LugarOcupadoError();
