@@ -10,4 +10,6 @@ public interface Posicionable {
     boolean dentroRadioDeAtaque(int distancia);
     void recibirDanio(int danio);
     int getRangoAtaque();
+    int generarOro();
+
 }
