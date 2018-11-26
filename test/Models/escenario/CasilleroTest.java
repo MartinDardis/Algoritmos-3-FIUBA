@@ -1,9 +1,8 @@
 package Models.escenario;
 
 import Models.Posicionable;
-import Models.escenario.Coordenada;
+import Models.escenario.errores.LugarOcupadoError;
 import Models.unidades.Aldeano;
-import Models.unidades.Unidad;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

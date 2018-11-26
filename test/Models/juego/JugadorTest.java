@@ -2,6 +2,8 @@ package Models.juego;
 
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.escenario.Mapa;
+import Models.juego.errores.NoHayPoblacionError;
+import Models.juego.errores.PoblacionMaximaError;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

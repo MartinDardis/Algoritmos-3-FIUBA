@@ -1,4 +1,4 @@
-package Models.unidades;
+package Models.unidades.estadosAldeano;
 
 public class EstadoConstructor implements Estado{
 

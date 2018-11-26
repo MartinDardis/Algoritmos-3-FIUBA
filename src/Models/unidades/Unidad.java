@@ -39,6 +39,8 @@ public class Unidad implements Posicionable {
         this.vida -= danio;
     }
 
+    public int generarOro(){return 0;}
+
     @Override
     public int getRangoAtaque() {
         return rangoAtaque;

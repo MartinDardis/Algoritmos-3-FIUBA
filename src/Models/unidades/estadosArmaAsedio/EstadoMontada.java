@@ -1,4 +1,4 @@
-package Models.unidades;
+package Models.unidades.estadosArmaAsedio;
 
 public class EstadoMontada implements EstadoArma {
 }

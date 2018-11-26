@@ -3,6 +3,8 @@ package Models.juego;
 import java.util.ArrayList;
 import Models.Posicionable;
 import Models.escenario.*;
+import Models.juego.errores.NoHayPoblacionError;
+import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;

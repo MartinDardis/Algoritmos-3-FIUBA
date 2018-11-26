@@ -2,8 +2,10 @@
 package Models.escenario;
 
 import Models.Posicionable;
+import Models.escenario.errores.LugarOcupadoError;
+import Models.escenario.errores.LugarVacioError;
+import Models.escenario.errores.PosicionFueraDeCampoError;
 import Models.unidades.Unidad;
-import java.util.HashMap;
 
 public class Mapa{
 
@@ -38,7 +40,7 @@ public class Mapa{
     }
 
 
-    public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError,PosicionFueraDeCampoError{
+    public void colocar(Posicionable nuevo,Coordenada posicion)throws LugarOcupadoError, PosicionFueraDeCampoError {
 
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();
@@ -49,7 +51,7 @@ public class Mapa{
     }
 
 
-    public Posicionable obtener(Coordenada posicion)throws PosicionFueraDeCampoError,LugarVacioError{
+    public Posicionable obtener(Coordenada posicion)throws PosicionFueraDeCampoError, LugarVacioError {
 
         if(!this.posicionDentroCampo(posicion))
             throw new PosicionFueraDeCampoError();

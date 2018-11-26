@@ -1,6 +1,8 @@
 package Models.escenario;
 
 import Models.Posicionable;
+import Models.escenario.errores.LugarOcupadoError;
+import Models.escenario.errores.LugarVacioError;
 import Models.unidades.*;
 import Models.edificios.*;
 

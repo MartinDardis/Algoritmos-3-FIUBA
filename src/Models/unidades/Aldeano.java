@@ -2,6 +2,8 @@ package Models.unidades;
 
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
+import Models.unidades.estadosAldeano.Estado;
+import Models.unidades.estadosAldeano.EstadoInactivo;
 
 public class Aldeano extends Unidad {
 
@@ -23,6 +25,7 @@ public class Aldeano extends Unidad {
         this.posicion = casillero;
     }
 
+    @Override
     public int generarOro() {
         return this.estado.generarOro();
     }

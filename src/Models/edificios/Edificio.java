@@ -73,4 +73,6 @@ public class Edificio implements Posicionable {
     public int getDanioAUnidad() {
         return danioAUnidad;
     }
+
+    public int generarOro(){return 0;}
 }

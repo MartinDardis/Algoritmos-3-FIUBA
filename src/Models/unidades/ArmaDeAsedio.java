@@ -1,6 +1,9 @@
 package Models.unidades;
 
 import Models.juego.Jugador;
+import Models.unidades.estadosArmaAsedio.EstadoArma;
+import Models.unidades.estadosArmaAsedio.EstadoMontada;
+import Models.unidades.estadosArmaAsedio.EstadoNoMontada;
 
 public class ArmaDeAsedio extends Unidad{
 

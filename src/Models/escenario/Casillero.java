@@ -1,7 +1,7 @@
 package Models.escenario;
 import Models.*;
-import javafx.geometry.Pos;
-import org.apache.commons.lang3.ObjectUtils;
+import Models.escenario.errores.LugarOcupadoError;
+import Models.escenario.errores.LugarVacioError;
 
 public class Casillero {
 
