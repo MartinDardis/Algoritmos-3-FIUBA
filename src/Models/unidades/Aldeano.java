@@ -2,12 +2,13 @@ package Models.unidades;
 
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
-import Models.unidades.estadosAldeano.Estado;
+import Models.unidades.estadosAldeano.EstadoAldeano;
 import Models.unidades.estadosAldeano.EstadoInactivo;
+import Models.edificios.Edificio;
 
 public class Aldeano extends Unidad {
 
-    private Estado estado;
+    private EstadoAldeano estado;
 
     //Constructor simplificado para tests
     public Aldeano() {
@@ -35,13 +36,24 @@ public class Aldeano extends Unidad {
         this.posicion = casillero;
     }
 
-    @Override
     public int generarOro() {
         return this.estado.generarOro();
     }
 
-    public void setEstado(Estado unEstado) {
+    public void setEstado(EstadoAldeano unEstado) {
         this.estado = unEstado;
     }
+
+
+    public EstadoAldeano getEstado() {
+        return this.estado;
+    }
+
+    public void reparar(Edificio unEdificio){
+
+        this.estado.reparar(unEdificio);
+        this.estado = this.estado.actualizarEstado();
+    }
+
 
 }

@@ -2,10 +2,11 @@
 package Models.escenario;
 
 import Models.Posicionable;
-import Models.escenario.errores.LugarOcupadoError;
-import Models.escenario.errores.LugarVacioError;
-import Models.escenario.errores.PosicionFueraDeCampoError;
+import Models.escenario.errores.*;
+import Models.unidades.errores.*;
 import Models.unidades.Unidad;
+import Models.unidades.Aldeano;
+import Models.edificios.Edificio;
 
 public class Mapa{
 
@@ -78,7 +79,7 @@ public class Mapa{
     }
 
 
-    public void mover(Unidad unaUnidad,Coordenada nuevaPosicion) throws LugarVacioError,PosicionFueraDeCampoError,LugarOcupadoError{
+    public void mover(Unidad unaUnidad,Coordenada nuevaPosicion) throws CasilleroAlejadoError,PosicionFueraDeCampoError,LugarOcupadoError{
 
         if(!nuevaPosicion.estaDentroDe(this.filas,this.columnas))
             throw new PosicionFueraDeCampoError();
@@ -88,6 +89,23 @@ public class Mapa{
 
         unaUnidad.mover(nuevoCasillero);
 
+    }
+
+    public void reparar(Aldeano unAldeano, Coordenada posicionEdificio) throws AldeanoOcupadoError, CasilleroAlejadoError, PosicionFueraDeCampoError{
+
+        if(!posicionEdificio.estaDentroDe(this.filas,this.columnas))
+            throw new PosicionFueraDeCampoError();
+
+        //Este if va a estar acá hasta que el edificio tenga su posicion o lista de posiciones
+        if(posicionEdificio.distanciaHasta(unAldeano.getCasillero().obtenerPosicion()) > 1)
+            throw new CasilleroAlejadoError();
+
+
+        int numeroCasillero = posicionEdificio.obtenerNumero();
+        Casillero casilleroEdificio = posiciones[numeroCasillero];
+        Edificio edificioAReparar = (Edificio) casilleroEdificio.obtenerPosicionable();
+
+        unAldeano.reparar(edificioAReparar);
     }
 
 
