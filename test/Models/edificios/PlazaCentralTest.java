@@ -20,7 +20,7 @@ public class PlazaCentralTest {
 
 
     @Test(expected = EdificioVidaCompletaError.class)
-    public void Test03NoPuedeSerReparadoConVidaCompleta(){
+    public void Test02NoPuedeSerReparadoConVidaCompleta(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
         unaPlaza.reparar();
@@ -28,7 +28,7 @@ public class PlazaCentralTest {
 
 
     @Test(expected = EdificioYaReparadoError.class)
-    public void Test04NoPuedeSerReparadoSiYaFueReparado(){
+    public void Test03NoPuedeSerReparadoSiYaFueReparado(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
         int vidaActual = 400;
@@ -39,7 +39,7 @@ public class PlazaCentralTest {
     }
 
     @Test
-    public void Test05SerReparadoSumaVidaPedida(){
+    public void Test04SerReparadoSumaVidaPedida(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
         int vidaActual = 400;
@@ -52,7 +52,7 @@ public class PlazaCentralTest {
     }
 
     @Test
-    public void Test07ExcedenteDeReparacionLoDejaEnVidaMaxima(){
+    public void Test05ExcedenteDeReparacionLoDejaEnVidaMaxima(){
 
         PlazaCentral unaPlaza = new PlazaCentral();
         int vidaActual = 445;
@@ -62,6 +62,19 @@ public class PlazaCentralTest {
         unaPlaza.reparar();
 
         assertEquals(unaPlaza.getVida(),450);
+    }
+
+
+    @Test
+    public void Test06ExcedenteDeReparacionLoDejaEnEstadoVidaCompleta(){
+
+        PlazaCentral unaPlaza = new PlazaCentral();
+        int vidaActual = 445;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
+
+        unaPlaza.setEstadoReparacion(estadoDaniado);
+        unaPlaza.reparar();
+
         assertEquals(unaPlaza.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 

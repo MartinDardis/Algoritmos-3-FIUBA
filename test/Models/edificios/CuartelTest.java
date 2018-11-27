@@ -20,7 +20,7 @@ public class CuartelTest {
 
 
     @Test(expected = EdificioVidaCompletaError.class)
-    public void Test04NoPuedeSerReparadoConVidaCompleta(){
+    public void Test02NoPuedeSerReparadoConVidaCompleta(){
 
         Cuartel unCuartel = new Cuartel();
         unCuartel.reparar();
@@ -28,7 +28,7 @@ public class CuartelTest {
 
 
     @Test(expected = EdificioYaReparadoError.class)
-    public void Test05NoPuedeSerReparadoSiYaFueReparado(){
+    public void Test03NoPuedeSerReparadoSiYaFueReparado(){
 
         Cuartel unCuartel = new Cuartel();
         int vidaActual = 100;
@@ -40,7 +40,7 @@ public class CuartelTest {
     }
 
     @Test
-    public void Test06SerReparadoSumaVidaPedida(){
+    public void Test04SerReparadoSumaVidaPedida(){
 
         Cuartel unCuartel = new Cuartel();
         int vidaActual = 150;
@@ -54,7 +54,7 @@ public class CuartelTest {
     }
 
     @Test
-    public void Test07ExcedenteDeReparacionLoDejaEnVidaMaxima(){
+    public void Test05ExcedenteDeReparacionLoDejaEnVidaMaxima() {
 
         Cuartel unCuartel = new Cuartel();
         int vidaActual = 240;
@@ -63,7 +63,20 @@ public class CuartelTest {
         unCuartel.setEstadoReparacion(estadoDaniado);
         unCuartel.reparar();
 
-        assertEquals(unCuartel.getVida(),250);
+        assertEquals(unCuartel.getVida(), 250);
+
+    }
+
+    @Test
+    public void Test06ExcedenteDeReparacionLoDejaEnEstadoVidaCompleta() {
+
+        Cuartel unCuartel = new Cuartel();
+        int vidaActual = 240;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
+
+        unCuartel.setEstadoReparacion(estadoDaniado);
+        unCuartel.reparar();
+
         assertEquals(unCuartel.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 

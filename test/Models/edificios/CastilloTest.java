@@ -17,14 +17,14 @@ public class CastilloTest {
     }
 
     @Test(expected = EdificioVidaCompletaError.class)
-    public void Test03NoPuedeSerReparadoConVidaCompleta(){
+    public void Test02NoPuedeSerReparadoConVidaCompleta(){
 
         Castillo unCastillo = new Castillo();
         unCastillo.reparar();
     }
 
     @Test(expected = EdificioYaReparadoError.class)
-    public void Test04NoPuedeSerReparadoSiYaFueReparado(){
+    public void Test03NoPuedeSerReparadoSiYaFueReparado(){
 
         Castillo unCastillo = new Castillo();
         int vidaActual = 500;
@@ -37,7 +37,7 @@ public class CastilloTest {
 
 
     @Test
-    public void Test05SerReparadoSumaVidaPedida(){
+    public void Test04SerReparadoSumaVidaPedida(){
 
         Castillo unCastillo = new Castillo();
         int vidaActual = 500;
@@ -51,7 +51,7 @@ public class CastilloTest {
 
 
     @Test
-    public void Test06ExcedenteDeReparacionLoDejaEnVidaMaxima(){
+    public void Test05ExcedenteDeReparacionLoDejaEnVidaMaxima() {
 
         Castillo unCastillo = new Castillo();
         int vidaActual = 995;
@@ -60,7 +60,20 @@ public class CastilloTest {
         unCastillo.setEstadoReparacion(estadoDaniado);
         unCastillo.reparar();
 
-        assertEquals(unCastillo.getVida(),1000);
+        assertEquals(unCastillo.getVida(), 1000);
+
+    }
+
+    @Test
+    public void Test06ExcedenteDeReparacionLoDejaEnEstadoVidaCompleta() {
+
+        Castillo unCastillo = new Castillo();
+        int vidaActual = 995;
+        EstadoReparacion estadoDaniado = new EstadoDaniado(vidaActual);
+
+        unCastillo.setEstadoReparacion(estadoDaniado);
+        unCastillo.reparar();
+
         assertEquals(unCastillo.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
     }
 

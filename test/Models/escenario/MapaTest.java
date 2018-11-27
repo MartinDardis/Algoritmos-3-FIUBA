@@ -12,11 +12,18 @@ import static junit.framework.TestCase.*;
 public class MapaTest {
 
     @Test
-    public void test01crearMapaYVerificarTamanioDefinido() {
+    public void test01crearMapaYVerificarCantidadColumnas() {
 
         Mapa unMapa = new Mapa();
 
         assertEquals(25, unMapa.getColumnas());
+    }
+
+    @Test
+    public void test01bcrearMapaYVerificarCantidadFilas() {
+
+        Mapa unMapa = new Mapa();
+
         assertEquals(25, unMapa.getFilas());
     }
 
@@ -113,8 +120,6 @@ public class MapaTest {
         Unidad unArquero = new Arquero(casilleroOrigen);
 
         unMapa.colocarUnidad(unArquero, origen);
-        assertEquals(unArquero,unMapa.obtener(origen));
-
         unMapa.mover(unArquero, destino);
     }
 

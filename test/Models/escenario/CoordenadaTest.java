@@ -9,11 +9,18 @@ import static org.junit.Assert.*;
 public class CoordenadaTest {
 
     @Test
-    public void test01CrearCoordenadaEnParOrigenYVerificar() {
+    public void test01CrearCoordenadaEnParOrigenYVerificarFila() {
 
-        Coordenada unaCoordenada = new Coordenada(0,0);
+        Coordenada unaCoordenada = new Coordenada(0, 0);
 
         assertEquals(unaCoordenada.getFila(), 0);
+    }
+
+    @Test
+    public void test01bCrearCoordenadaEnParOrigenYVerificarColumna() {
+
+        Coordenada unaCoordenada = new Coordenada(0, 0);
+
         assertEquals(unaCoordenada.getColumna(), 0);
     }
 
