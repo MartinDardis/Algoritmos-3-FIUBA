@@ -76,6 +76,8 @@ public class Unidad implements Posicionable {
             throw new LugarOcupadoError();
 
         this.posicion.remover();
+
+
         nuevoCasillero.colocar(this);
         this.posicion = nuevoCasillero;
 

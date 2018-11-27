@@ -1,6 +1,8 @@
 package Models.Partida;
 
 import Models.Posicionable;
+import Models.edificios.Castillo;
+import Models.edificios.Cuartel;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
@@ -56,8 +58,35 @@ public class Partida{
     ///////// ACCIONES DE JUGABILIDAD //////////
 
     public void crearAldeano(PlazaCentral unaPlaza){
-        actual.crearAldeano(unaPlaza);
+        if (actual.getOro() >= 25 ){
+            actual.crearAldeano(unaPlaza);
+            actual.pagar(25);
+        }
+
     }
+
+    public void crearEspadachin(Cuartel unCuartel){
+        if (actual.getOro() >= 50){
+            actual.crearEspadachin(unCuartel);
+            actual.pagar(50);
+        }
+    }
+
+    public void crearArquero(Cuartel unCuartel){
+        if (actual.getOro() >= 75){
+            actual.crearArquero(unCuartel);
+            actual.pagar(75);
+        }
+    }
+
+    public void crearArmaAsedio(Castillo unCastillo){
+        if (actual.getOro() >= 150){
+            actual.crearArmaAsedio(unCastillo);
+            actual.pagar(200);
+        }
+    }
+
+
 
     public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
         actual.construirEdificio(edificio,unAldeano,x,y);
