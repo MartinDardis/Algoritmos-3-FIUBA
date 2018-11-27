@@ -80,11 +80,12 @@ public class Partida{
     }
 
     public void crearArmaAsedio(Castillo unCastillo){
-        if (actual.getOro() >= 150){
+        if (actual.getOro() >= 200){
             actual.crearArmaAsedio(unCastillo);
             actual.pagar(200);
         }
     }
+
 
 
 
