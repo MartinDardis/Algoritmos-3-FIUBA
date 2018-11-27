@@ -32,14 +32,10 @@ public class Castillo extends Edificio{
 
     public int getReparacionPorTurno () {return this.vidaPorReparacion;}
 
-    public ArmaDeAsedio crearArmaDeAsedio(int oroJugador){
-        if (oroJugador < 200){//Remplazar por getCosto?
-            throw new OroInsuficienteError();
-        }
-        else{
+    public ArmaDeAsedio crearArmaDeAsedio(){
+
             ArmaDeAsedio nuevaArmaDeAsedio = new ArmaDeAsedio();
             return nuevaArmaDeAsedio;
-        }
     }
     public int getRangoAtaque(){return this.rangoAtaque;}
 

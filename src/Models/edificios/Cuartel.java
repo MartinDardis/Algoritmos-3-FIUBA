@@ -42,22 +42,13 @@ public class Cuartel extends Edificio {
 
     public int getReparacionPorTurno () {return this.vidaPorReparacion;}
 
-    public Espadachin crearEspadachin(int oroJugador){
-        if (oroJugador < 50)
-            throw new OroInsuficienteError();
-        else{
+    public Espadachin crearEspadachin(){
             Espadachin nuevoEspadachin = new Espadachin();
             return nuevoEspadachin;
-        }
-
     }
-    public Arquero crearArquero(int oroJugador){
-        if (oroJugador < 75)
-            throw new OroInsuficienteError();
-        else{
+
+    public Arquero crearArquero(){
             Arquero nuevoArquero = new Arquero();
             return nuevoArquero;
-        }
-
     }
 }

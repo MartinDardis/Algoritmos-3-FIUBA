@@ -79,8 +79,23 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral unaPlaza) {
         this.incrementarPoblacion();
-        //reducir oro
+        unaPlaza.crearAldeano();
 
+    }
+
+    public void crearEspadachin(Cuartel unCuartel) {
+        this.incrementarPoblacion();
+        unCuartel.crearEspadachin();
+    }
+
+    public void crearArquero(Cuartel unCuartel) {
+        this.incrementarPoblacion();
+        unCuartel.crearArquero();
+    }
+
+    public void crearArmaAsedio(Castillo unCastillo) {
+        this.incrementarPoblacion();
+        unCastillo.crearArmaDeAsedio();
     }
 
     public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
@@ -91,20 +106,5 @@ public class Jugador {
 
     public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
 
-    }
-
-    public void crearEspadachin(Cuartel unCuartel) {
-        this.incrementarPoblacion();
-        //reducir oro
-    }
-
-    public void crearArquero(Cuartel unCuartel) {
-        this.incrementarPoblacion();
-        //reducir oro
-    }
-
-    public void crearArmaAsedio(Castillo unCastillo) {
-        this.incrementarPoblacion();
-        //reducir oro
     }
 }
