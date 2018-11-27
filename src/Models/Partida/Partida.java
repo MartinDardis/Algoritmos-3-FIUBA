@@ -21,17 +21,15 @@ public class Partida {
     public Partida(String jugadorUno, String jugadorDos) {
         campo = new Mapa();
         jugador1 = new Jugador(jugadorUno, campo);
-        jugador2 = new Jugador(jugadorDos, campo);
+        jugador2 = new Jugador(jugadorDos, campo, jugador1);
+        jugador1.setSiguiente(jugador2);
         actual = jugador1;
     }
 
 
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual() {
-        if (actual == jugador1) {
-            actual = jugador2;
-        } else
-            actual = jugador1;
+        this.actual = this.actual.getSiguiente();
     }
 
     //Realiza las acciones antes de terminar el turno del jugador actual
@@ -40,16 +38,12 @@ public class Partida {
         this.actualizarActual();
     }
 
-
     public ArrayList obtenerUnidadesYEdificios() {
         return actual.listaElementos();
     }
 
     public ArrayList objetivosAtacables() {
-        if (actual == jugador1)
-            return jugador2.listaElementos();
-        else
-            return jugador1.listaElementos();
+        return actual.getSiguiente().listaElementos();
     }
 
     public boolean perteneceAJugador(Posicionable unElemento) {

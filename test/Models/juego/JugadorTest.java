@@ -12,6 +12,7 @@ public class JugadorTest {
 
     @Test
     public void Test01JugadorCreadoTiene100DeOroInicial(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
 
@@ -21,6 +22,7 @@ public class JugadorTest {
 
     @Test
     public void Test02AgregarOroAUnJugadorActualizaSuCantidad(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
 
@@ -30,9 +32,9 @@ public class JugadorTest {
     }
 
 
-
     @Test
     public void Test03AumentarLaPoblacionActualizaLaCantidad(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
         int poblacionInicial = unJugador.getPoblacionActual();
@@ -44,6 +46,7 @@ public class JugadorTest {
 
     @Test(expected = PoblacionMaximaError.class)
     public void Test04AumentarLaPoblacionSobreElLmiteLanzaError(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
         for (int i = 0; i<=50;i++){
@@ -55,6 +58,7 @@ public class JugadorTest {
 
     @Test(expected = NoHayPoblacionError.class)
     public void Test05DiminuirPoblacionEnCeroLanzaError(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
 
@@ -63,6 +67,7 @@ public class JugadorTest {
 
     @Test
     public void Test06CobrarOroRestaLaCantidadIndicada(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
         int oroInicial = unJugador.getOro();
@@ -73,8 +78,10 @@ public class JugadorTest {
         assertEquals(unJugador.getOro(),oroInicial-costo);
 
     }
+
     @Test(expected = OroInsuficienteError.class)
     public void Test07CobrarPrecioMayorAReservaActualDevuelveError(){
+
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("Nombre", unMapa);
         int oroInicial = unJugador.getOro();
@@ -82,4 +89,25 @@ public class JugadorTest {
         unJugador.pagar(oroInicial+1);
 
     }
+
+    public void Test08JugadorConoceASuSiguiente(){
+
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Pablito", unMapa);
+        Jugador otroJugador = new Jugador("Clavito", unMapa, unJugador);
+
+        assertEquals(unJugador, otroJugador.getSiguiente());
+    }
+
+    public void Test09ElSiguienteDelSiguienteEsSiMismo(){
+
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("Pablito", unMapa);
+        Jugador otroJugador = new Jugador("Clavito", unMapa, unJugador);
+        unJugador.setSiguiente(otroJugador);
+
+        assertEquals(unJugador, unJugador.getSiguiente().getSiguiente());
+    }
+
+
 }

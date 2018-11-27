@@ -17,12 +17,33 @@ public class Jugador {
     private ArrayList<Posicionable> elementos;
     private String nombre;
     private Mapa campo;
+    private Jugador siguiente;
 
+    //Constructor para pruebas y para el primer jugador instanciado
     public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
         this.oro = 100;
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
+    }
+
+    //Constructor a utilizar
+    public Jugador(String nuevoNombre, Mapa campo, Jugador siguiente){
+        this.nombre = nuevoNombre;
+        this.oro = 100;
+        this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
+        this.campo = campo;
+        this.siguiente = siguiente;
+    }
+
+    public Jugador getSiguiente(){
+        return this.siguiente;
+    }
+
+    //Este setter es necesario porque cuando se crea el primer jugador el segundo aún no existe
+    //por ende no se lo puede enviar el siguiente al constructor al momento de crearlo
+    public void setSiguiente(Jugador siguiente){
+        this.siguiente = siguiente;
     }
 
 
