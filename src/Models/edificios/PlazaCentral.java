@@ -42,13 +42,10 @@ public class PlazaCentral extends Edificio {
         return this.restauracionVidaPorTurno;
     }
 
-    public Aldeano crearAldeano(int oroJugador){
-        if (oroJugador <  20) //getCosto?
-            throw new OroInsuficienteError();
-        else{
+    public Aldeano crearAldeano(){
             Aldeano nuevoAldeano = new Aldeano();
             return nuevoAldeano;
         }
-    }
-
 }
+
+

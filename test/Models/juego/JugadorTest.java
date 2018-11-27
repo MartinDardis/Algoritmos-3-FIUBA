@@ -68,7 +68,7 @@ public class JugadorTest {
         int oroInicial = unJugador.getOro();
         int costo = 50;
 
-        unJugador.cobrar(costo);
+        unJugador.pagar(costo);
 
         assertEquals(unJugador.getOro(),oroInicial-costo);
 
@@ -79,7 +79,7 @@ public class JugadorTest {
         Jugador unJugador = new Jugador("Nombre", unMapa);
         int oroInicial = unJugador.getOro();
 
-        unJugador.cobrar(oroInicial+1);
+        unJugador.pagar(oroInicial+1);
 
     }
 }

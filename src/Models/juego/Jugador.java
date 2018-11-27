@@ -38,7 +38,7 @@ public class Jugador {
         return poblacionActual;//Todavia no testeado al iniciar, ya que 0 cambiara por lo mencionado en el constructor
     }
 
-    public void cobrar(int cantOro){
+    public void pagar(int cantOro){
         if (this.oro < cantOro){
             throw new OroInsuficienteError();//revisar si es necesario crear otro error o este va bien
         }
@@ -79,7 +79,23 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral unaPlaza) {
         this.incrementarPoblacion();
+        unaPlaza.crearAldeano();
 
+    }
+
+    public void crearEspadachin(Cuartel unCuartel) {
+        this.incrementarPoblacion();
+        unCuartel.crearEspadachin();
+    }
+
+    public void crearArquero(Cuartel unCuartel) {
+        this.incrementarPoblacion();
+        unCuartel.crearArquero();
+    }
+
+    public void crearArmaAsedio(Castillo unCastillo) {
+        this.incrementarPoblacion();
+        unCastillo.crearArmaDeAsedio();
     }
 
     public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
@@ -91,5 +107,4 @@ public class Jugador {
     public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
 
     }
-
 }

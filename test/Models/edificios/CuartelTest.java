@@ -17,18 +17,6 @@ public class CuartelTest {
         assertEquals(unCuartel.getVida(), 250);
     }
 
-    @Test (expected = OroInsuficienteError.class)
-    public void Test02CrearArqueroConOroInsuficienteLanzaExcepcion(){
-        Cuartel unCuartel = new Cuartel();
-        unCuartel.crearArquero(10);
-    }
-
-
-    @Test (expected = OroInsuficienteError.class)
-    public void Test03CrearEspadachinConOroInsuficienteLanzaExcepcion(){
-        Cuartel unCuartel = new Cuartel();
-        unCuartel.crearEspadachin(10);
-    }
 
 
     @Test(expected = EdificioVidaCompletaError.class)

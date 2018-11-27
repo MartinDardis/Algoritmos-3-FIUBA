@@ -17,12 +17,6 @@ public class PlazaCentralTest {
         assertEquals(unaPlaza.getVida(), 450);
     }
 
-    @Test(expected = OroInsuficienteError.class)
-    public void Test02CrearAldeanoConOroInsuficiente() {
-
-        PlazaCentral unaPlaza = new PlazaCentral();
-        unaPlaza.crearAldeano(5);
-    }
 
 
     @Test(expected = EdificioVidaCompletaError.class)

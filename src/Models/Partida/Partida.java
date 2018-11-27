@@ -1,6 +1,9 @@
 package Models.Partida;
 
 import Models.Posicionable;
+import Models.edificios.Castillo;
+import Models.edificios.Cuartel;
+import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
@@ -8,56 +11,99 @@ import Models.unidades.*;
 
 import java.util.ArrayList;
 
-public class Partida{
+public class Partida {
 
     private Jugador jugador1;
     private Jugador jugador2;
     private Mapa campo;
     private Jugador actual;
 
-    public Partida(String jugadorUno, String jugadorDos){
+    public Partida(String jugadorUno, String jugadorDos) {
         campo = new Mapa();
-        jugador1 = new Jugador(jugadorUno,campo);
-        jugador2 = new Jugador(jugadorDos,campo);
+        jugador1 = new Jugador(jugadorUno, campo);
+        jugador2 = new Jugador(jugadorDos, campo);
         actual = jugador1;
     }
 
 
     //Cambia el jugador actual al siguiente jugador
-    private void actualizarActual(){
-        if(actual == jugador1){
+    private void actualizarActual() {
+        if (actual == jugador1) {
             actual = jugador2;
-        }else
+        } else
             actual = jugador1;
     }
 
     //Realiza las acciones antes de terminar el turno del jugador actual
-    public void terminarTurno(){
+    public void terminarTurno() {
         actual.recolectarOro();
         this.actualizarActual();
     }
 
 
-    public ArrayList obtenerUnidadesYEdificios(){
+    public ArrayList obtenerUnidadesYEdificios() {
         return actual.listaElementos();
     }
 
-    public ArrayList objetivosAtacables(){
-        if(actual == jugador1)
+    public ArrayList objetivosAtacables() {
+        if (actual == jugador1)
             return jugador2.listaElementos();
         else
             return jugador1.listaElementos();
     }
 
-    public boolean perteneceAJugador(Posicionable unElemento){
+    public boolean perteneceAJugador(Posicionable unElemento) {
         return actual.poseeElemento(unElemento);
     }
 
     ///////// ACCIONES DE JUGABILIDAD //////////
 
+    //Todavia falta determinar como obtener el casillero de salida para cada unidad
+
     public void crearAldeano(PlazaCentral unaPlaza){
-        actual.crearAldeano(unaPlaza);
+        if (actual.getOro() >= 25 ){
+            actual.crearAldeano(unaPlaza);
+            actual.pagar(25);
+        }
+        else {
+            throw new OroInsuficienteError();//refactorizar a expcecion de crear/pagar
+        }
     }
+
+    public void crearEspadachin(Cuartel unCuartel){
+        if (actual.getOro() >= 50){
+            actual.crearEspadachin(unCuartel);
+            actual.pagar(50);
+        }
+        else {
+            throw new OroInsuficienteError();
+        }
+
+
+    }
+
+    public void crearArquero(Cuartel unCuartel){
+        if (actual.getOro() >= 75){
+            actual.crearArquero(unCuartel);
+            actual.pagar(75);
+        }
+        else {
+            throw new OroInsuficienteError();
+        }
+    }
+
+    public void crearArmaAsedio(Castillo unCastillo){
+        if (actual.getOro() >= 200){
+            actual.crearArmaAsedio(unCastillo);
+            actual.pagar(200);
+        }
+        else {
+            throw new OroInsuficienteError();
+        }
+    }
+
+
+
 
     public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
         actual.construirEdificio(edificio,unAldeano,x,y);

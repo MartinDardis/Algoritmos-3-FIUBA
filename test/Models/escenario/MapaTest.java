@@ -71,7 +71,21 @@ public class MapaTest {
     }
 
     */
+/*
+    @Test
+    public void test5bColocarCuartelEnElOrigenYVerificarEsquina(){
+        Mapa unMapa = new Mapa();
+        Cuartel unCuartel = new Cuartel();
+        Coordenada origen = new Coordenada(0,0);
+        Coordenada esquina =  new Coordenada(1,1);
 
+        unMapa.colocar(unCuartel, origen);
+
+        Edificio edificioEnOrigen = (Edificio) unMapa.obtener(esquina);
+
+        assertEquals(edificioEnOrigen, unCuartel);
+    }
+*/
     @Test
     public void test06colocarAldeanoEnElOrigenYLuegoMover() {
 

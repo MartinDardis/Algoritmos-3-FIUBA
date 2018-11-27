@@ -16,12 +16,6 @@ public class CastilloTest {
         assertEquals(unCastillo.getVida(),1000);
     }
 
-    @Test (expected = OroInsuficienteError.class)
-    public void Test02CrearArmaAsedioConOroInsuficienteLanzaExcepcion(){
-        Castillo unCastillo = new Castillo();
-        unCastillo.crearArmaDeAsedio(10);
-    }
-
     @Test(expected = EdificioVidaCompletaError.class)
     public void Test03NoPuedeSerReparadoConVidaCompleta(){
 
