@@ -25,7 +25,12 @@ public class Aldeano extends Unidad {
 
     //Constructor simplificado para tests
     public Aldeano(Casillero casillero){
+
+        this.vida = 50;
+        this.estado = new EstadoInactivo();
         this.posicion = casillero;
+        this.posicion = casillero;
+
     }
 
     //Constructor utilizado

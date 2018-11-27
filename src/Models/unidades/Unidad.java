@@ -3,10 +3,10 @@ package Models.unidades;
 import Models.Posicionable;
 import Models.juego.Jugador;
 import Models.escenario.*;
-import Models.escenario.errores.LugarOcupadoError;
-import Models.escenario.errores.LugarVacioError;
-import Models.escenario.errores.PosicionFueraDeCampoError;
-import Models.escenario.errores.CasilleroAlejadoError;
+import Models.escenario.errores.*;
+import Models.unidades.errores.*;
+import Models.unidades.estadosUnidad.EstadoUnidad;
+
 
 public class Unidad implements Posicionable {
 
@@ -16,6 +16,7 @@ public class Unidad implements Posicionable {
     protected int danioAUnidad;
     protected Jugador propietario;
     protected Casillero posicion;
+    protected EstadoUnidad estadoAtaque;
 
     public int getVida(){
         return this.vida;
@@ -38,9 +39,6 @@ public class Unidad implements Posicionable {
             return false;
         }
         return true;
-    }
-    public void recibirDanio(int danio){
-        this.vida -= danio;
     }
 
     public int generarOro(){return 0;}
@@ -67,6 +65,7 @@ public class Unidad implements Posicionable {
 
     public void mover(Casillero nuevoCasillero)throws CasilleroAlejadoError, LugarOcupadoError {
 
+
         Coordenada viejaCoordenada = this.posicion.obtenerPosicion();
         Coordenada nuevaCoordenada = nuevoCasillero.obtenerPosicion();
 
@@ -81,6 +80,25 @@ public class Unidad implements Posicionable {
 
     }
 
+    public void atacar(Unidad otraUnidad) throws UnidadYaUtilizadaError {
+
+        if(distanciaHasta(otraUnidad) > this.rangoAtaque)
+            throw new CasilleroAlejadoError();
+
+
+        this.estadoAtaque.atacar(otraUnidad, this.danioAUnidad);
+        this.estadoAtaque = this.estadoAtaque.actualizarEstado();
+    }
+
+    public void recibirDanio(int danio){
+        this.vida -= danio;
+    }
+
+    public int distanciaHasta(Unidad otraUnidad){
+
+        return otraUnidad.getCasillero().obtenerPosicion().distanciaHasta(this.getCasillero().obtenerPosicion());
+
+    }
 
 
 }

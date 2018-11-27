@@ -65,8 +65,6 @@ public class Mapa{
 
     }
 
-
-
     public Posicionable remover(Coordenada posicion)throws PosicionFueraDeCampoError,LugarVacioError{
 
         if(!this.posicionDentroCampo(posicion))
@@ -108,6 +106,14 @@ public class Mapa{
         unAldeano.reparar(edificioAReparar);
     }
 
+    public void atacar(Unidad unaUnidad, Unidad otraUnidad) throws CasilleroAlejadoError,PosicionFueraDeCampoError, UnidadYaUtilizadaError{
+
+        if(!otraUnidad.getCasillero().obtenerPosicion().estaDentroDe(this.filas,this.columnas))
+            throw new PosicionFueraDeCampoError();
+
+        unaUnidad.atacar(otraUnidad);
+
+    }
 
 
 }
