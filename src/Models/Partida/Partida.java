@@ -26,6 +26,9 @@ public class Partida {
         actual = jugador1;
     }
 
+    public Jugador getActual() {
+        return actual;
+    }
 
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual() {
@@ -110,6 +113,10 @@ public class Partida {
 
     public void atacar(Unidad unidadActual, Unidad unidadEnemiga){
         actual.atacarA(unidadActual,unidadEnemiga);
+        if (unidadEnemiga.getVida() <= 0){
+            actual.getSiguiente().destruirUnidad(unidadEnemiga);
+
+        }
     }
 
 

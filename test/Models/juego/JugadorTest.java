@@ -1,6 +1,7 @@
 package Models.juego;
 
 import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.PlazaCentral;
 import Models.escenario.Mapa;
 import Models.juego.errores.NoHayPoblacionError;
 import Models.juego.errores.PoblacionMaximaError;
@@ -89,7 +90,7 @@ public class JugadorTest {
         unJugador.pagar(oroInicial+1);
 
     }
-
+    @Test
     public void Test08JugadorConoceASuSiguiente(){
 
         Mapa unMapa = new Mapa();
@@ -98,7 +99,7 @@ public class JugadorTest {
 
         assertEquals(unJugador, otroJugador.getSiguiente());
     }
-
+    @Test
     public void Test09ElSiguienteDelSiguienteEsSiMismo(){
 
         Mapa unMapa = new Mapa();
@@ -108,6 +109,17 @@ public class JugadorTest {
 
         assertEquals(unJugador, unJugador.getSiguiente().getSiguiente());
     }
+    @Test
+    public void Test10CrearAldeanoAumentaLaPoblacion(){
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre", unMapa);
+        PlazaCentral plaza = new PlazaCentral();
+        int poblacionInicial = unJugador.getPoblacionActual();
 
+        unJugador.crearAldeano(plaza);
+        int poblacionFinal = unJugador.getPoblacionActual();
+
+        assertEquals(poblacionFinal,poblacionInicial+1);
+    }
 
 }

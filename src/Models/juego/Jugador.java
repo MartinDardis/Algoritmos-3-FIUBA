@@ -25,6 +25,7 @@ public class Jugador {
         this.oro = 100;
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
+        elementos = new ArrayList<>();
     }
 
     //Constructor a utilizar
@@ -99,24 +100,30 @@ public class Jugador {
 
 
     public void crearAldeano(PlazaCentral unaPlaza) {
+        Aldeano nuevoAldeano = unaPlaza.crearAldeano();
+        elementos.add(nuevoAldeano);
         this.incrementarPoblacion();
-        unaPlaza.crearAldeano();
 
     }
 
     public void crearEspadachin(Cuartel unCuartel) {
+        Espadachin nuevoEspadachin = unCuartel.crearEspadachin();
+        elementos.add(nuevoEspadachin);
         this.incrementarPoblacion();
-        unCuartel.crearEspadachin();
     }
 
     public void crearArquero(Cuartel unCuartel) {
+        Arquero nuevoArquero = unCuartel.crearArquero();
+        elementos.add(nuevoArquero);
         this.incrementarPoblacion();
-        unCuartel.crearArquero();
+
     }
 
     public void crearArmaAsedio(Castillo unCastillo) {
+        ArmaDeAsedio nuevaArmaAsedio = unCastillo.crearArmaDeAsedio();
+        elementos.add(nuevaArmaAsedio);
         this.incrementarPoblacion();
-        unCastillo.crearArmaDeAsedio();
+
     }
 
     public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
@@ -127,5 +134,10 @@ public class Jugador {
 
     public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
 
+    }
+
+    public void destruirUnidad(Unidad unaUnidad){
+        elementos.remove(unaUnidad);
+        this.disminuirPoblacion();
     }
 }
