@@ -47,6 +47,12 @@ public class Casillero {
         this.posicionable = nuevoPosicionable;
     }
 
+    public int distanciaHasta(Casillero otroCasillero){
+
+        Coordenada otraUbicacion = otroCasillero.obtenerPosicion();
+        return this.ubicacion.distanciaHasta(otraUbicacion);
+    }
+
 
 
 

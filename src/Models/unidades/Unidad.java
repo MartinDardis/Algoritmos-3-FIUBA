@@ -65,17 +65,12 @@ public class Unidad implements Posicionable {
 
     public void mover(Casillero nuevoCasillero)throws CasilleroAlejadoError, LugarOcupadoError {
 
-
-        Coordenada viejaCoordenada = this.posicion.obtenerPosicion();
-        Coordenada nuevaCoordenada = nuevoCasillero.obtenerPosicion();
-
-        if(viejaCoordenada.distanciaHasta(nuevaCoordenada) > 1)
+        if(this.posicion.distanciaHasta(nuevoCasillero) > 1)
             throw new CasilleroAlejadoError();
         if(nuevoCasillero.estaOcupado())
             throw new LugarOcupadoError();
 
         this.posicion.remover();
-
 
         nuevoCasillero.colocar(this);
         this.posicion = nuevoCasillero;

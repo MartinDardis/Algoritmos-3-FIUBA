@@ -61,14 +61,14 @@ public class Mapa{
         int ancho = unEdificio.getAncho();
         int origenX = origen.getFila();
         int origenY = origen.getColumna();
-        ArrayList lista = this.obtenerCasilleros(origenX,origenY,alto,ancho);
+        ArrayList lista = this.obtenerArea(origenX,origenY,alto,ancho);
         unEdificio.setUbicacion(lista);
     }
 
-    private ArrayList <Casillero> obtenerCasilleros(int x,int y,int alto,int ancho)throws LugarOcupadoError, PosicionFueraDeCampoError{
+    private ArrayList <Casillero> obtenerArea(int columnaOrigen, int filaOrigen, int alto, int ancho)throws LugarOcupadoError, PosicionFueraDeCampoError{
         ArrayList <Casillero> salida = new ArrayList();
-        for(int i=x; i < (alto + x);i++){
-            for(int j=y; j < (ancho + y);j++){
+        for(int i = columnaOrigen; i < (alto + columnaOrigen);i++){
+            for(int j= filaOrigen; j < (ancho + filaOrigen);j++){
                 Coordenada posc = new Coordenada(i,j);
                 if(!this.posicionDentroCampo(posc))
                     throw new PosicionFueraDeCampoError();
