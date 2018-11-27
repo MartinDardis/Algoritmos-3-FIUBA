@@ -3,7 +3,10 @@ import Models.Posicionable;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.edificios.Estados.EstadoVidaCompleta;
 import Models.edificios.Estados.EstadoYaReparado;
+import Models.escenario.Casillero;
 import Models.juego.Jugador;
+
+import java.util.ArrayList;
 
 public class Edificio implements Posicionable {
 
@@ -15,6 +18,7 @@ public class Edificio implements Posicionable {
     protected int danioAEdificio;
     protected int danioAUnidad;
     protected Jugador propietario;
+    protected ArrayList<Casillero> ubicacion;
     //
 
     protected EstadoReparacion estadoReparacion;
@@ -40,6 +44,10 @@ public class Edificio implements Posicionable {
 
     public void setVida(int nuevaVida){
         this.estadoReparacion.setVida(nuevaVida);
+    }
+
+    public void setUbicacion(ArrayList<Casillero> listaPosc){
+        ubicacion = listaPosc;
     }
 
     public void reparar(){

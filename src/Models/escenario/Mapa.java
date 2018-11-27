@@ -8,6 +8,8 @@ import Models.unidades.Unidad;
 import Models.unidades.Aldeano;
 import Models.edificios.Edificio;
 
+import java.util.ArrayList;
+
 public class Mapa{
 
     private int columnas;
@@ -52,6 +54,30 @@ public class Mapa{
         casillero.colocar(unaUnidad);
         unaUnidad.setCasillero(casillero);
 
+    }
+
+    public void colocarEdificio(Edificio unEdificio,Coordenada origen)throws LugarOcupadoError, PosicionFueraDeCampoError {
+        int alto = unEdificio.getAlto();
+        int ancho = unEdificio.getAncho();
+        int origenX = origen.getFila();
+        int origenY = origen.getColumna();
+        ArrayList lista = this.obtenerCasilleros(origenX,origenY,alto,ancho);
+        unEdificio.setUbicacion(lista);
+    }
+
+    private ArrayList <Casillero> obtenerCasilleros(int x,int y,int alto,int ancho)throws LugarOcupadoError, PosicionFueraDeCampoError{
+        ArrayList <Casillero> salida = new ArrayList();
+        for(int i=x; i < (alto + x);i++){
+            for(int j=y; j < (ancho + y);j++){
+                Coordenada posc = new Coordenada(i,j);
+                if(!this.posicionDentroCampo(posc))
+                    throw new PosicionFueraDeCampoError();
+                if(this.posiciones[posc.obtenerNumero()].estaOcupado())
+                    throw new LugarOcupadoError();
+                salida.add(this.posiciones[posc.obtenerNumero()]);
+            }
+        }
+        return salida;
     }
 
 
