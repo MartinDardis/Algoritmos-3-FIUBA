@@ -18,6 +18,7 @@ public class Edificio implements Posicionable {
     protected int danioAEdificio;
     protected int danioAUnidad;
     protected Jugador propietario;
+    protected Casillero salida;
     protected ArrayList<Casillero> ubicacion;
     //
 
@@ -35,6 +36,10 @@ public class Edificio implements Posicionable {
         return this.estadoReparacion.getVida();
     }
 
+    public Casillero getSalida() {
+        return salida;
+    }
+
     public void setEstadoReparacion(EstadoReparacion nuevoEstado){
         this.estadoReparacion = nuevoEstado;
     }
@@ -48,6 +53,10 @@ public class Edificio implements Posicionable {
 
     public void setUbicacion(ArrayList<Casillero> listaPosc){
         ubicacion = listaPosc;
+    }
+
+    public void setSalida(Casillero salida) {
+        this.salida = salida;
     }
 
     public void reparar(){

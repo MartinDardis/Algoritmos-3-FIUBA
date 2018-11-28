@@ -2,6 +2,8 @@ package Models.Partida;
 
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
+import Models.escenario.Casillero;
+import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import org.junit.Test;
@@ -14,6 +16,9 @@ public class PartidaTest {
     public void TestCrearUnidadAumentaLaPoblacionDeActual(){
         Partida partida = new Partida("uno","dos");
         PlazaCentral unaPlaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4,4);
+        Casillero salida = new Casillero(posSalida);
+        unaPlaza.setSalida(salida);
         Jugador actual = partida.getActual();
 
         int poblacionInicial = actual.getPoblacionActual();
@@ -21,22 +26,6 @@ public class PartidaTest {
         int poblacionFinal = actual.getPoblacionActual();
 
         assertEquals(poblacionFinal, poblacionInicial + 1);
-
-
-    }
-
-    @Test (expected = OroInsuficienteError.class)
-    public  void TestCrearUnidadSinOroSuficienteLanzaError(){
-        Partida partida = new Partida("uno","dos");
-        PlazaCentral unaPlaza = new PlazaCentral();
-        Jugador actual = partida.getActual();
-
-        int oroInicial = actual.getOro();
-        actual.pagar(oroInicial-10);//Lo dejo casi sin reservas
-
-        partida.crearAldeano(unaPlaza);
-
-
 
 
     }

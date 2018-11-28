@@ -121,5 +121,14 @@ public class JugadorTest {
 
         assertEquals(poblacionFinal,poblacionInicial+1);
     }
+    @Test
+    public void test11DestruirUnidadReducePoblacion(){
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre", unMapa);
+        PlazaCentral plaza = new PlazaCentral();
+        unJugador.crearAldeano(plaza);
+        int poblacionActual = unJugador.getPoblacionActual();
+
+        }
 
 }

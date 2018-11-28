@@ -99,31 +99,34 @@ public class Jugador {
     }
 
 
-    public void crearAldeano(PlazaCentral unaPlaza) {
+    public Aldeano crearAldeano(PlazaCentral unaPlaza) {
         Aldeano nuevoAldeano = unaPlaza.crearAldeano();
         elementos.add(nuevoAldeano);
         this.incrementarPoblacion();
-
+        return nuevoAldeano;
     }
 
-    public void crearEspadachin(Cuartel unCuartel) {
+    public Espadachin crearEspadachin(Cuartel unCuartel) {
         Espadachin nuevoEspadachin = unCuartel.crearEspadachin();
         elementos.add(nuevoEspadachin);
         this.incrementarPoblacion();
+        return nuevoEspadachin;
     }
 
-    public void crearArquero(Cuartel unCuartel) {
+    public Arquero crearArquero(Cuartel unCuartel) {
         Arquero nuevoArquero = unCuartel.crearArquero();
         elementos.add(nuevoArquero);
         this.incrementarPoblacion();
 
+        return nuevoArquero;
     }
 
-    public void crearArmaAsedio(Castillo unCastillo) {
+    public ArmaDeAsedio crearArmaAsedio(Castillo unCastillo) {
         ArmaDeAsedio nuevaArmaAsedio = unCastillo.crearArmaDeAsedio();
         elementos.add(nuevaArmaAsedio);
         this.incrementarPoblacion();
 
+        return nuevaArmaAsedio;
     }
 
     public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {

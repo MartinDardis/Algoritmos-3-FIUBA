@@ -5,6 +5,7 @@ import Models.edificios.Castillo;
 import Models.edificios.Cuartel;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
+import Models.escenario.Casillero;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.*;
@@ -25,6 +26,15 @@ public class Partida {
         jugador1.setSiguiente(jugador2);
         actual = jugador1;
     }
+    //Getters para pruebas
+    public Jugador getJugador1(){
+        return jugador1;
+    }
+
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+    //Fin getters pruebas
 
     public Jugador getActual() {
         return actual;
@@ -58,9 +68,15 @@ public class Partida {
     //Todavia falta determinar como obtener el casillero de salida para cada unidad
 
     public void crearAldeano(PlazaCentral unaPlaza){
+        Casillero salida = unaPlaza.getSalida();
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
         if (actual.getOro() >= 25 ){
-            actual.crearAldeano(unaPlaza);
+            Aldeano nuevoAldeano = actual.crearAldeano(unaPlaza);
             actual.pagar(25);
+            campo.colocarUnidad(nuevoAldeano,salida.obtenerPosicion());
+
         }
         else {
             throw new OroInsuficienteError();//refactorizar a expcecion de crear/pagar
@@ -68,9 +84,14 @@ public class Partida {
     }
 
     public void crearEspadachin(Cuartel unCuartel){
+        Casillero salida = unCuartel.getSalida();
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
         if (actual.getOro() >= 50){
-            actual.crearEspadachin(unCuartel);
+            Espadachin nuevoEspadachin = actual.crearEspadachin(unCuartel);
             actual.pagar(50);
+            campo.colocarUnidad(nuevoEspadachin,salida.obtenerPosicion());
         }
         else {
             throw new OroInsuficienteError();
@@ -80,9 +101,14 @@ public class Partida {
     }
 
     public void crearArquero(Cuartel unCuartel){
+        Casillero salida = unCuartel.getSalida();
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
         if (actual.getOro() >= 75){
-            actual.crearArquero(unCuartel);
+            Arquero nuevoArquero = actual.crearArquero(unCuartel);
             actual.pagar(75);
+            campo.colocarUnidad(nuevoArquero,salida.obtenerPosicion());
         }
         else {
             throw new OroInsuficienteError();
@@ -90,9 +116,14 @@ public class Partida {
     }
 
     public void crearArmaAsedio(Castillo unCastillo){
+        Casillero salida = unCastillo.getSalida();
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
         if (actual.getOro() >= 200){
-            actual.crearArmaAsedio(unCastillo);
+            ArmaDeAsedio nuevaArma  = actual.crearArmaAsedio(unCastillo);
             actual.pagar(200);
+            campo.colocarUnidad(nuevaArma,salida.obtenerPosicion());
         }
         else {
             throw new OroInsuficienteError();
