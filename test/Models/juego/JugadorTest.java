@@ -1,7 +1,11 @@
 package Models.juego;
 
+import Models.Partida.SalidaOcupadaError;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
+import Models.escenario.Casillero;
+import Models.escenario.Coordenada;
+import Models.escenario.CoordenadaTest;
 import Models.escenario.Mapa;
 import Models.juego.errores.NoHayPoblacionError;
 import Models.juego.errores.PoblacionMaximaError;
@@ -114,6 +118,8 @@ public class JugadorTest {
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("nombre", unMapa);
         PlazaCentral plaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4,4);
+        plaza.setSalida(new Casillero(posSalida));
         int poblacionInicial = unJugador.getPoblacionActual();
 
         unJugador.crearAldeano(plaza);
@@ -126,9 +132,56 @@ public class JugadorTest {
         Mapa unMapa = new Mapa();
         Jugador unJugador = new Jugador("nombre", unMapa);
         PlazaCentral plaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4,4);
+        plaza.setSalida(new Casillero(posSalida));
         unJugador.crearAldeano(plaza);
         int poblacionActual = unJugador.getPoblacionActual();
 
         }
+    @Test (expected = OroInsuficienteError.class)
+    public void test12CrearUnidadSinOroNecesarioLanzaExcepcion(){
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre", unMapa);
+        PlazaCentral plaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4,4);
+        plaza.setSalida(new Casillero(posSalida));
 
+        int oroInicial = unJugador.getOro();
+        unJugador.pagar(oroInicial);//Dejo al jugador sin oro
+
+        unJugador.crearAldeano(plaza);
+
+    }
+
+    @Test(expected = SalidaOcupadaError.class)
+    public void test13CrearUnidadConSalidaOcupadaLanzaExcepcion(){
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre", unMapa);
+        PlazaCentral plaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4,4);
+        Casillero salida = unMapa.obtenerCasillero(posSalida);
+        plaza.setSalida(salida);
+
+        unJugador.crearAldeano(plaza);//Creo primer aldeano, que se ubicara en la salida
+
+        unJugador.crearAldeano(plaza);//Segundo llamado, intenta crear con la salida ocupada
+
+
+
+    }
+    @Test
+    public void testCrearUnidadLaPosicionaEnLaSalidaDelEdificio() {
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre", unMapa);
+        PlazaCentral plaza = new PlazaCentral();
+        Coordenada posSalida = new Coordenada(4, 4);
+        Casillero salida = unMapa.obtenerCasillero(posSalida);
+        plaza.setSalida(salida);
+
+        unJugador.crearAldeano(plaza);
+
+
+        assertTrue(salida.estaOcupado());
+
+    }
 }

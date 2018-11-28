@@ -68,19 +68,8 @@ public class Partida {
     //Todavia falta determinar como obtener el casillero de salida para cada unidad
 
     public void crearAldeano(PlazaCentral unaPlaza){
-        Casillero salida = unaPlaza.getSalida();
-        if (salida.estaOcupado()){
-            throw new SalidaOcupadaError();
-        }
-        if (actual.getOro() >= 25 ){
-            Aldeano nuevoAldeano = actual.crearAldeano(unaPlaza);
-            actual.pagar(25);
-            campo.colocarUnidad(nuevoAldeano,salida.obtenerPosicion());
+        actual.crearAldeano(unaPlaza);
 
-        }
-        else {
-            throw new OroInsuficienteError();//refactorizar a expcecion de crear/pagar
-        }
     }
 
     public void crearEspadachin(Cuartel unCuartel){

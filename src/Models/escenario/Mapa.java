@@ -38,6 +38,12 @@ public class Mapa{
 
     }
 
+    public Casillero obtenerCasillero (Coordenada coordenada){
+        int numeroCasillero = coordenada.obtenerNumero();
+        Casillero casillero = this.posiciones[numeroCasillero];
+        return casillero;
+    }
+
     private boolean posicionDentroCampo(Coordenada posicion){
         return posicion.estaDentroDe(this.filas,this.columnas);
     }

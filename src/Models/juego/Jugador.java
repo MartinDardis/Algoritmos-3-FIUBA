@@ -1,6 +1,8 @@
 package Models.juego;
 
 import java.util.ArrayList;
+
+import Models.Partida.SalidaOcupadaError;
 import Models.Posicionable;
 import Models.escenario.*;
 import Models.juego.errores.NoHayPoblacionError;
@@ -8,6 +10,8 @@ import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
+
+import javax.swing.plaf.synth.SynthTextAreaUI;
 
 public class Jugador {
 
@@ -99,11 +103,19 @@ public class Jugador {
     }
 
 
-    public Aldeano crearAldeano(PlazaCentral unaPlaza) {
+    public void crearAldeano(PlazaCentral unaPlaza) {
+        this.pagar(25);//getCosto o constante ?
+        Casillero salida = unaPlaza.getSalida();
+
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
+
         Aldeano nuevoAldeano = unaPlaza.crearAldeano();
         elementos.add(nuevoAldeano);
+        campo.colocarUnidad(nuevoAldeano,salida.obtenerPosicion());
         this.incrementarPoblacion();
-        return nuevoAldeano;
+
     }
 
     public Espadachin crearEspadachin(Cuartel unCuartel) {
