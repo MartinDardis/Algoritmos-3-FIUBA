@@ -73,50 +73,15 @@ public class Partida {
     }
 
     public void crearEspadachin(Cuartel unCuartel){
-        Casillero salida = unCuartel.getSalida();
-        if (salida.estaOcupado()){
-            throw new SalidaOcupadaError();
-        }
-        if (actual.getOro() >= 50){
-            Espadachin nuevoEspadachin = actual.crearEspadachin(unCuartel);
-            actual.pagar(50);
-            campo.colocarUnidad(nuevoEspadachin,salida.obtenerPosicion());
-        }
-        else {
-            throw new OroInsuficienteError();
-        }
-
-
+        actual.crearEspadachin(unCuartel);
     }
 
     public void crearArquero(Cuartel unCuartel){
-        Casillero salida = unCuartel.getSalida();
-        if (salida.estaOcupado()){
-            throw new SalidaOcupadaError();
-        }
-        if (actual.getOro() >= 75){
-            Arquero nuevoArquero = actual.crearArquero(unCuartel);
-            actual.pagar(75);
-            campo.colocarUnidad(nuevoArquero,salida.obtenerPosicion());
-        }
-        else {
-            throw new OroInsuficienteError();
-        }
+        actual.crearArquero(unCuartel);
     }
 
     public void crearArmaAsedio(Castillo unCastillo){
-        Casillero salida = unCastillo.getSalida();
-        if (salida.estaOcupado()){
-            throw new SalidaOcupadaError();
-        }
-        if (actual.getOro() >= 200){
-            ArmaDeAsedio nuevaArma  = actual.crearArmaAsedio(unCastillo);
-            actual.pagar(200);
-            campo.colocarUnidad(nuevaArma,salida.obtenerPosicion());
-        }
-        else {
-            throw new OroInsuficienteError();
-        }
+        actual.crearArmaAsedio(unCastillo);
     }
 
 

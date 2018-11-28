@@ -104,12 +104,13 @@ public class Jugador {
 
 
     public void crearAldeano(PlazaCentral unaPlaza) {
-        this.pagar(25);//getCosto o constante ?
         Casillero salida = unaPlaza.getSalida();
 
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
+
+        this.pagar(25);//getCosto o constante ?
 
         Aldeano nuevoAldeano = unaPlaza.crearAldeano();
         elementos.add(nuevoAldeano);
@@ -118,27 +119,45 @@ public class Jugador {
 
     }
 
-    public Espadachin crearEspadachin(Cuartel unCuartel) {
+    public void crearEspadachin(Cuartel unCuartel) {
+        Casillero salida = unCuartel.getSalida();
+
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
+        this.pagar(50);
+
         Espadachin nuevoEspadachin = unCuartel.crearEspadachin();
         elementos.add(nuevoEspadachin);
+        campo.colocarUnidad(nuevoEspadachin,salida.obtenerPosicion());
         this.incrementarPoblacion();
-        return nuevoEspadachin;
     }
 
-    public Arquero crearArquero(Cuartel unCuartel) {
+    public void crearArquero(Cuartel unCuartel) {
+        Casillero salida = unCuartel.getSalida();
+
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
+        this.pagar(75);
+
         Arquero nuevoArquero = unCuartel.crearArquero();
         elementos.add(nuevoArquero);
+        campo.colocarUnidad(nuevoArquero,salida.obtenerPosicion());
         this.incrementarPoblacion();
-
-        return nuevoArquero;
     }
 
-    public ArmaDeAsedio crearArmaAsedio(Castillo unCastillo) {
-        ArmaDeAsedio nuevaArmaAsedio = unCastillo.crearArmaDeAsedio();
-        elementos.add(nuevaArmaAsedio);
-        this.incrementarPoblacion();
+    public void crearArmaAsedio(Castillo unCastillo) {
+        Casillero salida = unCastillo.getSalida();
 
-        return nuevaArmaAsedio;
+        if (salida.estaOcupado()){
+            throw new SalidaOcupadaError();
+        }
+        this.pagar(200);
+        ArmaDeAsedio nuevaArma = unCastillo.crearArmaDeAsedio();
+        elementos.add(nuevaArma);
+        campo.colocarUnidad(nuevaArma,salida.obtenerPosicion());
+        this.incrementarPoblacion();
     }
 
     public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
