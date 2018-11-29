@@ -1,5 +1,7 @@
 package Models.unidades;
 
+import Models.edificios.Cuartel;
+import Models.edificios.PlazaCentral;
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
 import Models.unidades.estadosAldeano.EstadoAldeano;
@@ -60,5 +62,14 @@ public class Aldeano extends Unidad {
         this.estado = this.estado.actualizarEstado();
     }
 
+    public PlazaCentral construirPlazaCentral(Jugador jugador){
+        this.estado = this.estado.actualizarEstado();
+        return new PlazaCentral(jugador);
+    }
+
+    public Cuartel construirCuartel(Jugador jugador){
+        this.estado = this.estado.actualizarEstado();
+        return new Cuartel(jugador);
+    }
 
 }

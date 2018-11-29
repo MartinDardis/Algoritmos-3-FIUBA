@@ -88,7 +88,10 @@ public class Partida {
 
 
     public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
-        actual.construirEdificio(edificio,unAldeano,x,y);
+        if(edificio == "Plaza central")
+            actual.construirPlazaCentral(unAldeano,x,y);
+        else if(edificio == "Cuartel")
+            actual.construirCuartel(unAldeano,x,y);
     }
 
     public void moverUnidad(Unidad unaUnidad,int x,int y){

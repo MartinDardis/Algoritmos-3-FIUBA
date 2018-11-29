@@ -1,6 +1,7 @@
 package Models.unidades.estadosAldeano;
 
 import Models.edificios.Edificio;
+import Models.edificios.PlazaCentral;
 import Models.unidades.errores.*;
 
 public class EstadoInactivo implements EstadoAldeano {

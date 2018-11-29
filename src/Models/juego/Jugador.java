@@ -160,7 +160,18 @@ public class Jugador {
         this.incrementarPoblacion();
     }
 
-    public void construirEdificio(String edificio, Aldeano unAldeano, int x, int y) {
+    public void construirPlazaCentral(Aldeano unAldeano, int x, int y) {
+        PlazaCentral unaPlaza = unAldeano.construirPlazaCentral(this);
+        Coordenada poscInicial = new Coordenada(x,y);
+        this.campo.colocarEdificio(unaPlaza,poscInicial);
+        elementos.add(unaPlaza);
+    }
+
+    public void construirCuartel(Aldeano unAldeano, int x, int y){
+        Cuartel unCuartel = unAldeano.construirCuartel(this);
+        Coordenada posInicial = new Coordenada(x,y);
+        this.campo.colocarEdificio(unCuartel,posInicial);
+        elementos.add(unCuartel);
     }
 
     public void moverUnidad(Unidad unaUnidad, int x, int y) {
