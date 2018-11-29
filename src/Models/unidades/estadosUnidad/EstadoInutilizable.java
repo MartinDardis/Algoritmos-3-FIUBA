@@ -12,4 +12,9 @@ public class EstadoInutilizable implements EstadoUnidad {
     public EstadoUnidad actualizarEstado(){
         return new EstadoInutilizable();
     }
+
+    @Override
+    public boolean puedeMoverse() {
+        return false;
+    }
 }

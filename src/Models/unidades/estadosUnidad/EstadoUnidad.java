@@ -7,5 +7,6 @@ public interface EstadoUnidad {
 
     void atacar(Unidad objetivo, int danio);
     EstadoUnidad actualizarEstado();
+    boolean puedeMoverse();
 
 }

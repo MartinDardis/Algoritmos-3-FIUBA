@@ -12,5 +12,10 @@ public class EstadoDisponible implements EstadoUnidad{
         return new EstadoInutilizable();
     }
 
+    @Override
+    public boolean puedeMoverse() {
+        return false;
+    }
+
 
 }
