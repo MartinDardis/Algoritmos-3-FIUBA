@@ -86,12 +86,12 @@ public class Partida {
 
 
 
+    public void construirPlazaCentral(Aldeano unAldeano,int x,int y){
+        actual.construirPlazaCentral(unAldeano,x,y);
+    }
 
-    public void construirEdificioEn(String edificio,Aldeano unAldeano,int x,int y){
-        if(edificio == "Plaza central")
-            actual.construirPlazaCentral(unAldeano,x,y);
-        else if(edificio == "Cuartel")
-            actual.construirCuartel(unAldeano,x,y);
+    public void construirCuartel(Aldeano unAldeano,int x,int y){
+        actual.construirCuartel(unAldeano,x,y);
     }
 
     public void moverUnidad(Unidad unaUnidad,int x,int y){
