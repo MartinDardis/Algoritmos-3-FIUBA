@@ -75,4 +75,9 @@ public class Aldeano extends Unidad {
         return this.estado.construirCuartel(jugador);
     }
 
+
+    public void comenzarConstruccion()throws AldeanoOcupadoError {
+        EstadoAldeano estadoNew = this.estado.comenzarConstruccion();
+        this.estado = estadoNew;
+    }
 }

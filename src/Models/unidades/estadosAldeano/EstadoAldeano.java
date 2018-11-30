@@ -12,6 +12,10 @@ public interface EstadoAldeano {
 
     EstadoAldeano actualizarEstado();
 
+    EstadoAldeano comenzarConstruccion();
+
+    EstadoAldeano comenzarReparacion();
+
     PlazaCentral costruirPlazaCentral(Jugador jugador);
 
     Cuartel construirCuartel(Jugador jugador);

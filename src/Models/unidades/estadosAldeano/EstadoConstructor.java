@@ -8,6 +8,12 @@ import Models.unidades.errores.*;
 
 public class EstadoConstructor implements EstadoAldeano {
 
+    private int turnosRestantes = 0;
+
+    public EstadoConstructor(int turnos){
+        turnosRestantes = turnos;
+    }
+
     public int generarOro(){
         return 0;
     }
@@ -17,7 +23,17 @@ public class EstadoConstructor implements EstadoAldeano {
     }
 
     public EstadoAldeano actualizarEstado(){
-        return new EstadoConstructor();
+        if(turnosRestantes <= 0)
+            return new EstadoInactivo();
+        turnosRestantes --;
+        return this;
+    }
+    public EstadoAldeano comenzarConstruccion()throws AldeanoOcupadoError{
+       throw new AldeanoOcupadoError();
+    }
+
+    public EstadoAldeano comenzarReparacion()throws AldeanoOcupadoError{
+        throw new AldeanoOcupadoError();
     }
 
     public PlazaCentral costruirPlazaCentral(Jugador jugador)throws AldeanoOcupadoError{

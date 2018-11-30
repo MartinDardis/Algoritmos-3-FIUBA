@@ -174,6 +174,7 @@ public class Jugador {
         Coordenada poscInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unaPlaza,poscInicial);
         this.pagar(100);
+        unAldeano.comenzarConstruccion();
         elementos.add(unaPlaza);
 
     }
@@ -184,6 +185,7 @@ public class Jugador {
         Coordenada posInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unCuartel,posInicial);
         this.pagar(100);//add
+        unAldeano.comenzarConstruccion();
         elementos.add(unCuartel);
     }
 

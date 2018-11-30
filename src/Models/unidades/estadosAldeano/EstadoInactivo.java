@@ -17,7 +17,7 @@ public class EstadoInactivo implements EstadoAldeano {
     }
 
     public EstadoAldeano actualizarEstado(){
-        return new EstadoConstructor();
+        return this;
     }
 
     public PlazaCentral costruirPlazaCentral(Jugador jugador){
@@ -26,5 +26,13 @@ public class EstadoInactivo implements EstadoAldeano {
 
     public Cuartel construirCuartel(Jugador jugador){
         return new Cuartel(jugador);
+    }
+
+    public EstadoAldeano comenzarConstruccion(){
+        return new EstadoConstructor(3);
+    }
+
+    public EstadoAldeano comenzarReparacion(){
+        return new EstadoConstructor(1);
     }
 }
