@@ -8,7 +8,7 @@ import Models.juego.Jugador;
 public interface EstadoAldeano {
 
     int generarOro();
-    void reparar(Edificio unEdificio);
+    EstadoConstructor reparar(Edificio unEdificio);
 
     EstadoAldeano actualizarEstado();
 
