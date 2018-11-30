@@ -1,11 +1,12 @@
 package Models.unidades.estadosUnidad;
 
+import Models.Posicionable;
 import Models.escenario.Casillero;
 import Models.unidades.Unidad;
 
 public class EstadoDisponible implements EstadoUnidad{
 
-    public void atacar(Unidad objetivo, int danio){
+    public void atacar(Posicionable objetivo, int danio){
         objetivo.recibirDanio(danio);
     }
 

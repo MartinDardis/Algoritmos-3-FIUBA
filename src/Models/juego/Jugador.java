@@ -200,7 +200,7 @@ public class Jugador {
 
     }
 
-    public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
+    public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
         unidadActual.atacar(unidadEnemiga);
     }
 

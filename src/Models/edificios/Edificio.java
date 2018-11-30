@@ -35,6 +35,10 @@ public class Edificio implements Posicionable {
         return this.estadoReparacion.getVida();
     }
 
+    public void atacar(Posicionable unidadEnemiga) {
+
+    }
+
     public Casillero getSalida() {
         return salida;
     }

@@ -1,5 +1,6 @@
 package Models.unidades.estadosUnidad;
 
+import Models.Posicionable;
 import Models.escenario.Casillero;
 import Models.unidades.Unidad;
 import Models.unidades.estadosArmaAsedio.EstadoArma;
@@ -12,12 +13,13 @@ public class EstadoMontada implements EstadoUnidad {
     }
 
 
-    public void atacar(Unidad objetivo, int danio) {
-
-    }
-
     public EstadoUnidad actualizarEstado() {
         return null;
+    }
+
+    @Override
+    public void atacar(Posicionable objetivo, int danio) {
+
     }
 
     public void mover(Unidad unidad, Casillero destino){}

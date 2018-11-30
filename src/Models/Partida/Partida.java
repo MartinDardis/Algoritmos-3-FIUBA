@@ -94,10 +94,10 @@ public class Partida {
     }
 
 
-    public void atacar(Unidad unidadActual, Unidad unidadEnemiga){
+    public void atacar(Unidad unidadActual, Posicionable unidadEnemiga){
         actual.atacarA(unidadActual,unidadEnemiga);
         if (unidadEnemiga.getVida() <= 0){
-            actual.getSiguiente().destruirUnidad(unidadEnemiga);
+            //actual.getSiguiente().destruirUnidad(unidadEnemiga);
 
         }
     }
@@ -105,7 +105,7 @@ public class Partida {
     public void ataqueCastillo(Castillo unCastillo){
         ArrayList <Posicionable> listaAtacables = this.objetivosAtacables();
         for (Posicionable atacable :listaAtacables) {
-
+            actual.atacarA(unCastillo,atacable);
         }
 
     }

@@ -79,7 +79,7 @@ public class Unidad implements Posicionable {
 
     }
 
-    public void atacar(Unidad otraUnidad) throws UnidadYaUtilizadaError {
+    public void atacar(Posicionable otraUnidad) throws UnidadYaUtilizadaError {
 
         if(distanciaHasta(otraUnidad) > this.rangoAtaque)
             throw new CasilleroAlejadoError();
