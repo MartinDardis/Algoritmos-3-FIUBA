@@ -12,13 +12,13 @@ public class EstadoMontada implements EstadoUnidad {
     }
 
 
-    @Override
     public void atacar(Unidad objetivo, int danio) {
 
     }
 
-    @Override
     public EstadoUnidad actualizarEstado() {
         return null;
     }
+
+    public void mover(Unidad unidad, Casillero destino){}
 }

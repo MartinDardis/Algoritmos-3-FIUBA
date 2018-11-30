@@ -87,6 +87,21 @@ public class UnidadTest {
         assertFalse(casilleroOrigen.estaOcupado());
     }
 
+    @Test (expected = UnidadYaUtilizadaError.class)
+    public void test05BmoverUnidadDosVecesLanzaExcepcion() {
+
+        Coordenada origen = new Coordenada(0,0);
+        Coordenada destino = new Coordenada(0,1);
+        Casillero casilleroOrigen = new Casillero(origen);
+        Casillero casilleroDestino = new Casillero(destino);
+
+        Unidad unaUnidad = new Aldeano(casilleroOrigen);
+        casilleroOrigen.colocar(unaUnidad);
+
+        unaUnidad.mover(casilleroDestino);
+        unaUnidad.mover(casilleroOrigen);
+    }
+
     @Test
     public void test06atacarUnidadDisminuyeVidaObjetivo() {
 

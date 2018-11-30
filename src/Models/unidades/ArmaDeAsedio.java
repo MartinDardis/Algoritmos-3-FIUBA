@@ -7,7 +7,6 @@ import Models.juego.Jugador;
 import Models.unidades.estadosArmaAsedio.ArmaMontadaNoPuedeMoverseError;
 import Models.unidades.estadosUnidad.EstadoMontada;
 import Models.unidades.estadosUnidad.EstadoNoMontada;
-import Models.unidades.estadosUnidad.EstadoUnidad;
 
 public class ArmaDeAsedio extends Unidad{
 
@@ -15,28 +14,28 @@ public class ArmaDeAsedio extends Unidad{
         this.vida = 150;
         this.rangoAtaque = 5;
         this.danioAUnidad = 0;
-        this.estadoAtaque = new EstadoNoMontada();
+        this.estadoAccion = new EstadoNoMontada();
 
     }
     public ArmaDeAsedio(Jugador jugador){
         this.propietario = jugador;
         this.vida = 150;
-        this.estadoAtaque =  new EstadoNoMontada();
+        this.estadoAccion =  new EstadoNoMontada();
         this.danioAEdificio = 75;
         this.danioAUnidad = 0; //No aplica, deberia lanzar excepcion cuando movamos el comportamiento aca
     }
 
     public void montar(){
-        this.estadoAtaque = new EstadoMontada();
+        this.estadoAccion = new EstadoMontada();
     }
 
     public void desmontar(){
-        this.estadoAtaque = new EstadoNoMontada();
+        this.estadoAccion = new EstadoNoMontada();
     }
 
     @Override
     public void mover(Casillero nuevoCasillero)throws CasilleroAlejadoError, LugarOcupadoError {
-        if (!estadoAtaque.puedeMoverse()){
+        if (!estadoAccion.puedeMoverse()){
             throw new ArmaMontadaNoPuedeMoverseError();
         }
         if(this.posicion.distanciaHasta(nuevoCasillero) > 1)

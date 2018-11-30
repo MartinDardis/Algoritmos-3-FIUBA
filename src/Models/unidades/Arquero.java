@@ -21,7 +21,7 @@ public class Arquero extends Unidad {
         this.danioAEdificio = 10;
         this.posicion = casillero;
         this.rangoAtaque = 3;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para pruebas
@@ -29,7 +29,7 @@ public class Arquero extends Unidad {
         this.propietario = jugador;
         this.vida = 75;
         this.rangoAtaque = 3;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor utilizado
@@ -40,7 +40,7 @@ public class Arquero extends Unidad {
         this.rangoAtaque = 3;
         this.posicion = casillero;
         this.propietario = jugador;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
 }

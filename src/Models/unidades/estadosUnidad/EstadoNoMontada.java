@@ -11,7 +11,6 @@ public class EstadoNoMontada implements EstadoUnidad {
         throw new ArmaDesmontadaNoPuedeAtacarError();
     }
 
-    @Override
     public EstadoUnidad actualizarEstado() {
         return null;
     }
@@ -19,5 +18,7 @@ public class EstadoNoMontada implements EstadoUnidad {
     public boolean puedeMoverse(){
         return true;
     }
+
+    public void mover(Unidad unidad, Casillero destino){}
 
 }

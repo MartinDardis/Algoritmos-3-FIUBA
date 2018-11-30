@@ -1,5 +1,6 @@
 package Models.unidades.estadosUnidad;
 
+import Models.escenario.Casillero;
 import Models.unidades.Unidad;
 
 public class EstadoDisponible implements EstadoUnidad{
@@ -11,6 +12,17 @@ public class EstadoDisponible implements EstadoUnidad{
     public EstadoUnidad actualizarEstado(){
         return new EstadoInutilizable();
     }
+
+    public void mover(Unidad unidad, Casillero destino){
+        unidad.getCasillero().remover();
+        destino.colocar(unidad);
+        unidad.setCasillero(destino);
+    }
+
+
+
+
+
 
     @Override
     public boolean puedeMoverse() {
