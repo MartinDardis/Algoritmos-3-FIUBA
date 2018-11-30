@@ -43,7 +43,7 @@ public class PlazaCentral extends Edificio {
     }
 
     public Aldeano crearAldeano(){
-            Aldeano nuevoAldeano = new Aldeano();
+            Aldeano nuevoAldeano = new Aldeano(this.propietario);
             return nuevoAldeano;
         }
 }
