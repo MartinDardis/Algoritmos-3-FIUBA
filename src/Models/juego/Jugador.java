@@ -7,6 +7,7 @@ import Models.Posicionable;
 import Models.escenario.*;
 import Models.escenario.errores.LugarOcupadoError;
 import Models.juego.errores.NoHayPoblacionError;
+import Models.juego.errores.NoPerteneceAJugadorError;
 import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
@@ -168,7 +169,8 @@ public class Jugador {
         this.incrementarPoblacion();
     }
 
-    public void construirPlazaCentral(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError, LugarOcupadoError {
+    public void construirPlazaCentral(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError, LugarOcupadoError,NoPerteneceAJugadorError {
+        if(!elementos.contains(unAldeano)){throw new NoPerteneceAJugadorError();}
         this.saldoSuficiente(100);
         PlazaCentral unaPlaza = unAldeano.construirPlazaCentral(this);
         Coordenada poscInicial = new Coordenada(x,y);
@@ -179,7 +181,8 @@ public class Jugador {
 
     }
 
-    public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError{
+    public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError, NoPerteneceAJugadorError {
+        if(!elementos.contains(unAldeano)){throw new NoPerteneceAJugadorError();}
         this.saldoSuficiente(100);//add
         Cuartel unCuartel = unAldeano.construirCuartel(this);
         Coordenada posInicial = new Coordenada(x,y);
