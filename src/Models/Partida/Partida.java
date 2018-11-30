@@ -67,10 +67,7 @@ public class Partida {
 
     //Todavia falta determinar como obtener el casillero de salida para cada unidad
 
-    public void crearAldeano(PlazaCentral unaPlaza){
-        actual.crearAldeano(unaPlaza);
-
-    }
+    public void crearAldeano(PlazaCentral unaPlaza){ actual.crearAldeano(unaPlaza); }
 
     public void crearEspadachin(Cuartel unCuartel){
         actual.crearEspadachin(unCuartel);
@@ -83,8 +80,6 @@ public class Partida {
     public void crearArmaAsedio(Castillo unCastillo){
         actual.crearArmaAsedio(unCastillo);
     }
-
-
 
     public void construirPlazaCentral(Aldeano unAldeano,int x,int y){
         actual.construirPlazaCentral(unAldeano,x,y);
