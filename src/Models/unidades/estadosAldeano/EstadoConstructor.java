@@ -18,7 +18,7 @@ public class EstadoConstructor implements EstadoAldeano {
         return 0;
     }
 
-    public void reparar(Edificio unEdificio){
+    public EstadoConstructor reparar(Edificio unEdificio){
         throw new AldeanoOcupadoError();
     }
 

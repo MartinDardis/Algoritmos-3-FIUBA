@@ -4,7 +4,6 @@ import Models.edificios.Cuartel;
 import Models.edificios.Edificio;
 import Models.edificios.PlazaCentral;
 import Models.juego.Jugador;
-import Models.unidades.errores.*;
 
 public class EstadoInactivo implements EstadoAldeano {
 
@@ -12,8 +11,9 @@ public class EstadoInactivo implements EstadoAldeano {
         return 20;
     }
 
-    public void reparar(Edificio unEdificio) {
+    public EstadoConstructor reparar(Edificio unEdificio) {
         unEdificio.reparar();
+        return new EstadoConstructor(1);
     }
 
     public EstadoAldeano actualizarEstado(){

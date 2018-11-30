@@ -65,8 +65,8 @@ public class Aldeano extends Unidad {
 
     public void reparar(Edificio unEdificio){
 
-        this.estado.reparar(unEdificio);
-        this.estado = this.estado.actualizarEstado();
+        EstadoAldeano estado = this.estado.reparar(unEdificio);
+        this.estado = estado;
     }
 
     public PlazaCentral construirPlazaCentral(Jugador jugador)throws AldeanoOcupadoError {
