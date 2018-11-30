@@ -4,6 +4,7 @@ import Models.edificios.Cuartel;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
+import Models.unidades.errores.AldeanoOcupadoError;
 import Models.unidades.estadosAldeano.EstadoAldeano;
 import Models.unidades.estadosAldeano.EstadoInactivo;
 import Models.edificios.Edificio;
@@ -62,14 +63,12 @@ public class Aldeano extends Unidad {
         this.estado = this.estado.actualizarEstado();
     }
 
-    public PlazaCentral construirPlazaCentral(Jugador jugador){
-        this.estado = this.estado.actualizarEstado();
-        return new PlazaCentral(jugador);
+    public PlazaCentral construirPlazaCentral(Jugador jugador)throws AldeanoOcupadoError {
+        return this.estado.costruirPlazaCentral(jugador);
     }
 
-    public Cuartel construirCuartel(Jugador jugador){
-        this.estado = this.estado.actualizarEstado();
-        return new Cuartel(jugador);
+    public Cuartel construirCuartel(Jugador jugador)throws AldeanoOcupadoError{
+        return this.estado.construirCuartel(jugador);
     }
 
 }

@@ -67,7 +67,10 @@ public class Mapa{
         int ancho = unEdificio.getAncho();
         int origenX = origen.getFila();
         int origenY = origen.getColumna();
-        ArrayList lista = this.obtenerArea(origenX,origenY,alto,ancho);
+        ArrayList <Casillero> lista = this.obtenerArea(origenX,origenY,alto,ancho);
+        for (Casillero casilerro :lista) {
+            casilerro.colocar(unEdificio);
+        }
         unEdificio.setUbicacion(lista);
     }
 

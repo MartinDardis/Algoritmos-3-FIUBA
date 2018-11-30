@@ -1,7 +1,9 @@
 package Models.unidades.estadosAldeano;
 
+import Models.edificios.Cuartel;
 import Models.edificios.Edificio;
 import Models.edificios.PlazaCentral;
+import Models.juego.Jugador;
 import Models.unidades.errores.*;
 
 public class EstadoInactivo implements EstadoAldeano {
@@ -18,4 +20,11 @@ public class EstadoInactivo implements EstadoAldeano {
         return new EstadoConstructor();
     }
 
+    public PlazaCentral costruirPlazaCentral(Jugador jugador){
+        return new PlazaCentral(jugador);
+    }
+
+    public Cuartel construirCuartel(Jugador jugador){
+        return new Cuartel(jugador);
+    }
 }

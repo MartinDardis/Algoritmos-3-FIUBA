@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import Models.Partida.SalidaOcupadaError;
 import Models.Posicionable;
 import Models.escenario.*;
+import Models.escenario.errores.LugarOcupadoError;
 import Models.juego.errores.NoHayPoblacionError;
 import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
+import Models.unidades.errores.AldeanoOcupadoError;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
 
@@ -160,14 +162,14 @@ public class Jugador {
         this.incrementarPoblacion();
     }
 
-    public void construirPlazaCentral(Aldeano unAldeano, int x, int y) {
+    public void construirPlazaCentral(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError, LugarOcupadoError {
         PlazaCentral unaPlaza = unAldeano.construirPlazaCentral(this);
         Coordenada poscInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unaPlaza,poscInicial);
         elementos.add(unaPlaza);
     }
 
-    public void construirCuartel(Aldeano unAldeano, int x, int y){
+    public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError{
         Cuartel unCuartel = unAldeano.construirCuartel(this);
         Coordenada posInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unCuartel,posInicial);
