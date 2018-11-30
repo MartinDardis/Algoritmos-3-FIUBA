@@ -3,6 +3,7 @@ import Models.Posicionable;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
+import Models.unidades.Unidad;
 
 import java.util.ArrayList;
 
@@ -94,4 +95,22 @@ public class Edificio implements Posicionable {
     public ArrayList<Casillero> getCasillero(){
         return this.ubicacion;
     }
+    public int distanciaHasta(Posicionable otroPosicionable){
+        ArrayList<Casillero> posiciones = otroPosicionable.getCasillero();
+        Casillero posicionActual = this.getCasillero().get(0);
+        ArrayList<Casillero> misPosiciones = this.getCasillero();
+        int menorDistancia = posiciones.get(0).distanciaHasta(posicionActual);
+        for (Casillero posicionPropia : misPosiciones){
+            posicionActual = posicionPropia;
+            for (Casillero casilleros : posiciones) {
+                int distanciaActual = casilleros.distanciaHasta(posicionActual);
+                if (distanciaActual < menorDistancia){
+                    menorDistancia = distanciaActual;
+                }
+            }
+        }
+        return menorDistancia;
+
+    }
+
 }

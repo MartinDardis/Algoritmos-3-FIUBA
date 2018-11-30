@@ -92,8 +92,8 @@ public class Unidad implements Posicionable {
         this.vida -= danio;
     }
 
-    public int distanciaHasta(Unidad otraUnidad){
-        ArrayList<Casillero> posiciones = otraUnidad.getCasillero();
+    public int distanciaHasta(Posicionable otroPosicionable){
+        ArrayList<Casillero> posiciones = otroPosicionable.getCasillero();
         Casillero posicionActual = this.getCasillero().get(0);
         int menorDistancia = posiciones.get(0).distanciaHasta(posicionActual);
         for (Casillero casilleros : posiciones) {

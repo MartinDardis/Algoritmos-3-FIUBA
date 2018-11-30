@@ -1,5 +1,9 @@
 package Models;
 
+import Models.escenario.Casillero;
+
+import java.util.ArrayList;
+
 public interface Posicionable {
 
     int alto = 1;
@@ -11,5 +15,5 @@ public interface Posicionable {
     void recibirDanio(int danio);
     int getRangoAtaque();
     int generarOro();
-
+    ArrayList<Casillero> getCasillero();
 }
