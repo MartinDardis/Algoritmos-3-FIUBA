@@ -104,6 +104,12 @@ public class Jugador {
         return elementos.contains(unElemento);
     }
 
+    public boolean saldoSuficiente (int costo){
+        if(this.oro >= costo)
+            return true;
+        else
+            throw new OroInsuficienteError();
+    }
 
     public void crearAldeano(PlazaCentral unaPlaza) {
         Casillero salida = unaPlaza.getSalida();
@@ -163,16 +169,21 @@ public class Jugador {
     }
 
     public void construirPlazaCentral(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError, LugarOcupadoError {
+        this.saldoSuficiente(100);
         PlazaCentral unaPlaza = unAldeano.construirPlazaCentral(this);
         Coordenada poscInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unaPlaza,poscInicial);
+        this.pagar(100);
         elementos.add(unaPlaza);
+
     }
 
     public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError{
+        this.saldoSuficiente(100);//add
         Cuartel unCuartel = unAldeano.construirCuartel(this);
         Coordenada posInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unCuartel,posInicial);
+        this.pagar(100);//add
         elementos.add(unCuartel);
     }
 
