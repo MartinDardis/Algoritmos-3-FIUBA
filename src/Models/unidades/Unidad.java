@@ -16,7 +16,7 @@ public class Unidad implements Posicionable {
     protected int danioAUnidad;
     protected Jugador propietario;
     protected Casillero posicion;
-    protected EstadoUnidad estadoAtaque;
+    protected EstadoUnidad estadoAccion;
 
     public int getVida(){
         return this.vida;
@@ -70,10 +70,8 @@ public class Unidad implements Posicionable {
         if(nuevoCasillero.estaOcupado())
             throw new LugarOcupadoError();
 
-        this.posicion.remover();
-
-        nuevoCasillero.colocar(this);
-        this.posicion = nuevoCasillero;
+        this.estadoAccion.mover(this, nuevoCasillero);
+        this.estadoAccion = this.estadoAccion.actualizarEstado();
 
     }
 
@@ -82,9 +80,8 @@ public class Unidad implements Posicionable {
         if(distanciaHasta(otraUnidad) > this.rangoAtaque)
             throw new CasilleroAlejadoError();
 
-
-        this.estadoAtaque.atacar(otraUnidad, this.danioAUnidad);
-        this.estadoAtaque = this.estadoAtaque.actualizarEstado();
+        this.estadoAccion.atacar(otraUnidad, this.danioAUnidad);
+        this.estadoAccion = this.estadoAccion.actualizarEstado();
     }
 
     public void recibirDanio(int danio){

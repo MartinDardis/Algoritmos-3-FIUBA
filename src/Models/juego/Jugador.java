@@ -177,10 +177,15 @@ public class Jugador {
     }
 
     public void moverUnidad(Unidad unaUnidad, int x, int y) {
+
+        Coordenada destino = new Coordenada(x,y);
+        Casillero casilleroDestino = campo.obtenerCasillero(destino);
+        unaUnidad.mover(casilleroDestino);
+
     }
 
     public void atacarA(Unidad unidadActual, Unidad unidadEnemiga) {
-
+        unidadActual.atacar(unidadEnemiga);
     }
 
     public void destruirUnidad(Unidad unaUnidad){

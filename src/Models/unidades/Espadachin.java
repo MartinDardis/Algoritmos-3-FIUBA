@@ -12,7 +12,7 @@ public class Espadachin extends Unidad {
         this.danioAEdificio = 15;
         this.danioAUnidad = 25;
         this.rangoAtaque = 1;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para pruebas
@@ -20,7 +20,7 @@ public class Espadachin extends Unidad {
         this.vida = 100;
         this.propietario = jugador;
         this.rangoAtaque = 1;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para pruebas
@@ -30,7 +30,7 @@ public class Espadachin extends Unidad {
         this.danioAUnidad = 25;
         this.rangoAtaque = 1;
         this.posicion = casillero;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor utilizado
@@ -41,7 +41,7 @@ public class Espadachin extends Unidad {
         this.rangoAtaque = 1;
         this.posicion = casillero;
         this.propietario = jugador;
-        this.estadoAtaque = new EstadoDisponible();
+        this.estadoAccion = new EstadoDisponible();
     }
 
 

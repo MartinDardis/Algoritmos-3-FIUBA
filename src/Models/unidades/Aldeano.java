@@ -6,6 +6,7 @@ import Models.escenario.Casillero;
 import Models.juego.Jugador;
 import Models.unidades.errores.AldeanoOcupadoError;
 import Models.unidades.estadosAldeano.EstadoAldeano;
+import Models.unidades.estadosUnidad.EstadoDisponible;
 import Models.unidades.estadosAldeano.EstadoInactivo;
 import Models.edificios.Edificio;
 
@@ -17,6 +18,7 @@ public class Aldeano extends Unidad {
     public Aldeano() {
         this.vida = 50;
         this.estado = new EstadoInactivo();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para tests
@@ -24,6 +26,7 @@ public class Aldeano extends Unidad {
         this.propietario = jugador;
         this.vida = 50;
         this.estado = new EstadoInactivo();
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para tests
@@ -31,6 +34,7 @@ public class Aldeano extends Unidad {
 
         this.vida = 50;
         this.estado = new EstadoInactivo();
+        this.estadoAccion = new EstadoDisponible();
         this.posicion = casillero;
         this.posicion = casillero;
 
