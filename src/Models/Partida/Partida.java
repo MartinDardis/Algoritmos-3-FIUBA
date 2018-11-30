@@ -102,5 +102,13 @@ public class Partida {
         }
     }
 
+    public void ataqueCastillo(Castillo unCastillo){
+        ArrayList <Posicionable> listaAtacables = this.objetivosAtacables();
+        for (Posicionable atacable :listaAtacables) {
+
+        }
+
+    }
+
 
 }

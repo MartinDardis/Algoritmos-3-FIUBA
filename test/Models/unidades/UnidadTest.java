@@ -95,6 +95,7 @@ public class UnidadTest {
         Casillero casilleroOrigen = new Casillero(origen);
         Casillero casilleroDestino = new Casillero(destino);
 
+
         Unidad unaUnidad = new Aldeano(casilleroOrigen);
         casilleroOrigen.colocar(unaUnidad);
 

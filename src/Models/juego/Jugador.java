@@ -208,4 +208,7 @@ public class Jugador {
         elementos.remove(unaUnidad);
         this.disminuirPoblacion();
     }
+
+
+
 }

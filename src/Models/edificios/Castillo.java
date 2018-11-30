@@ -1,7 +1,9 @@
 package Models.edificios;
 
+import Models.Posicionable;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.Estados.EstadoVidaCompleta;
+import Models.escenario.Casillero;
 import Models.juego.Jugador;
 import Models.unidades.ArmaDeAsedio;
 
@@ -38,5 +40,16 @@ public class Castillo extends Edificio{
             return nuevaArmaDeAsedio;
     }
     public int getRangoAtaque(){return this.rangoAtaque;}
+
+    public boolean objetivoEnRango(Posicionable objetivo){
+        for (Casillero casillero : ubicacion){
+
+        }
+        return false;
+    }
+
+    public void atacar(Posicionable objetivo){
+
+    }
 
 }

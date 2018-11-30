@@ -14,7 +14,7 @@ public class EstadoDisponible implements EstadoUnidad{
     }
 
     public void mover(Unidad unidad, Casillero destino){
-        unidad.getCasillero().remover();
+        unidad.getCasillero().get(0).remover();
         destino.colocar(unidad);
         unidad.setCasillero(destino);
     }
