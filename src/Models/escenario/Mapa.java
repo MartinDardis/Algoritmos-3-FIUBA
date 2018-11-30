@@ -130,7 +130,7 @@ public class Mapa{
             throw new PosicionFueraDeCampoError();
 
         //Este if va a estar acá hasta que el edificio tenga su posicion o lista de posiciones
-        if(posicionEdificio.distanciaHasta(unAldeano.getCasillero().obtenerPosicion()) > 1)
+        if(posicionEdificio.distanciaHasta(unAldeano.getCasillero().get(0).obtenerPosicion()) > 1)
             throw new CasilleroAlejadoError();
 
 
@@ -143,7 +143,7 @@ public class Mapa{
 
     public void atacar(Unidad unaUnidad, Unidad otraUnidad) throws CasilleroAlejadoError,PosicionFueraDeCampoError, UnidadYaUtilizadaError{
 
-        if(!otraUnidad.getCasillero().obtenerPosicion().estaDentroDe(this.filas,this.columnas))
+        if(!otraUnidad.getCasillero().get(0).obtenerPosicion().estaDentroDe(this.filas,this.columnas))
             throw new PosicionFueraDeCampoError();
 
         unaUnidad.atacar(otraUnidad);

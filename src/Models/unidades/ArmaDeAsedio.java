@@ -8,6 +8,8 @@ import Models.unidades.estadosArmaAsedio.ArmaMontadaNoPuedeMoverseError;
 import Models.unidades.estadosUnidad.EstadoMontada;
 import Models.unidades.estadosUnidad.EstadoNoMontada;
 
+import java.util.ArrayList;
+
 public class ArmaDeAsedio extends Unidad{
 
     public ArmaDeAsedio(){
@@ -23,6 +25,7 @@ public class ArmaDeAsedio extends Unidad{
         this.estadoAccion =  new EstadoNoMontada();
         this.danioAEdificio = 75;
         this.danioAUnidad = 0; //No aplica, deberia lanzar excepcion cuando movamos el comportamiento aca
+        ubicacion = new ArrayList<Casillero>();
     }
 
     public void montar(){
@@ -38,15 +41,16 @@ public class ArmaDeAsedio extends Unidad{
         if (!estadoAccion.puedeMoverse()){
             throw new ArmaMontadaNoPuedeMoverseError();
         }
-        if(this.posicion.distanciaHasta(nuevoCasillero) > 1)
+        if(this.ubicacion.get(0).distanciaHasta(nuevoCasillero) > 1)
             throw new CasilleroAlejadoError();
         if(nuevoCasillero.estaOcupado())
             throw new LugarOcupadoError();
 
-        this.posicion.remover();
+        this.ubicacion.remove(this.ubicacion.get(0));
 
         nuevoCasillero.colocar(this);
-        this.posicion = nuevoCasillero;
+
+        this.ubicacion.add( nuevoCasillero);
 
     }
 

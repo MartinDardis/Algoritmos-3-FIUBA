@@ -10,6 +10,8 @@ import Models.unidades.estadosUnidad.EstadoDisponible;
 import Models.unidades.estadosAldeano.EstadoInactivo;
 import Models.edificios.Edificio;
 
+import java.util.ArrayList;
+
 public class Aldeano extends Unidad {
 
     private EstadoAldeano estado;
@@ -35,8 +37,8 @@ public class Aldeano extends Unidad {
         this.vida = 50;
         this.estado = new EstadoInactivo();
         this.estadoAccion = new EstadoDisponible();
-        this.posicion = casillero;
-        this.posicion = casillero;
+        ubicacion = new ArrayList<Casillero>();
+        this.ubicacion.add(casillero);
 
     }
 
@@ -45,7 +47,7 @@ public class Aldeano extends Unidad {
         this.propietario = jugador;
         this.vida = 50;
         this.estado = new EstadoInactivo();
-        this.posicion = casillero;
+        this.ubicacion.add(casillero);
     }
 
     public int generarOro() {

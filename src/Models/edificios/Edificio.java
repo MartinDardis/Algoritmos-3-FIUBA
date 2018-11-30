@@ -1,8 +1,6 @@
 package Models.edificios;
 import Models.Posicionable;
 import Models.edificios.Estados.EstadoReparacion;
-import Models.edificios.Estados.EstadoVidaCompleta;
-import Models.edificios.Estados.EstadoYaReparado;
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
 
@@ -92,4 +90,8 @@ public class Edificio implements Posicionable {
     }
 
     public int generarOro(){return 0;}
+
+    public ArrayList<Casillero> getCasillero(){
+        return this.ubicacion;
+    }
 }

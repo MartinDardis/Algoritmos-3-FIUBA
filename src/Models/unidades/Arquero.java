@@ -4,6 +4,8 @@ import Models.escenario.Casillero;
 import Models.juego.Jugador;
 import Models.unidades.estadosUnidad.*;
 
+import java.util.ArrayList;
+
 public class Arquero extends Unidad {
 
     //Constructor simplificado para pruebas
@@ -19,7 +21,8 @@ public class Arquero extends Unidad {
         this.vida = 75;
         this.danioAUnidad = 15;
         this.danioAEdificio = 10;
-        this.posicion = casillero;
+        ubicacion = new ArrayList<Casillero>();
+        this.ubicacion.add(casillero);
         this.rangoAtaque = 3;
         this.estadoAccion = new EstadoDisponible();
     }
@@ -38,7 +41,7 @@ public class Arquero extends Unidad {
         this.danioAUnidad = 15;
         this.danioAEdificio = 10;
         this.rangoAtaque = 3;
-        this.posicion = casillero;
+        this.ubicacion.add(casillero);
         this.propietario = jugador;
         this.estadoAccion = new EstadoDisponible();
     }

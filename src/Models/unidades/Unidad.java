@@ -7,6 +7,8 @@ import Models.escenario.errores.*;
 import Models.unidades.errores.*;
 import Models.unidades.estadosUnidad.EstadoUnidad;
 
+import java.util.ArrayList;
+
 
 public class Unidad implements Posicionable {
 
@@ -15,7 +17,7 @@ public class Unidad implements Posicionable {
     protected int danioAEdificio;
     protected int danioAUnidad;
     protected Jugador propietario;
-    protected Casillero posicion;
+    protected ArrayList<Casillero> ubicacion;
     protected EstadoUnidad estadoAccion;
 
     public int getVida(){
@@ -55,17 +57,19 @@ public class Unidad implements Posicionable {
         return danioAEdificio;
     }
 
-    public Casillero getCasillero() {
-        return posicion;
+    public ArrayList<Casillero> getCasillero() {
+        return ubicacion;
     }
 
     public void setCasillero(Casillero nuevoCasillero) {
-        this.posicion = nuevoCasillero;
+        ArrayList<Casillero> ubicaciones = new ArrayList<>();
+        ubicaciones.add(nuevoCasillero);
+        this.ubicacion = ubicaciones;
     }
 
     public void mover(Casillero nuevoCasillero)throws CasilleroAlejadoError, LugarOcupadoError {
 
-        if(this.posicion.distanciaHasta(nuevoCasillero) > 1)
+        if(this.ubicacion.get(0).distanciaHasta(nuevoCasillero) > 1)
             throw new CasilleroAlejadoError();
         if(nuevoCasillero.estaOcupado())
             throw new LugarOcupadoError();
@@ -89,8 +93,16 @@ public class Unidad implements Posicionable {
     }
 
     public int distanciaHasta(Unidad otraUnidad){
-
-        return otraUnidad.getCasillero().obtenerPosicion().distanciaHasta(this.getCasillero().obtenerPosicion());
+        ArrayList<Casillero> posiciones = otraUnidad.getCasillero();
+        Casillero posicionActual = this.getCasillero().get(0);
+        int menorDistancia = posiciones.get(0).distanciaHasta(posicionActual);
+        for (Casillero casilleros : posiciones) {
+            int distanciaActual = casilleros.distanciaHasta(posicionActual);
+            if (distanciaActual < menorDistancia){
+                menorDistancia = distanciaActual;
+            }
+        }
+        return menorDistancia;
 
     }
 

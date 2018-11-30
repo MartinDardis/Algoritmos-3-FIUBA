@@ -4,6 +4,8 @@ import Models.escenario.Casillero;
 import Models.juego.Jugador;
 import Models.unidades.estadosUnidad.EstadoDisponible;
 
+import java.util.ArrayList;
+
 public class Espadachin extends Unidad {
 
     //Constructor simplificado para pruebas
@@ -29,7 +31,8 @@ public class Espadachin extends Unidad {
         this.danioAEdificio = 15;
         this.danioAUnidad = 25;
         this.rangoAtaque = 1;
-        this.posicion = casillero;
+        ubicacion = new ArrayList<Casillero>();
+        this.ubicacion.add(casillero);
         this.estadoAccion = new EstadoDisponible();
     }
 
@@ -39,7 +42,7 @@ public class Espadachin extends Unidad {
         this.danioAEdificio = 15;
         this.danioAUnidad = 25;
         this.rangoAtaque = 1;
-        this.posicion = casillero;
+        this.ubicacion.add(casillero);
         this.propietario = jugador;
         this.estadoAccion = new EstadoDisponible();
     }
