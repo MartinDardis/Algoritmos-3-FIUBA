@@ -22,7 +22,9 @@ public class EstadoMontada implements EstadoUnidad {
     }
 
     @Override
-    public void atacar(Posicionable objetivo, int danio) {}
+    public void atacar(Posicionable objetivo, int danio) {
+        objetivo.recibirDanio(danio);
+    }
 
     public void mover(Unidad unidad, Casillero destino){}
 

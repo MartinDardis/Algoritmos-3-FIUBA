@@ -1,5 +1,6 @@
 package Models;
 
+import Models.edificios.Edificio;
 import Models.escenario.Casillero;
 
 import java.util.ArrayList;
