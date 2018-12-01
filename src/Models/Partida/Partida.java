@@ -40,7 +40,6 @@ public class Partida {
         jugador2.crearPlazaCentralInicial(campo.getFilas()-5,campo.getColumnas()-5);
         jugador2.crearAldeanosInicialesDesde(7,campo.getColumnas()-7);
 
-
     }
 
     //Getters para pruebas
@@ -65,6 +64,7 @@ public class Partida {
     //Realiza las acciones antes de terminar el turno del jugador actual
     public void terminarTurno() {
         actual.recolectarOro();
+        actual.realizarAtaqueCastillo(objetivosAtacables());
         this.actualizarActual();
     }
 
@@ -118,14 +118,5 @@ public class Partida {
 
         }
     }
-
-    public void ataqueCastillo(Castillo unCastillo){
-        ArrayList <Posicionable> listaAtacables = this.objetivosAtacables();
-        for (Posicionable atacable :listaAtacables) {
-            actual.atacarA(unCastillo,atacable);
-        }
-
-    }
-
 
 }

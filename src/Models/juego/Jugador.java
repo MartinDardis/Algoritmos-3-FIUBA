@@ -25,6 +25,7 @@ public class Jugador {
     private String nombre;
     private Mapa campo;
     private Jugador siguiente;
+    private Castillo castillo;
 
     //Constructor para pruebas y para el primer jugador instanciado
     public Jugador(String nuevoNombre, Mapa campo){
@@ -43,6 +44,7 @@ public class Jugador {
         this.campo = campo;
         this.siguiente = siguiente;
     }
+    
 
     public Jugador getSiguiente(){
         return this.siguiente;
@@ -120,6 +122,7 @@ public class Jugador {
         Casillero casilleroSalida = campo.obtenerCasillero(salida);
         castilloInicial.setSalida(casilleroSalida);
         elementos.add(castilloInicial);
+        castillo = castilloInicial;
         campo.colocarEdificio(castilloInicial,origen);
     }
 
@@ -241,5 +244,11 @@ public class Jugador {
     public void destruirUnidad(Unidad unaUnidad){
         elementos.remove(unaUnidad);
         this.disminuirPoblacion();
+    }
+
+    public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {
+        for (Posicionable atacable :listaAtacables) {
+            this.atacarA(castillo,atacable);
+        }
     }
 }
