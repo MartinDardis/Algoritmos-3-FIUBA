@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/logback-classic-jar-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ivy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ant-junit-jar-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/logback-core-jar-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-analysis-jar-5.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jetty-jar-6.1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mockito-all-jar-1.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ant-launcher-jar-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/oro-jar-2.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jaxen-jar-1.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/servlet-api-2.5-jar-6.1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ant-jar-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-tree-jar-5.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-lang3-jar-3.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/hamcrest-core-jar-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-jar-5.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-commons-jar-5.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jetty-util-jar-6.1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/cobertura-jar-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/junit-jar-4.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/slf4j-api-jar-1.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-util-jar-5.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
