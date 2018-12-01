@@ -28,6 +28,7 @@ public class ArmaDeAsedioTest {
         unAsedio.mover(destino);
     }
 
+
     @Test(expected = ArmaDesmontadaNoPuedeAtacarError.class)
     public void test03AtacarConArmaDesmontadaLanzaError(){
         ArmaDeAsedio unAsedio = new ArmaDeAsedio();
@@ -71,6 +72,5 @@ public class ArmaDeAsedioTest {
         unAsedio.montar();
         unAsedio.atacar(unAldeano);
     }
-
 
 }

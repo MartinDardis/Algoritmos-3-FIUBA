@@ -34,7 +34,7 @@ public class main extends Application {
         StackPane root = new StackPane();
         Scene scene = new Scene(root,800,600);
         scene.getStylesheets().add("Views/estilo.css");
-        Image fondo = new Image("Views/img/mainMenu.jpg");
+        Image fondo = new Image("Views/img/menuAlt.jpg");
         ImageView fnd = new ImageView(fondo);
         root.getChildren().add(fnd);
         Button botonIniciarJuego = new Button();
@@ -55,11 +55,12 @@ public class main extends Application {
         botonIniciarJuego.setTranslateX(-225);
         botonIniciarJuego.setTranslateY(250);
         botonSalir.setTranslateX(325);
-        botonSalir.setTranslateY(250);
+        botonSalir.setTranslateY(245);
         botonSalir.setMaxSize(120,50);
         botonIniciarJuego.setMaxSize(300,50);
         botonIniciarJuego.setText("Iniciar Partida");
         botonSalir.setText("Salir del juego");
+
         botonSalir.setOnAction(e -> Platform.exit());
         botonIniciarJuego.setPadding(new Insets(25));
         root.getChildren().add(botonIniciarJuego);
