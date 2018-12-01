@@ -22,10 +22,24 @@ public class Partida {
     public Partida(String jugadorUno, String jugadorDos) {
         campo = new Mapa();
         jugador1 = new Jugador(jugadorUno, campo);
-        jugador2 = new Jugador(jugadorDos, campo, jugador1);
+        jugador2 = new Jugador(jugadorDos, campo);
         jugador1.setSiguiente(jugador2);
+        jugador2.setSiguiente(jugador1);
         actual = jugador1;
+        inicializarPartida();
     }
+
+    private void inicializarPartida() {
+        int filaCentral = campo.getFilas()/2;
+        int colCentral = campo.getColumnas()/2;
+        jugador1.crearCastilloInicialEn(filaCentral,1);
+        jugador1.crearPlazaCentralInicial(4,4);
+
+        jugador2.crearCastilloInicialEn(10,10);
+        jugador2.crearPlazaCentralInicial(campo.getFilas()-5,campo.getColumnas()-5);
+
+    }
+
     //Getters para pruebas
     public Jugador getJugador1(){
         return jugador1;

@@ -112,6 +112,29 @@ public class Jugador {
             throw new OroInsuficienteError();
     }
 
+    public void crearCastilloInicialEn(int fila, int columna) {
+        Coordenada  origen = new Coordenada(fila,columna);
+        Castillo castilloInicial = new Castillo(this);
+        Coordenada salida = new Coordenada(fila,columna+castilloInicial.getAncho());
+
+        Casillero casilleroSalida = campo.obtenerCasillero(salida);
+        castilloInicial.setSalida(casilleroSalida);
+        elementos.add(castilloInicial);
+        campo.colocarEdificio(castilloInicial,origen);
+    }
+
+    public void crearPlazaCentralInicial(int fila, int columna){
+        Coordenada origen = new Coordenada(fila,columna);
+        PlazaCentral plazaInicial = new PlazaCentral(this);
+        Coordenada salida = new Coordenada( fila ,columna+plazaInicial.getAncho());
+
+        Casillero casilleroSalida = campo.obtenerCasillero(salida);
+        plazaInicial.setSalida(casilleroSalida);
+        elementos.add(plazaInicial);
+        campo.colocarEdificio(plazaInicial,origen);
+    }
+
+
     public void crearAldeano(PlazaCentral unaPlaza) {
         Casillero salida = unaPlaza.getSalida();
 
@@ -208,7 +231,5 @@ public class Jugador {
         elementos.remove(unaUnidad);
         this.disminuirPoblacion();
     }
-
-
 
 }
