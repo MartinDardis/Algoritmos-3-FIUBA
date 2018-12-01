@@ -26,7 +26,9 @@ public class EstadoMontada implements EstadoUnidad {
         objetivo.recibirDanio(danio);
     }
 
-    public void mover(Unidad unidad, Casillero destino){}
+    public void mover(Unidad unidad, Casillero destino){
+        throw new ArmaMontadaNoPuedeMoverseError();
+    }
 
     public EstadoUnidad montar(){
         throw new ArmaYaMontadaError();
