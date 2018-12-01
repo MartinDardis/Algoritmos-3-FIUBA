@@ -252,9 +252,11 @@ public class Jugador {
         unidadActual.atacar(unidadEnemiga);
     }
 
-    public void destruirUnidad(Unidad unaUnidad){
-        elementos.remove(unaUnidad);
-        this.disminuirPoblacion();
+    public void destruirPosicionable(Posicionable unPosicionable){
+        elementos.remove(unPosicionable);
+        if (unPosicionable.getClass() == Unidad.class){
+            this.disminuirPoblacion();
+        }
     }
 
     public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {
