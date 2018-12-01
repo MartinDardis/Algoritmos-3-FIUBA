@@ -89,6 +89,7 @@ public class CastilloTest {
         Coordenada origenCastillo = new Coordenada(0,0);
         unMapa.colocarEdificio(unCastillo,origenCastillo);
         PlazaCentral unaPlaza = new PlazaCentral(otroJugador);
+        unaPlaza.setEstadoReparacion( new EstadoVidaCompleta(unaPlaza.vidaMaxima));
         Coordenada origenPlaza = new Coordenada(4,4);
         unMapa.colocarEdificio(unaPlaza,origenPlaza);
 
