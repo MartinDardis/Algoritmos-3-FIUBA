@@ -67,8 +67,8 @@ public class Edificio implements Posicionable {
         this.estadoReparacion = this.estadoReparacion.actualizarEstado(this.vidaMaxima);
     }
 
-    public String perteneceA(){
-        return propietario.getNombre();
+    public Jugador perteneceA(){
+        return propietario;
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){

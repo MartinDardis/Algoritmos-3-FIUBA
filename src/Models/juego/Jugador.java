@@ -8,6 +8,7 @@ import Models.escenario.*;
 import Models.escenario.errores.LugarOcupadoError;
 import Models.juego.errores.NoHayPoblacionError;
 import Models.juego.errores.NoPerteneceAJugadorError;
+import Models.juego.errores.ObjetivoEsDelMismoJugadorError;
 import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
@@ -246,6 +247,8 @@ public class Jugador {
     }
 
     public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
+        if (unidadEnemiga.perteneceA() == this)
+            throw new ObjetivoEsDelMismoJugadorError();
         unidadActual.atacar(unidadEnemiga);
     }
 

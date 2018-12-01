@@ -34,8 +34,8 @@ public class Unidad implements Posicionable {
         return this.alto;
     }
 
-    public String perteneceA(){
-        return this.propietario.getNombre();
+    public Jugador perteneceA(){
+        return this.propietario;
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){

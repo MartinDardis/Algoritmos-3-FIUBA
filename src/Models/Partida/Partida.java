@@ -115,7 +115,7 @@ public class Partida {
     public void atacar(Unidad unidadActual, Posicionable unidadEnemiga){
         actual.atacarA(unidadActual,unidadEnemiga);
         if (unidadEnemiga.getVida() <= 0){
-            //actual.getSiguiente().destruirUnidad(unidadEnemiga);
+            //actual.getSiguiente().destruirUnidad(unidadEnemiga);//implementar en edificio
 
         }
     }
