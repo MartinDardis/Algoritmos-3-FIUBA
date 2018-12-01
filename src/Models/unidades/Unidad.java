@@ -1,6 +1,7 @@
 package Models.unidades;
 
 import Models.Posicionable;
+import Models.edificios.Edificio;
 import Models.juego.Jugador;
 import Models.escenario.*;
 import Models.escenario.errores.*;
@@ -33,8 +34,8 @@ public class Unidad implements Posicionable {
         return this.alto;
     }
 
-    public String perteneceA(){
-        return this.propietario.getNombre();
+    public Jugador perteneceA(){
+        return this.propietario;
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){
@@ -80,12 +81,17 @@ public class Unidad implements Posicionable {
 
     }
 
-    public void atacar(Posicionable otraUnidad) throws UnidadYaUtilizadaError {
+    public void atacar(Posicionable otroPosicionable) throws UnidadYaUtilizadaError {
 
-        if(distanciaHasta(otraUnidad) > this.rangoAtaque)
+        if(distanciaHasta(otroPosicionable) > this.rangoAtaque)
             throw new CasilleroAlejadoError();
+        if (otroPosicionable.getClass() == Edificio.class){
+            this.estadoAccion.atacar(otroPosicionable, this.danioAEdificio);
 
-        this.estadoAccion.atacar(otraUnidad, this.danioAUnidad);
+        }
+        else {
+            this.estadoAccion.atacar(otroPosicionable,this.danioAUnidad);
+        }
         this.estadoAccion = this.estadoAccion.actualizarEstado();
     }
 

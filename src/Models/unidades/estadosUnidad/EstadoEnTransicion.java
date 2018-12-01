@@ -19,7 +19,7 @@ public class EstadoEnTransicion implements EstadoUnidad {
     }
 
     public boolean puedeMoverse(){
-        return true;
+        return false;
     }
 
     public EstadoUnidad desmontar(){

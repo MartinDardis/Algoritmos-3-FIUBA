@@ -1,5 +1,6 @@
 package Models.edificios;
 import Models.Posicionable;
+import Models.edificios.Estados.EstadoEnConstruccion;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.escenario.Casillero;
 import Models.juego.Jugador;
@@ -22,6 +23,7 @@ public class Edificio implements Posicionable {
     //
 
     protected EstadoReparacion estadoReparacion;
+    protected int turnosRestantes;
 
     public int getAncho(){
         return this.ancho;
@@ -67,8 +69,8 @@ public class Edificio implements Posicionable {
         this.estadoReparacion = this.estadoReparacion.actualizarEstado(this.vidaMaxima);
     }
 
-    public String perteneceA(){
-        return propietario.getNombre();
+    public Jugador perteneceA(){
+        return propietario;
     }
 
     public boolean dentroRadioDeAtaque(int unaDistancia){
@@ -117,7 +119,12 @@ public class Edificio implements Posicionable {
     }
 
     public void restaurarEstados(){
+        this.estadoReparacion = this.estadoReparacion.actualizarEstado(vidaMaxima);
     }
 
 
+    protected boolean estaHabilitado() {
+        EstadoReparacion estadoActual = this.getEstadoReparacion();
+        return (estadoActual.getClass() != EstadoEnConstruccion.class);
+    }
 }

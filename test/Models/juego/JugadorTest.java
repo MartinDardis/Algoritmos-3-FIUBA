@@ -8,7 +8,10 @@ import Models.escenario.Coordenada;
 import Models.escenario.CoordenadaTest;
 import Models.escenario.Mapa;
 import Models.juego.errores.NoHayPoblacionError;
+import Models.juego.errores.ObjetivoEsDelMismoJugadorError;
 import Models.juego.errores.PoblacionMaximaError;
+import Models.unidades.Aldeano;
+import Models.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -182,6 +185,19 @@ public class JugadorTest {
 
 
         assertTrue(salida.estaOcupado());
+
+    }
+
+    @Test(expected = ObjetivoEsDelMismoJugadorError.class)
+    public void testAtacarUnidadPropiaLanzaExcepcion(){
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("nombre",unMapa);
+
+        Espadachin unEspadachin = new Espadachin(unJugador);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        unJugador.atacarA(unEspadachin,unAldeano);
+
 
     }
 }

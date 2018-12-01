@@ -8,6 +8,7 @@ import Models.escenario.*;
 import Models.escenario.errores.LugarOcupadoError;
 import Models.juego.errores.NoHayPoblacionError;
 import Models.juego.errores.NoPerteneceAJugadorError;
+import Models.juego.errores.ObjetivoEsDelMismoJugadorError;
 import Models.juego.errores.PoblacionMaximaError;
 import Models.unidades.*;
 import Models.edificios.*;
@@ -246,12 +247,16 @@ public class Jugador {
     }
 
     public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
+        if (unidadEnemiga.perteneceA() == this)
+            throw new ObjetivoEsDelMismoJugadorError();
         unidadActual.atacar(unidadEnemiga);
     }
 
-    public void destruirUnidad(Unidad unaUnidad){
-        elementos.remove(unaUnidad);
-        this.disminuirPoblacion();
+    public void destruirPosicionable(Posicionable unPosicionable){
+        elementos.remove(unPosicionable);
+        if (unPosicionable.getClass() == Unidad.class){
+            this.disminuirPoblacion();
+        }
     }
 
     public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {

@@ -1,6 +1,8 @@
 package Models;
 
+import Models.edificios.Edificio;
 import Models.escenario.Casillero;
+import Models.juego.Jugador;
 
 import java.util.ArrayList;
 
@@ -19,5 +21,6 @@ public interface Posicionable {
     void restaurarEstados();
     int getVida();
     void atacar(Posicionable unidadEnemiga);
+    Jugador perteneceA();
 
 }

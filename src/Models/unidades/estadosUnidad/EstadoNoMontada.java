@@ -32,6 +32,10 @@ public class EstadoNoMontada implements EstadoUnidad {
         throw new ArmaYaDesmontadaError();
     }
 
-    public void mover(Unidad unidad, Casillero destino){}
+    public void mover(Unidad unidad, Casillero destino){
+        unidad.getCasillero().get(0).remover();
+        destino.colocar(unidad);
+        unidad.setCasillero(destino);
+    }
 
 }

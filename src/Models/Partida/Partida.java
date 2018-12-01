@@ -3,9 +3,7 @@ package Models.Partida;
 import Models.Posicionable;
 import Models.edificios.Castillo;
 import Models.edificios.Cuartel;
-import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
-import Models.escenario.Casillero;
 import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
@@ -112,10 +110,10 @@ public class Partida {
         actual.moverUnidad(unaUnidad,x,y);
     }
 
-    public void atacar(Unidad unidadActual, Posicionable unidadEnemiga){
-        actual.atacarA(unidadActual,unidadEnemiga);
-        if (unidadEnemiga.getVida() <= 0){
-            //actual.getSiguiente().destruirUnidad(unidadEnemiga);
+    public void atacar(Unidad unidadActual, Posicionable posicionableEnemigo){
+        actual.atacarA(unidadActual,posicionableEnemigo);
+        if (posicionableEnemigo.getVida() <= 0){
+            actual.getSiguiente().destruirPosicionable(posicionableEnemigo);//implementar en edificio
 
         }
     }

@@ -5,6 +5,9 @@ import Models.edificios.Errores.EdificioYaReparadoError;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.Estados.*;
 
+import Models.escenario.Coordenada;
+import Models.escenario.Mapa;
+import Models.juego.Jugador;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -75,6 +78,29 @@ public class CastilloTest {
         unCastillo.reparar();
 
         assertEquals(unCastillo.getEstadoReparacion().getClass(), EstadoVidaCompleta.class);
+    }
+
+    @Test
+    public void Test07CastilloAtacaAEdificioSoloUnaVez(){//no ataca una vez por cada casillero que ocupa, solo una vez por edificio
+        Mapa unMapa = new Mapa();
+        Jugador unJugador = new Jugador("unNombre",unMapa);
+        Jugador otroJugador = new Jugador("otroNombre",unMapa);
+        Castillo unCastillo = new Castillo(unJugador);
+        Coordenada origenCastillo = new Coordenada(0,0);
+        unMapa.colocarEdificio(unCastillo,origenCastillo);
+        PlazaCentral unaPlaza = new PlazaCentral(otroJugador);
+        unaPlaza.setEstadoReparacion( new EstadoVidaCompleta(unaPlaza.vidaMaxima));
+        Coordenada origenPlaza = new Coordenada(4,4);
+        unMapa.colocarEdificio(unaPlaza,origenPlaza);
+
+        int vidaInicialPlaza = unaPlaza.getVida();
+
+        unCastillo.atacar(unaPlaza);
+        int vidaFinalPlaza = unaPlaza.getVida();
+        int ataqueCastillo = unCastillo.danioAEdificio;
+
+        assertEquals(vidaFinalPlaza, vidaInicialPlaza-ataqueCastillo);
+
     }
 
 }

@@ -3,6 +3,7 @@ package Models.Partida;
 import Models.Posicionable;
 import Models.edificios.Castillo;
 import Models.edificios.Errores.OroInsuficienteError;
+import Models.edificios.Estados.EdificioEnConstruccionError;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Casillero;
 import Models.escenario.Coordenada;
@@ -67,6 +68,9 @@ public class PartidaTest {
     public void testPlazaCentralCreaUnAldeano(){
         Partida partida = new Partida("uno","dos");
         Posicionable plazaJugador1 = partida.obtenerElementoEn(new Coordenada(4,4));
+        for (int i = 0; i<6; i++){//3 turnos propios pasan para habilitar el edificio
+            partida.terminarTurno();
+        }
 
         partida.crearAldeano((PlazaCentral)plazaJugador1);
         Coordenada salida = new Coordenada(4,6);
@@ -77,5 +81,11 @@ public class PartidaTest {
         assertEquals(dePrueba.getClass(),aldeanoCreado.getClass());
 
     }
+    @Test(expected = EdificioEnConstruccionError.class)
+    public void testEdificioEnConstruccionLanzaErrorAlPedirleCrear(){
+        Partida partida = new Partida("uno","dos");
+        Posicionable plazaJugadorUno = partida.obtenerElementoEn(new Coordenada(4,4));
 
+        partida.crearAldeano((PlazaCentral) plazaJugadorUno);
+    }
 }
