@@ -12,9 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import javafx.scene.control.*;
+
+
+import java.io.File;
 
 import static java.awt.Color.orange;
 
@@ -22,6 +27,7 @@ import static java.awt.Color.orange;
 
 public class main extends Application {
 
+    public static MediaPlayer mainMenuMusic;
 
     public void start(Stage ventana){
         ventana.setTitle("AlgoEmpire");
@@ -36,6 +42,14 @@ public class main extends Application {
         Button botonSalir = new Button();
         botonSalir.getStyleClass().add("botonSalir");
 
+        File musicaPrincipal = new File("src/Views/sonido/musicaMenuPrincipal.mp3");
+        Media musicaFondo = new Media(musicaPrincipal.toURI().toString());
+        mainMenuMusic = new MediaPlayer(musicaFondo);
+        mainMenuMusic.setAutoPlay(true);
+        mainMenuMusic.setVolume(0.5);
+        mainMenuMusic.setCycleCount(mainMenuMusic.INDEFINITE);
+
+        mainMenuMusic.play();
 
 
         botonIniciarJuego.setTranslateX(-225);
