@@ -99,6 +99,14 @@ public class Jugador {
         }
     }
 
+    public void restaurarEstados(){
+
+        for (Posicionable elem: elementos ) {
+           elem.restaurarEstados();
+        }
+
+    }
+
     public ArrayList<Posicionable> listaElementos() {
         return elementos;
     }
@@ -251,4 +259,5 @@ public class Jugador {
             this.atacarA(castillo,atacable);
         }
     }
+
 }

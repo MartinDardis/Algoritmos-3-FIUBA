@@ -6,6 +6,7 @@ import Models.escenario.*;
 import Models.escenario.errores.*;
 import Models.unidades.errores.*;
 import Models.unidades.estadosUnidad.EstadoUnidad;
+import Models.unidades.estadosUnidad.EstadoDisponible;
 
 import java.util.ArrayList;
 
@@ -103,7 +104,10 @@ public class Unidad implements Posicionable {
             }
         }
         return menorDistancia;
+    }
 
+    public void restaurarEstados(){
+        this.estadoAccion = new EstadoDisponible();
     }
 
 

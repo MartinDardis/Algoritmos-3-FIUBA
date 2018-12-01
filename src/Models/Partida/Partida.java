@@ -6,6 +6,7 @@ import Models.edificios.Cuartel;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.edificios.PlazaCentral;
 import Models.escenario.Casillero;
+import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.*;
@@ -65,6 +66,7 @@ public class Partida {
     public void terminarTurno() {
         actual.recolectarOro();
         actual.realizarAtaqueCastillo(objetivosAtacables());
+        actual.restaurarEstados();
         this.actualizarActual();
     }
 
@@ -110,13 +112,16 @@ public class Partida {
         actual.moverUnidad(unaUnidad,x,y);
     }
 
-
     public void atacar(Unidad unidadActual, Posicionable unidadEnemiga){
         actual.atacarA(unidadActual,unidadEnemiga);
         if (unidadEnemiga.getVida() <= 0){
             //actual.getSiguiente().destruirUnidad(unidadEnemiga);
 
         }
+    }
+
+    public Posicionable obtenerElementoEn(Coordenada unaPosc){
+        return campo.obtener(unaPosc);
     }
 
 }

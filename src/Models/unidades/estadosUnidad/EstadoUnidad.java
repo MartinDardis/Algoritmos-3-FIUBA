@@ -10,5 +10,7 @@ public interface EstadoUnidad {
     void mover(Unidad unidad, Casillero destino);
     EstadoUnidad actualizarEstado();
     boolean puedeMoverse();
+    EstadoUnidad montar();
+    EstadoUnidad desmontar();
 
 }

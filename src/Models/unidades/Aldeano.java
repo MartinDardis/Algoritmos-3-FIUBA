@@ -14,12 +14,12 @@ import java.util.ArrayList;
 
 public class Aldeano extends Unidad {
 
-    private EstadoAldeano estado;
+    private EstadoAldeano estadoReparacion;
 
     //Constructor simplificado para tests
     public Aldeano() {
         this.vida = 50;
-        this.estado = new EstadoInactivo();
+        this.estadoReparacion = new EstadoInactivo();
         this.estadoAccion = new EstadoDisponible();
     }
 
@@ -27,7 +27,7 @@ public class Aldeano extends Unidad {
     public Aldeano(Jugador jugador) {
         this.propietario = jugador;
         this.vida = 50;
-        this.estado = new EstadoInactivo();
+        this.estadoReparacion = new EstadoInactivo();
         this.estadoAccion = new EstadoDisponible();
     }
 
@@ -35,7 +35,7 @@ public class Aldeano extends Unidad {
     public Aldeano(Casillero casillero){
 
         this.vida = 50;
-        this.estado = new EstadoInactivo();
+        this.estadoReparacion = new EstadoInactivo();
         this.estadoAccion = new EstadoDisponible();
         ubicacion = new ArrayList<Casillero>();
         this.ubicacion.add(casillero);
@@ -46,40 +46,46 @@ public class Aldeano extends Unidad {
     public Aldeano(Jugador jugador, Casillero casillero){
         this.propietario = jugador;
         this.vida = 50;
-        this.estado = new EstadoInactivo();
+        this.estadoReparacion = new EstadoInactivo();
         this.ubicacion.add(casillero);
     }
 
     public int generarOro() {
-        return this.estado.generarOro();
+        return this.estadoReparacion.generarOro();
     }
 
-    public void setEstado(EstadoAldeano unEstado) {
-        this.estado = unEstado;
+    public void setEstadoReparacion(EstadoAldeano unEstado) {
+        this.estadoReparacion = unEstado;
     }
 
 
-    public EstadoAldeano getEstado() {
-        return this.estado;
+    public EstadoAldeano getEstadoReparacion() {
+        return this.estadoReparacion;
     }
 
     public void reparar(Edificio unEdificio){
 
-        EstadoAldeano estado = this.estado.reparar(unEdificio);
-        this.estado = estado;
+        EstadoAldeano estado = this.estadoReparacion.reparar(unEdificio);
+        this.estadoReparacion = estado;
     }
 
     public PlazaCentral construirPlazaCentral(Jugador jugador)throws AldeanoOcupadoError {
-        return this.estado.costruirPlazaCentral(jugador);
+        return this.estadoReparacion.costruirPlazaCentral(jugador);
     }
 
     public Cuartel construirCuartel(Jugador jugador)throws AldeanoOcupadoError{
-        return this.estado.construirCuartel(jugador);
+        return this.estadoReparacion.construirCuartel(jugador);
     }
 
 
     public void comenzarConstruccion()throws AldeanoOcupadoError {
-        EstadoAldeano estadoNew = this.estado.comenzarConstruccion();
-        this.estado = estadoNew;
+        EstadoAldeano estadoNew = this.estadoReparacion.comenzarConstruccion();
+        this.estadoReparacion = estadoNew;
+    }
+
+    @Override
+    public void restaurarEstados(){
+        this.estadoAccion = new EstadoDisponible();
+        this.estadoReparacion = this.estadoReparacion.actualizarEstado();
     }
 }

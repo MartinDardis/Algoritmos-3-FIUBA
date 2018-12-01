@@ -114,7 +114,10 @@ public class Edificio implements Posicionable {
             }
         }
         return menorDistancia;
-
     }
+
+    public void restaurarEstados(){
+    }
+
 
 }

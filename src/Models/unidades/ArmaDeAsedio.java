@@ -4,8 +4,9 @@ import Models.escenario.Casillero;
 import Models.escenario.errores.CasilleroAlejadoError;
 import Models.escenario.errores.LugarOcupadoError;
 import Models.juego.Jugador;
-import Models.unidades.estadosArmaAsedio.ArmaMontadaNoPuedeMoverseError;
-import Models.unidades.estadosUnidad.EstadoMontada;
+import Models.unidades.errores.ArmaMontadaNoPuedeMoverseError;
+import Models.unidades.estadosAldeano.EstadoInactivo;
+import Models.unidades.estadosUnidad.EstadoDisponible;
 import Models.unidades.estadosUnidad.EstadoNoMontada;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class ArmaDeAsedio extends Unidad{
         this.rangoAtaque = 5;
         this.danioAUnidad = 0;
         this.estadoAccion = new EstadoNoMontada();
-
     }
+
     public ArmaDeAsedio(Jugador jugador){
         this.propietario = jugador;
         this.vida = 150;
@@ -29,11 +30,11 @@ public class ArmaDeAsedio extends Unidad{
     }
 
     public void montar(){
-        this.estadoAccion = new EstadoMontada();
+        this.estadoAccion = this.estadoAccion.montar();
     }
 
     public void desmontar(){
-        this.estadoAccion = new EstadoNoMontada();
+        this.estadoAccion = this.estadoAccion.desmontar();
     }
 
     @Override
@@ -51,7 +52,12 @@ public class ArmaDeAsedio extends Unidad{
         nuevoCasillero.colocar(this);
 
         this.ubicacion.add( nuevoCasillero);
+    }
 
+
+    @Override
+    public void restaurarEstados(){
+        this.estadoAccion = this.estadoAccion.actualizarEstado();
     }
 
 }

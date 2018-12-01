@@ -20,4 +20,15 @@ public class EstadoInutilizable implements EstadoUnidad {
     public boolean puedeMoverse() {
         return false;
     }
+
+    public EstadoUnidad desmontar(){
+        throw new EstadoMalConfiguradoError();
+    }
+
+    public EstadoUnidad montar(){
+        throw new EstadoMalConfiguradoError();
+    }
+
+
+
 }
