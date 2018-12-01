@@ -21,7 +21,7 @@ public class main extends Application {
         ventana.setTitle("AlgoEmpire");
         StackPane root = new StackPane();
         Scene scene = new Scene(root,800,600);
-        Image fondo = new Image("https://i.blogs.es/ad63cd/190218-xataka-age/800_600.jpg");
+        Image fondo = new Image("Views/img/mainMenu.jpg");
         ImageView fnd = new ImageView(fondo);
         root.getChildren().add(fnd);
         Button boton = new Button();
