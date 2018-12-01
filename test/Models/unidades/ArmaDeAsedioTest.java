@@ -2,11 +2,9 @@ package Models.unidades;
 
 import Models.escenario.Casillero;
 import Models.escenario.Coordenada;
-import Models.unidades.estadosArmaAsedio.ArmaDesmontadaNoPuedeAtacarError;
-import Models.unidades.estadosArmaAsedio.ArmaMontadaNoPuedeMoverseError;
-import Models.unidades.estadosUnidad.EstadoNoMontada;
+import Models.unidades.errores.*;
+import Models.unidades.errores.ArmaDesmontadaNoPuedeAtacarError;
 import org.junit.Test;
-import sun.util.resources.cldr.so.CalendarData_so_DJ;
 
 import static org.junit.Assert.*;
 
@@ -23,9 +21,9 @@ public class ArmaDeAsedioTest {
     public void test02MoverArmaMontadaLanzaError(){
         ArmaDeAsedio unAsedio = new ArmaDeAsedio();
         unAsedio.montar();
+        unAsedio.restaurarEstados();
         Coordenada posDestino = new Coordenada(5,5);
         Casillero destino = new Casillero(posDestino);
-
         unAsedio.mover(destino);
     }
 

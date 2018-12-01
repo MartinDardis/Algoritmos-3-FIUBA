@@ -65,6 +65,7 @@ public class Partida {
     public void terminarTurno() {
         actual.recolectarOro();
         actual.realizarAtaqueCastillo(objetivosAtacables());
+        actual.restaurarEstados();
         this.actualizarActual();
     }
 

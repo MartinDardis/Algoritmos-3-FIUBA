@@ -3,7 +3,6 @@ package Models.unidades;
 import Models.edificios.*;
 import Models.edificios.Estados.*;
 import Models.edificios.Errores.*;
-import Models.unidades.errores.*;
 import Models.unidades.estadosAldeano.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -27,7 +26,7 @@ public class AldeanoTest {
         unCuartel.setEstadoReparacion(new EstadoDaniado(150));
         unAldeano.reparar(unCuartel);
 
-        EstadoAldeano estadoActual = unAldeano.getEstado();
+        EstadoAldeano estadoActual = unAldeano.getEstadoReparacion();
 
         assertTrue(estadoActual instanceof EstadoConstructor);
     }

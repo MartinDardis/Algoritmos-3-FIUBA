@@ -16,8 +16,8 @@ public interface Posicionable {
     int getRangoAtaque();
     int generarOro();
     ArrayList<Casillero> getCasillero();
-
+    void restaurarEstados();
     int getVida();
-
     void atacar(Posicionable unidadEnemiga);
+
 }
