@@ -135,6 +135,17 @@ public class Jugador {
     }
 
 
+    public void crearAldeanosInicialesDesde(int fila, int col) {
+        int cantAldeanosIniciales = 3;
+        for (int i = 0 ; i<cantAldeanosIniciales ;i++ ){
+            Coordenada origen = new Coordenada(fila+i,col);
+            Aldeano nuevoAldeano = new Aldeano(this);
+            elementos.add(nuevoAldeano);
+            campo.colocarUnidad(nuevoAldeano,origen);
+            this.incrementarPoblacion();
+        }
+    }
+
     public void crearAldeano(PlazaCentral unaPlaza) {
         Casillero salida = unaPlaza.getSalida();
 
@@ -231,5 +242,4 @@ public class Jugador {
         elementos.remove(unaUnidad);
         this.disminuirPoblacion();
     }
-
 }

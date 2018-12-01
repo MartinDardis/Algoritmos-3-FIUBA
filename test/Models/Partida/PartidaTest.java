@@ -29,7 +29,14 @@ public class PartidaTest {
 
         assertEquals(poblacionFinal, poblacionInicial + 1);
 
+    }
+    @Test
+    public void testInicializarPartidaGeneraTresAldeanos(){
+        Partida partida = new Partida("uno","dos");
+        int poblacionJugador = partida.getJugador1().getPoblacionActual();
+        int poblacionEsperada = 3;
 
+        assertEquals(poblacionJugador,poblacionEsperada);
     }
 
 }
