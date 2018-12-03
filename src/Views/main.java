@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.*;
 
+import Controllers.*;
+
 
 import java.io.File;
 
@@ -30,41 +32,46 @@ public class main extends Application {
     public static MediaPlayer mainMenuMusic;
 
     public void start(Stage ventana){
+
         ventana.setTitle("AlgoEmpire");
+
         StackPane root = new StackPane();
         Scene scene = new Scene(root,800,600);
         scene.getStylesheets().add("Views/estilo.css");
+
         Image fondo = new Image("Views/img/menuAlt.jpg");
         ImageView fnd = new ImageView(fondo);
-        root.getChildren().add(fnd);
+
+        //Seteo Boton de Iniciar Juego
         Button botonIniciarJuego = new Button();
         botonIniciarJuego.getStyleClass().add("botonInicio");
+        botonIniciarJuego.setText("Iniciar Partida");
+        botonIniciarJuego.setTranslateX(-225);
+        botonIniciarJuego.setTranslateY(250);
+        botonIniciarJuego.setMaxSize(300,50);
+        botonIniciarJuego.setPadding(new Insets(25));
+        botonIniciarJuego.setOnAction(new BotonInicioHandler(ventana));
+
+        //Seteo Boton de Salir
         Button botonSalir = new Button();
         botonSalir.getStyleClass().add("botonSalir");
+        botonSalir.setText("Salir del juego");
+        botonSalir.setTranslateX(325);
+        botonSalir.setTranslateY(245);
+        botonSalir.setMaxSize(120,50);
+        botonSalir.setOnAction(e -> Platform.exit());
 
+        //Seteo Sonido
         File musicaPrincipal = new File("src/Views/sonido/musicaMenuPrincipal.mp3");
         Media musicaFondo = new Media(musicaPrincipal.toURI().toString());
         mainMenuMusic = new MediaPlayer(musicaFondo);
         mainMenuMusic.setAutoPlay(true);
         mainMenuMusic.setVolume(0.5);
         mainMenuMusic.setCycleCount(mainMenuMusic.INDEFINITE);
-
         mainMenuMusic.play();
 
+        root.getChildren().addAll(fnd, botonIniciarJuego, botonSalir);
 
-        botonIniciarJuego.setTranslateX(-225);
-        botonIniciarJuego.setTranslateY(250);
-        botonSalir.setTranslateX(325);
-        botonSalir.setTranslateY(245);
-        botonSalir.setMaxSize(120,50);
-        botonIniciarJuego.setMaxSize(300,50);
-        botonIniciarJuego.setText("Iniciar Partida");
-        botonSalir.setText("Salir del juego");
-
-        botonSalir.setOnAction(e -> Platform.exit());
-        botonIniciarJuego.setPadding(new Insets(25));
-        root.getChildren().add(botonIniciarJuego);
-        root.getChildren().add(botonSalir);
         ventana.setScene(scene);
         ventana.show();
     }
