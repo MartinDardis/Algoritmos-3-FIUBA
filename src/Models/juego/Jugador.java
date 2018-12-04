@@ -23,6 +23,7 @@ public class Jugador {
     private int poblacionActual;//Array de unidades ?
     
     private ArrayList<Posicionable> elementos;
+
     private String nombre;
     private Mapa campo;
     private Jugador siguiente;
@@ -253,10 +254,16 @@ public class Jugador {
     }
 
     public void destruirPosicionable(Posicionable unPosicionable){
+        ArrayList<Casillero> casillerosQueOcupa = unPosicionable.getCasillero();
+        for (Casillero unCasillero : casillerosQueOcupa ){
+            Coordenada unaCoord = unCasillero.obtenerPosicion();
+            campo.remover(unaCoord);
+        }
         elementos.remove(unPosicionable);
         if (unPosicionable.getClass() == Unidad.class){
             this.disminuirPoblacion();
         }
+
     }
 
     public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {

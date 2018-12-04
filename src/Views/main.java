@@ -76,6 +76,7 @@ public class main extends Application {
 
         ventana.setScene(scene);
         ventana.show();
+
     }
 
     public static void main(){

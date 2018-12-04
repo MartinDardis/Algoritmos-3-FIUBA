@@ -17,6 +17,8 @@ import Models.unidades.Aldeano;
 import Models.edificios.Castillo;
 import Models.edificios.PlazaCentral;
 
+import java.awt.*;
+
 public class PantallaPrincipal extends StackPane{
 
     private Stage ventana;
@@ -56,11 +58,13 @@ public class PantallaPrincipal extends StackPane{
                     actual.setStyle("-fx-background-color: #20B2AA; -fx-border-color: #000000;");
                     actual.setTextAlignment(TextAlignment.CENTER);
                     actual.setText("A");
+
                 }
                 else if(entidad instanceof Castillo) {
                     actual.setStyle("-fx-background-color: #808080; -fx-border-color: #000000;");
                     actual.setTextAlignment(TextAlignment.CENTER);
                     actual.setText("C");
+
                 }
                 else if(entidad instanceof PlazaCentral) {
                     actual.setStyle("-fx-background-color: #FFDEAD; -fx-border-color: #000000;");
@@ -70,9 +74,9 @@ public class PantallaPrincipal extends StackPane{
                 else {
                     actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
                 }
-                actual.setTranslateX((j*20)+1-220);
-                actual.setTranslateY((i*20)+1-250);
-                actual.setMaxSize(20,20);
+                actual.setTranslateX((j*40)+1-480);
+                actual.setTranslateY((i*40)+1-480);
+                actual.setMaxSize(40,40);
 
                 getChildren().add(actual);
             }

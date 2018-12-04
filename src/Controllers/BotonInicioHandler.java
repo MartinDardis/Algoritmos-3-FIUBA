@@ -27,7 +27,8 @@ public class BotonInicioHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent e){
 
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal(this.ventana, this.partida);
-        this.ventana.setScene(new Scene(pantallaPrincipal,800,600));
+        this.ventana.setScene(new Scene(pantallaPrincipal,1920  ,1080));
+        ventana.setFullScreen(true);
 //        pantallaPrincipal.cargarCampo();
 
     }
