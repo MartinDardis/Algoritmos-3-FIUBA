@@ -15,10 +15,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
 import javafx.scene.control.*;
 
 import Controllers.*;
+import Models.Partida.Partida;
 
 
 import java.io.File;
@@ -32,6 +32,8 @@ public class main extends Application {
     public static MediaPlayer mainMenuMusic;
 
     public void start(Stage ventana){
+
+        Partida partidaEnCurso = new Partida("Algo","Ritmos");
 
         ventana.setTitle("AlgoEmpire");
 
@@ -50,7 +52,7 @@ public class main extends Application {
         botonIniciarJuego.setTranslateY(250);
         botonIniciarJuego.setMaxSize(300,50);
         botonIniciarJuego.setPadding(new Insets(25));
-        botonIniciarJuego.setOnAction(new BotonInicioHandler(ventana));
+        botonIniciarJuego.setOnAction(new BotonInicioHandler(ventana, partidaEnCurso));
 
         //Seteo Boton de Salir
         Button botonSalir = new Button();
