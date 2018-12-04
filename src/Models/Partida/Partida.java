@@ -35,7 +35,7 @@ public class Partida {
         jugador1.crearPlazaCentralInicial(4,4);
         jugador1.crearAldeanosInicialesDesde(7,7);
 
-        jugador2.crearCastilloInicialEn(10,10);
+        jugador2.crearCastilloInicialEn(filaCentral,15);
         jugador2.crearPlazaCentralInicial(campo.getFilas()-5,campo.getColumnas()-5);
         jugador2.crearAldeanosInicialesDesde(7,campo.getColumnas()-7);
 
