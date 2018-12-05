@@ -6,10 +6,7 @@ import Models.Partida.SalidaOcupadaError;
 import Models.Posicionable;
 import Models.escenario.*;
 import Models.escenario.errores.LugarOcupadoError;
-import Models.juego.errores.NoHayPoblacionError;
-import Models.juego.errores.NoPerteneceAJugadorError;
-import Models.juego.errores.ObjetivoEsDelMismoJugadorError;
-import Models.juego.errores.PoblacionMaximaError;
+import Models.juego.errores.*;
 import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
@@ -240,11 +237,17 @@ public class Jugador {
     }
 
     public void moverUnidad(Unidad unaUnidad, int x, int y) {
-
+        if (! soyPropietario(unaUnidad)){
+            throw new UnidadEnemigaNoPuedeUsarseError();
+        }
         Coordenada destino = new Coordenada(x,y);
         Casillero casilleroDestino = campo.obtenerCasillero(destino);
         unaUnidad.mover(casilleroDestino);
 
+    }
+
+    private boolean soyPropietario(Unidad unaUnidad) {
+        return this.elementos.contains(unaUnidad);
     }
 
     public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
