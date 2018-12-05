@@ -31,13 +31,13 @@ public class BotonCasillero extends Button {
 
     public void aplicarEstilo(){
 
+        this.setStyle(null);//vacia las propiedades sin problemas
+        this.getStyleClass().clear();
         if(entidad instanceof Aldeano) {
             //Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
             //this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
-            this.setStyle(null);//vacia las propiedades sin problemas
-            this.getStyleClass().clear();
             this.getStyleClass().add("aldeano");
 
         }
@@ -45,11 +45,12 @@ public class BotonCasillero extends Button {
             //Image fondo = new Image("Views/img/castillo.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: #234562; -fx-border-color: #000000;");
+            this.getStyleClass().add("castillo");
 
         }
         else if(entidad instanceof PlazaCentral) {
-            this.setStyle("-fx-background-color: #FFDEAD; -fx-border-color: #000000;");
+            this.setPadding(new Insets(-5,-5,-5,-5));
+            this.getStyleClass().add("plaza");
             //this.setTextAlignment(TextAlignment.CENTER);
             //this.setText("P");
         }
@@ -63,11 +64,20 @@ public class BotonCasillero extends Button {
     }
 
     public void aplicarEstiloActivo(){
+
         this.setPadding(new Insets(-5,-5,-5,-5));
+        this.setStyle(null);
         if (entidad instanceof Aldeano){
-            this.setStyle(null);
             this.getStyleClass().add("aldeanoSeleccionado");
         }
+
+        else if (entidad instanceof Castillo){
+            this.getStyleClass().add("castilloSeleccionado");
+        }
+        else if (entidad instanceof PlazaCentral){
+            this.getStyleClass().add("plazaSeleccionada");
+        }
+        else this.aplicarEstilo();
 
     }
 

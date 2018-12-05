@@ -88,7 +88,7 @@ public class PantallaPrincipal extends StackPane{
                 actual.setTranslateY((i*25)+1-300);
                 actual.setMaxSize(25,25);
                 getChildren().add(actual);
-                this.setStyle("-fx-background-color: #000000");
+                this.setStyle("-fx-background-color: antiquewhite");
             }
         }
     }
