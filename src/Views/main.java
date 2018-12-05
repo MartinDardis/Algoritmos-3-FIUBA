@@ -40,8 +40,6 @@ public class main extends Application {
         Scene scene = new Scene(root,1000,680);
         scene.getStylesheets().add("Views/estilo.css");
 
-
-
         Image fondo = new Image("Views/img/menuCampos.jpg");
         ImageView fnd = new ImageView(fondo);
         //texto

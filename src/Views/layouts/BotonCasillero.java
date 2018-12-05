@@ -66,5 +66,33 @@ public class BotonCasillero extends Button {
         return new Coordenada(this.coordenada.getFila(), this.coordenada.getColumna()+1);
     }
 
+    public Coordenada coordenadaIzquierda(){
+        return new Coordenada(this.coordenada.getFila(), this.coordenada.getColumna()-1);
+    }
+
+    public Coordenada coordenadaArriba(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna());
+    }
+
+    public Coordenada coordenadaAbajo(){
+        return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna());
+    }
+
+    public Coordenada coordenadaDiagonalSuperiorDerecha(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()+1);
+    }
+
+    public Coordenada coordenadaDiagonalSuperiorIzquierda(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()-1);
+    }
+
+    public Coordenada coordenadaDiagonalInferiorDerecha(){
+        return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna()+1);
+    }
+
+    public Coordenada coordenadaDiagonalInferiorIzquierda(){
+        return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna()-1);
+    }
+
 
 }
