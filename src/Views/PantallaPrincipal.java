@@ -10,8 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Insets;
 
-
-
 import Controllers.*;
 import Views.layouts.*;
 
@@ -30,6 +28,7 @@ public class PantallaPrincipal extends StackPane{
     private Stage ventana;
     private BotonCasillero[] casilleros;
     private Partida partida;
+    private BotonCasillero casilleroActual;
 
     public PantallaPrincipal(Stage ventana, Partida partida) {
 
@@ -38,16 +37,31 @@ public class PantallaPrincipal extends StackPane{
         this.dibujarCampo();
         this.cargarBotonera();
      //   this.cargarCampo();
-
     }
 
+    public void setActual(BotonCasillero unCasillero){
+        this.casilleroActual = unCasillero;
+    }
+
+    public BotonCasillero getActual(){
+        return this.casilleroActual;
+    }
+
+
     private void cargarBotonera() {
+
         Button botonPasarTurno = new Button("Pasar turno");
-        botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida));
+        botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida, this));
         getChildren().add(botonPasarTurno);
-        botonPasarTurno.setTranslateX(700);
+        botonPasarTurno.setTranslateX(300);
         botonPasarTurno.getStyleClass().add("botonInicio");
 
+        Button botonMovimientoDerecha = new Button(" -> ");
+        botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
+        getChildren().add(botonMovimientoDerecha);
+        botonMovimientoDerecha.setTranslateX(300);
+        botonMovimientoDerecha.setTranslateY(200);
+        botonMovimientoDerecha.getStyleClass().add("botonInicio");
 
     }
 
@@ -70,11 +84,11 @@ public class PantallaPrincipal extends StackPane{
                 actual.setOnAction(new BotonCasilleroHandler(actual, this.partida, this));
 
                 actual.aplicarEstilo();
-                actual.setTranslateX((j*40)+1-480);
-                actual.setTranslateY((i*40)+1-480);
-                actual.setMaxSize(40,40);
+                actual.setTranslateX((j*25)+1-450);
+                actual.setTranslateY((i*25)+1-300);
+                actual.setMaxSize(25,25);
                 getChildren().add(actual);
-                this.setStyle("-fx-background-color: antiquewhite");
+                this.setStyle("-fx-background-color: #000000");
             }
         }
     }

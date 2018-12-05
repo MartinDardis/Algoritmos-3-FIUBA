@@ -27,8 +27,10 @@ public class BotonCasilleroHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent e){
-        this.partida.moverUnidad((Unidad) this.boton.Posicionable(), this.boton.coordenadaDerecha());
-        screen.dibujarCampo();
+        //this.partida.moverUnidad((Unidad) this.boton.Posicionable(), this.boton.coordenadaDerecha());
+        this.screen.setActual(this.boton);
+        this.boton.setStyle("-fx-background-color: #ff0000; ");
+        //screen.dibujarCampo();
        // this.boton.setStyle("-fx-background-color: #ff0000; ");
     }
 

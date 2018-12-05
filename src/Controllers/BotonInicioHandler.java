@@ -26,10 +26,10 @@ public class BotonInicioHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e){
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal(this.ventana, this.partida);
-        Scene escena = new Scene(pantallaPrincipal,1920,1080);
+        Scene escena = new Scene(pantallaPrincipal,1000,680);
         escena.getStylesheets().add("Views/estilo.css");
         this.ventana.setScene(escena);
-        ventana.setFullScreen(true);
+        //ventana.setFullScreen(true);
 
     }
 

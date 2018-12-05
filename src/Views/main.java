@@ -37,7 +37,7 @@ public class main extends Application {
         ventana.setTitle("AlgoEmpire");
 
         StackPane root = new StackPane();
-        Scene scene = new Scene(root,800,600);
+        Scene scene = new Scene(root,1000,680);
         scene.getStylesheets().add("Views/estilo.css");
 
 

@@ -31,29 +31,29 @@ public class BotonCasillero extends Button {
     public void aplicarEstilo(){
 
         if(entidad instanceof Aldeano) {
-            Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
-            this.setGraphic(new ImageView(fondo));
+            //Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
+            //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: transparent; -fx-border-color: #000000;");
+            this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
 
         }
         else if(entidad instanceof Castillo) {
-            Image fondo = new Image("Views/img/castillo.jpg");
-            this.setGraphic(new ImageView(fondo));
+            //Image fondo = new Image("Views/img/castillo.jpg");
+            //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: transparent; -fx-border-color: #000000;");
+            this.setStyle("-fx-background-color: #234562; -fx-border-color: #000000;");
 
         }
         else if(entidad instanceof PlazaCentral) {
             this.setStyle("-fx-background-color: #FFDEAD; -fx-border-color: #000000;");
-            this.setTextAlignment(TextAlignment.CENTER);
-            this.setText("P");
+            //this.setTextAlignment(TextAlignment.CENTER);
+            //this.setText("P");
         }
         else {
-            Image fondo = new Image("Views/img/pastoBorde.jpg");
-            this.setGraphic(new ImageView(fondo));
+            //Image fondo = new Image("Views/img/pastoBorde.jpg");
+            //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: transparent; -fx-border-color: #000000;");
+            this.setStyle("-fx-background-color: #00FF00; -fx-border-color: #000000;");
             //actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
         }
     }
