@@ -6,6 +6,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.geometry.Insets;
+
+
 
 import Controllers.*;
 import Views.layouts.*;
@@ -44,42 +47,28 @@ public class PantallaPrincipal extends StackPane{
         for (int i = 0; i<filas;i++){
             for (int j = 0; j<columnas;j++){
 
-                Coordenada coordenada = new Coordenada(i,j);
-                indice = coordenada.obtenerNumero();
+                Coordenada posicion = new Coordenada(i,j);
+                Posicionable entidad = this.partida.obtenerElementoEn(posicion);
+                indice = posicion.obtenerNumero();
 
                 BotonCasillero actual = casilleros[indice];
-                actual = new BotonCasillero(coordenada);
-                actual.setOnAction(new BotonCasilleroHandler(actual));
+                actual = new BotonCasillero(posicion, entidad);
+                actual.setOnAction(new BotonCasilleroHandler(actual, this.partida, this));
 
-                Coordenada origen = actual.obtenerPosicion();
-                Posicionable entidad = this.partida.obtenerElementoEn(origen);
-
-                if(entidad instanceof Aldeano) {
-                    actual.setStyle("-fx-background-color: #20B2AA; -fx-border-color: #000000;");
-                    actual.setTextAlignment(TextAlignment.CENTER);
-                    actual.setText("A");
-
-                }
-                else if(entidad instanceof Castillo) {
-                    actual.setStyle("-fx-background-color: #808080; -fx-border-color: #000000;");
-                    actual.setTextAlignment(TextAlignment.CENTER);
-                    actual.setText("C");
-
-                }
-                else if(entidad instanceof PlazaCentral) {
-                    actual.setStyle("-fx-background-color: #FFDEAD; -fx-border-color: #000000;");
-                    actual.setTextAlignment(TextAlignment.CENTER);
-                    actual.setText("P");
-                }
-                else {
-                    actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
-                }
+                actual.aplicarEstilo();
                 actual.setTranslateX((j*40)+1-480);
                 actual.setTranslateY((i*40)+1-480);
                 actual.setMaxSize(40,40);
 
                 getChildren().add(actual);
             }
+        }
+    }
+
+    public void actualizarCampo(){
+
+        for(int i = 0; i  < 25*25 ; i++){
+            casilleros[i].aplicarEstilo();
         }
     }
 

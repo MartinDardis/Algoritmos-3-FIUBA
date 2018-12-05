@@ -110,6 +110,12 @@ public class Partida {
         actual.moverUnidad(unaUnidad,x,y);
     }
 
+    public void moverUnidad(Unidad unaUnidad, Coordenada posicion){
+
+        actual.moverUnidad(unaUnidad,posicion.getFila(),posicion.getColumna());
+
+    }
+
     public void atacar(Unidad unidadActual, Posicionable posicionableEnemigo){
         actual.atacarA(unidadActual,posicionableEnemigo);
         if (posicionableEnemigo.getVida() <= 0){
