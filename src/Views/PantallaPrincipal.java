@@ -1,5 +1,7 @@
 package Views;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.Border;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
@@ -21,6 +23,7 @@ import Models.edificios.Castillo;
 import Models.edificios.PlazaCentral;
 
 import java.awt.*;
+import java.util.regex.Pattern;
 
 public class PantallaPrincipal extends StackPane{
 
@@ -33,7 +36,19 @@ public class PantallaPrincipal extends StackPane{
         this.ventana = ventana;
         this.partida = partida;
         this.dibujarCampo();
+        this.cargarBotonera();
      //   this.cargarCampo();
+
+    }
+
+    private void cargarBotonera() {
+        Button botonPasarTurno = new Button("Pasar turno");
+        botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida));
+        getChildren().add(botonPasarTurno);
+        botonPasarTurno.setTranslateX(700);
+        botonPasarTurno.getStyleClass().add("botonInicio");
+
+
     }
 
     public void dibujarCampo(){
@@ -41,9 +56,8 @@ public class PantallaPrincipal extends StackPane{
         int filas = 25;
         int columnas = 25;
         int indice;
-
         this.casilleros = new BotonCasillero[filas*columnas];
-
+        System.out.println("El nombre es " +  partida.getActual().getNombre());//para probar ingreso
         for (int i = 0; i<filas;i++){
             for (int j = 0; j<columnas;j++){
 
@@ -59,8 +73,8 @@ public class PantallaPrincipal extends StackPane{
                 actual.setTranslateX((j*40)+1-480);
                 actual.setTranslateY((i*40)+1-480);
                 actual.setMaxSize(40,40);
-
                 getChildren().add(actual);
+                this.setStyle("-fx-background-color: antiquewhite");
             }
         }
     }

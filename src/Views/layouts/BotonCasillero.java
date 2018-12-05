@@ -31,7 +31,7 @@ public class BotonCasillero extends Button {
     public void aplicarEstilo(){
 
         if(entidad instanceof Aldeano) {
-            Image fondo = new Image("Views/img/aldeano.jpg");
+            Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
             this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
             this.setStyle("-fx-background-color: transparent; -fx-border-color: #000000;");
@@ -50,7 +50,7 @@ public class BotonCasillero extends Button {
             this.setText("P");
         }
         else {
-            Image fondo = new Image("Views/img/pasto.jpg");
+            Image fondo = new Image("Views/img/pastoBorde.jpg");
             this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
             this.setStyle("-fx-background-color: transparent; -fx-border-color: #000000;");

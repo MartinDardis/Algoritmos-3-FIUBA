@@ -18,15 +18,17 @@ public class BotonInicioHandler implements EventHandler<ActionEvent> {
     private Stage ventana;
     private Partida partida;
 
-    public BotonInicioHandler(Stage ventana, Partida partida){
+    public BotonInicioHandler(Stage ventana, String jugadorUno, String jugadorDos){
         this.ventana = ventana;
-        this.partida = partida;
+        this.partida = new Partida(jugadorUno,jugadorDos);
     }
 
     @Override
     public void handle(ActionEvent e){
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal(this.ventana, this.partida);
-        this.ventana.setScene(new Scene(pantallaPrincipal,1920  ,1080));
+        Scene escena = new Scene(pantallaPrincipal,1920,1080);
+        escena.getStylesheets().add("Views/estilo.css");
+        this.ventana.setScene(escena);
         ventana.setFullScreen(true);
 
     }
