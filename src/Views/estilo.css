@@ -39,3 +39,14 @@
             radial-gradient(center 50% 50%, radius 100%, #ff020c, #750013);
 
 }
+
+.aldeano{
+        -fx-background-color: #693121;
+        -fx-border-color: #000000;
+}
+
+.aldeanoSeleccionado{
+    -fx-background-color: #693121;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}

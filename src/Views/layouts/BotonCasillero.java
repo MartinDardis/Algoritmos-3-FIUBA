@@ -3,6 +3,7 @@ import Models.edificios.Castillo;
 import Models.edificios.PlazaCentral;
 import Models.unidades.Aldeano;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import Models.escenario.Coordenada;
 import Models.Posicionable;
@@ -34,7 +35,10 @@ public class BotonCasillero extends Button {
             //Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
+            //this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
+            this.setStyle(null);//vacia las propiedades sin problemas
+            this.getStyleClass().clear();
+            this.getStyleClass().add("aldeano");
 
         }
         else if(entidad instanceof Castillo) {
@@ -56,6 +60,15 @@ public class BotonCasillero extends Button {
             this.setStyle("-fx-background-color: #00FF00; -fx-border-color: #000000;");
             //actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
         }
+    }
+
+    public void aplicarEstiloActivo(){
+        this.setPadding(new Insets(-5,-5,-5,-5));
+        if (entidad instanceof Aldeano){
+            this.setStyle(null);
+            this.getStyleClass().add("aldeanoSeleccionado");
+        }
+
     }
 
     public Posicionable Posicionable(){
