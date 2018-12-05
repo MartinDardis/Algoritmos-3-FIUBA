@@ -3,6 +3,7 @@ import Models.edificios.Castillo;
 import Models.edificios.PlazaCentral;
 import Models.unidades.Aldeano;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import Models.escenario.Coordenada;
 import Models.Posicionable;
@@ -30,22 +31,26 @@ public class BotonCasillero extends Button {
 
     public void aplicarEstilo(){
 
+        this.setStyle(null);//vacia las propiedades sin problemas
+        this.getStyleClass().clear();
         if(entidad instanceof Aldeano) {
             //Image fondo = new Image("Views/img/aldeanoAgeBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
+            //this.setStyle("-fx-background-color: #693121; -fx-border-color: #000000;");
+            this.getStyleClass().add("aldeano");
 
         }
         else if(entidad instanceof Castillo) {
             //Image fondo = new Image("Views/img/castillo.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: #234562; -fx-border-color: #000000;");
+            this.getStyleClass().add("castillo");
 
         }
         else if(entidad instanceof PlazaCentral) {
-            this.setStyle("-fx-background-color: #FFDEAD; -fx-border-color: #000000;");
+            this.setPadding(new Insets(-5,-5,-5,-5));
+            this.getStyleClass().add("plaza");
             //this.setTextAlignment(TextAlignment.CENTER);
             //this.setText("P");
         }
@@ -56,6 +61,24 @@ public class BotonCasillero extends Button {
             this.setStyle("-fx-background-color: #00FF00; -fx-border-color: #000000;");
             //actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
         }
+    }
+
+    public void aplicarEstiloActivo(){
+
+        this.setPadding(new Insets(-5,-5,-5,-5));
+        this.setStyle(null);
+        if (entidad instanceof Aldeano){
+            this.getStyleClass().add("aldeanoSeleccionado");
+        }
+
+        else if (entidad instanceof Castillo){
+            this.getStyleClass().add("castilloSeleccionado");
+        }
+        else if (entidad instanceof PlazaCentral){
+            this.getStyleClass().add("plazaSeleccionada");
+        }
+        else this.aplicarEstilo();
+
     }
 
     public Posicionable Posicionable(){

@@ -39,3 +39,37 @@
             radial-gradient(center 50% 50%, radius 100%, #ff020c, #750013);
 
 }
+
+.aldeano{
+        -fx-background-color: #693121;
+        -fx-border-color: #000000;
+}
+
+.aldeanoSeleccionado{
+    -fx-background-color: #693121;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+
+.castillo{
+    -fx-background-color: #234562;
+    -fx-border-color: #000000;
+}
+.castilloSeleccionado{
+    -fx-background-color: #234562;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+.plaza{
+    -fx-background-color: #FFDEAD;
+    -fx-border-color: #000000;
+}
+
+.plazaSeleccionada{
+    -fx-background-color: #FFDEAD;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+
+}

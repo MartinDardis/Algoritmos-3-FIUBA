@@ -70,7 +70,7 @@ public class main extends Application {
         botonIniciarJuego.setMaxSize(300,50);
         botonIniciarJuego.setPadding(new Insets(25));
 
-        botonIniciarJuego.setOnAction(new BotonInicioHandler(ventana,nombreDosInput.getText(),jugadorDos ));
+        botonIniciarJuego.setOnAction(new BotonInicioHandler(ventana,nombreInput,nombreDosInput ));
 
         //Seteo Boton de Salir
         Button botonSalir = new Button();
