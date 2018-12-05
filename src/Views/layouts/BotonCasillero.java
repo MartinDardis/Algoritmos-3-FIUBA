@@ -94,27 +94,27 @@ public class BotonCasillero extends Button {
     }
 
     public Coordenada coordenadaArriba(){
-        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna());
-    }
-
-    public Coordenada coordenadaAbajo(){
         return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna());
     }
 
+    public Coordenada coordenadaAbajo(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna());
+    }
+
     public Coordenada coordenadaDiagonalSuperiorDerecha(){
-        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()+1);
-    }
-
-    public Coordenada coordenadaDiagonalSuperiorIzquierda(){
-        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()-1);
-    }
-
-    public Coordenada coordenadaDiagonalInferiorDerecha(){
         return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna()+1);
     }
 
-    public Coordenada coordenadaDiagonalInferiorIzquierda(){
+    public Coordenada coordenadaDiagonalSuperiorIzquierda(){
         return new Coordenada(this.coordenada.getFila()-1, this.coordenada.getColumna()-1);
+    }
+
+    public Coordenada coordenadaDiagonalInferiorDerecha(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()+1);
+    }
+
+    public Coordenada coordenadaDiagonalInferiorIzquierda(){
+        return new Coordenada(this.coordenada.getFila()+1, this.coordenada.getColumna()-1);
     }
 
 

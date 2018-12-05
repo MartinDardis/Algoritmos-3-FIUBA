@@ -52,17 +52,60 @@ public class PantallaPrincipal extends StackPane{
 
         Button botonPasarTurno = new Button("Pasar turno");
         botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida, this));
-        getChildren().add(botonPasarTurno);
         botonPasarTurno.setTranslateX(300);
         botonPasarTurno.getStyleClass().add("botonInicio");
 
-        Button botonMovimientoDerecha = new Button(" -> ");
+        Button botonMovimientoDerecha = new Button(" → ");
         botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
-        getChildren().add(botonMovimientoDerecha);
-        botonMovimientoDerecha.setTranslateX(300);
+        botonMovimientoDerecha.setTranslateX(360);
         botonMovimientoDerecha.setTranslateY(200);
         botonMovimientoDerecha.getStyleClass().add("botonInicio");
 
+        Button botonMovimientoIzquierda = new Button(" ← ");
+        botonMovimientoIzquierda.setOnAction(new BotonMovimientoIzquierdaHandler(partida, this));
+        botonMovimientoIzquierda.setTranslateX(240);
+        botonMovimientoIzquierda.setTranslateY(200);
+        botonMovimientoIzquierda.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoArriba = new Button(" ↑ ");
+        botonMovimientoArriba.setOnAction(new BotonMovimientoArribaHandler(partida, this));
+        botonMovimientoArriba.setTranslateX(300);
+        botonMovimientoArriba.setTranslateY(155);
+        botonMovimientoArriba.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoAbajo = new Button(" ↓ ");
+        botonMovimientoAbajo.setOnAction(new BotonMovimientoAbajoHandler(partida, this));
+        botonMovimientoAbajo.setTranslateX(300);
+        botonMovimientoAbajo.setTranslateY(245);
+        botonMovimientoAbajo.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoDiagonalArribaDerecha = new Button(" ↗ ");
+        botonMovimientoDiagonalArribaDerecha.setOnAction(new BotonMovimientoDiagonalArribaDerechaHandler(partida, this));
+        botonMovimientoDiagonalArribaDerecha.setTranslateX(360);
+        botonMovimientoDiagonalArribaDerecha.setTranslateY(155);
+        botonMovimientoDiagonalArribaDerecha.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoDiagonalArribaIzquierda = new Button(" ↖ ");
+        botonMovimientoDiagonalArribaIzquierda.setOnAction(new BotonMovimientoDiagonalArribaIzquierdaHandler(partida, this));
+        botonMovimientoDiagonalArribaIzquierda.setTranslateX(240);
+        botonMovimientoDiagonalArribaIzquierda.setTranslateY(155);
+        botonMovimientoDiagonalArribaIzquierda.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoDiagonalAbajoDerecha = new Button(" ↘ ");
+        botonMovimientoDiagonalAbajoDerecha.setOnAction(new BotonMovimientoDiagonalAbajoDerechaHandler(partida, this));
+        botonMovimientoDiagonalAbajoDerecha.setTranslateX(360);
+        botonMovimientoDiagonalAbajoDerecha.setTranslateY(245);
+        botonMovimientoDiagonalAbajoDerecha.getStyleClass().add("botonInicio");
+
+        Button botonMovimientoDiagonalAbajoIzquierda = new Button(" ↙ ");
+        botonMovimientoDiagonalAbajoIzquierda.setOnAction(new BotonMovimientoDiagonalAbajoIzquierdaHandler(partida, this));
+        botonMovimientoDiagonalAbajoIzquierda.setTranslateX(240);
+        botonMovimientoDiagonalAbajoIzquierda.setTranslateY(245);
+        botonMovimientoDiagonalAbajoIzquierda.getStyleClass().add("botonInicio");
+
+        getChildren().addAll(botonPasarTurno, botonMovimientoDerecha, botonMovimientoIzquierda, botonMovimientoArriba,
+                            botonMovimientoAbajo, botonMovimientoDiagonalArribaDerecha, botonMovimientoDiagonalArribaIzquierda,
+                            botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda);
     }
 
     public void dibujarCampo(){
