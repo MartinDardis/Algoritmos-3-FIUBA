@@ -1,19 +1,15 @@
-package Controllers;
+package Controllers.Acciones;
 
 import Models.Partida.Partida;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
-import Models.Posicionable;
 import Models.unidades.Unidad;
-import Models.Partida.Partida;
 import Views.PantallaPrincipal;
 import Views.layouts.BotonCasillero;
 
-public class BotonMovimientoDiagonalAbajoIzquierdaHandler implements EventHandler<ActionEvent> {
+public class BotonMovimientoDiagonalAbajoIzquierdaHandler extends BotonAccionHandler {
 
     private Partida partida;
-    private PantallaPrincipal screen;
 
     public BotonMovimientoDiagonalAbajoIzquierdaHandler(Partida partida, PantallaPrincipal screen) {
         this.partida = partida;
@@ -26,5 +22,6 @@ public class BotonMovimientoDiagonalAbajoIzquierdaHandler implements EventHandle
         BotonCasillero actual = screen.getActual();
         partida.moverUnidad((Unidad) actual.Posicionable(), actual.coordenadaDiagonalInferiorIzquierda());
         screen.dibujarCampo();
+        desactivarBotonera();
     }
 }

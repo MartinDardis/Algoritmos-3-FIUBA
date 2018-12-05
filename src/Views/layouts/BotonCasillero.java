@@ -58,7 +58,7 @@ public class BotonCasillero extends Button {
             //Image fondo = new Image("Views/img/pastoBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
             this.setPadding(new Insets(-5,-5,-5,-5));
-            this.setStyle("-fx-background-color: #00FF00; -fx-border-color: #000000;");
+            this.setStyle("-fx-background-color: #006400; -fx-border-color: #000000;");
             //actual.setStyle("-fx-background-color: #008000; -fx-border-color: #000000;");
         }
     }
