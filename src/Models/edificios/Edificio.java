@@ -23,7 +23,6 @@ public class Edificio implements Posicionable {
     protected Jugador propietario;
     protected Casillero salida;
     protected ArrayList<Casillero> ubicacion;
-    //
 
     protected EstadoReparacion estadoReparacion;
     protected int turnosRestantes;
