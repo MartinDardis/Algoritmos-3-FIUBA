@@ -135,7 +135,8 @@ public class Jugador {
 
     public void crearPlazaCentralInicial(int fila, int columna){
         Coordenada origen = new Coordenada(fila,columna);
-        PlazaCentral plazaInicial = new PlazaCentral(this);
+        PlazaCentral plazaInicial = new PlazaCentral();
+        plazaInicial.setJugador(this);
         Coordenada salida = new Coordenada( fila ,columna+plazaInicial.getAncho());
 
         Casillero casilleroSalida = campo.obtenerCasillero(salida);

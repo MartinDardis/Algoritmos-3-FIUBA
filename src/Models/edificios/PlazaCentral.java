@@ -34,10 +34,13 @@ public class PlazaCentral extends Edificio {
         this.propietario = jugador;
     }
 
+    public void setJugador(Jugador jugador){
+        this.propietario = jugador;
+    }
+
     public int getCosto() {
         return costo;
     }
-
     public int getTurnosConstruccion() {
         return turnosConstruccion;
     }

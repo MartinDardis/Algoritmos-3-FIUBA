@@ -81,11 +81,16 @@ public class PartidaTest {
         assertEquals(dePrueba.getClass(),aldeanoCreado.getClass());
 
     }
-    @Test(expected = EdificioEnConstruccionError.class)
-    public void testEdificioEnConstruccionLanzaErrorAlPedirleCrear(){
+
+    @Test
+    public void testEdificioInciialPuedeCrearSinError(){
+
         Partida partida = new Partida("uno","dos");
         Posicionable plazaJugadorUno = partida.obtenerElementoEn(new Coordenada(4,4));
-
         partida.crearAldeano((PlazaCentral) plazaJugadorUno);
+        Coordenada salida = new Coordenada(4,6);
+        Posicionable aldeanoCreado = partida.obtenerElementoEn(salida);
+
+        assertTrue(aldeanoCreado instanceof Aldeano);
     }
 }

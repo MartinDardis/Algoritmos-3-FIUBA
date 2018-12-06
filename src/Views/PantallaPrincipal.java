@@ -1,7 +1,9 @@
 package Views;
 
+import Controllers.*;
 import Controllers.Acciones.*;
-import Controllers.BotonCasilleroHandler;
+import Controllers.Acciones.Movimiento.*;
+import Controllers.Acciones.Creacion.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
@@ -20,6 +22,7 @@ public class PantallaPrincipal extends StackPane{
     private BotonCasillero casilleroActual;
 
     private Button botonPasarTurno;
+    private Button botonCrearAldeano;
     private Button botonMovimientoDerecha;
     private Button botonMovimientoIzquierda;
     private Button botonMovimientoAbajo;
@@ -52,7 +55,14 @@ public class PantallaPrincipal extends StackPane{
         botonPasarTurno = new Button("Pasar turno");
         botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida, this));
         botonPasarTurno.setTranslateX(300);
+        botonPasarTurno.setTranslateY(-280);
         botonPasarTurno.getStyleClass().add("botonInicio");
+
+        botonCrearAldeano = new Button("Crear Aldeano");
+        botonCrearAldeano.setOnAction(new BotonCrearAldeanoHandler(partida, this));
+        botonCrearAldeano.setTranslateX(300);
+        botonCrearAldeano.setTranslateY(-200);
+        botonCrearAldeano.getStyleClass().add("botonInicio");
 
         botonMovimientoDerecha = new Button(" → ");
         botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
@@ -107,7 +117,7 @@ public class PantallaPrincipal extends StackPane{
 
         getChildren().addAll(botonPasarTurno, botonMovimientoDerecha, botonMovimientoIzquierda, botonMovimientoArriba,
                             botonMovimientoAbajo, botonMovimientoDiagonalArribaDerecha, botonMovimientoDiagonalArribaIzquierda,
-                            botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda);
+                            botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda, botonCrearAldeano);
     }
 
     public void desactivarBotonera(){
@@ -119,6 +129,7 @@ public class PantallaPrincipal extends StackPane{
         this.botonMovimientoDiagonalArribaIzquierda.setVisible(false);
         this.botonMovimientoDiagonalAbajoDerecha.setVisible(false);
         this.botonMovimientoDiagonalAbajoIzquierda.setVisible(false);
+        this.botonCrearAldeano.setVisible(false);
     }
 
 
@@ -147,7 +158,6 @@ public class PantallaPrincipal extends StackPane{
                 getChildren().add(actual);
             }
         }
-
     }
 
     public void actualizarCampo(){
@@ -157,7 +167,9 @@ public class PantallaPrincipal extends StackPane{
         }
     }
 
-    public void activarBotoneraPlazaCentral(){ }
+    public void activarBotoneraPlazaCentral(){
+        this.botonCrearAldeano.setVisible(true);
+    }
 
     public void activarBotoneraMovimiento(){
         this.botonMovimientoDerecha.setVisible(true);

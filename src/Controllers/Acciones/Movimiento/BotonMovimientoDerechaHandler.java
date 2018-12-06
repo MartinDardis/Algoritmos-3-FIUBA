@@ -1,5 +1,6 @@
-package Controllers.Acciones;
+package Controllers.Acciones.Movimiento;
 
+import Controllers.Acciones.BotonAccionHandler;
 import Models.Partida.Partida;
 import javafx.event.ActionEvent;
 
