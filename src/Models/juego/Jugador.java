@@ -11,6 +11,7 @@ import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.unidades.errores.AldeanoOcupadoError;
+import Views.layouts.BotonCasillero;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
 
@@ -26,6 +27,7 @@ public class Jugador {
     private Jugador siguiente;
     private Castillo castillo;
 
+
     //Constructor para pruebas y para el primer jugador instanciado
     public Jugador(String nuevoNombre, Mapa campo){
         this.nombre = nuevoNombre;
@@ -33,6 +35,7 @@ public class Jugador {
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
         elementos = new ArrayList<>();
+
     }
 
     //Constructor a utilizar
@@ -42,6 +45,7 @@ public class Jugador {
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
         this.siguiente = siguiente;
+
     }
     
 
@@ -266,8 +270,8 @@ public class Jugador {
         if (unPosicionable.getClass() == Unidad.class){
             this.disminuirPoblacion();
         }
-
     }
+
 
     public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {
         for (Posicionable atacable :listaAtacables) {
@@ -275,4 +279,7 @@ public class Jugador {
         }
     }
 
+    public boolean tieneCastillo() {
+        return elementos.contains(this.castillo);
+    }
 }

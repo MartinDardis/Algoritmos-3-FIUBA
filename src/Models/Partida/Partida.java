@@ -57,7 +57,12 @@ public class Partida {
 
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual() {
-        this.actual = this.actual.getSiguiente();
+        Jugador siguiente =  actual.getSiguiente();
+        if (! siguiente.tieneCastillo()){
+            System.out.println("Partida finalizada");//para debug
+            throw new partidaFinalizadaError();
+        }
+        this.actual = siguiente;
     }
 
     //Realiza las acciones antes de terminar el turno del jugador actual
@@ -65,8 +70,11 @@ public class Partida {
         actual.recolectarOro();
         actual.realizarAtaqueCastillo(objetivosAtacables());
         actual.restaurarEstados();
+        //this.verificarVictoria();
         this.actualizarActual();
     }
+
+
 
     public ArrayList obtenerUnidadesYEdificios() {
         return actual.listaElementos();

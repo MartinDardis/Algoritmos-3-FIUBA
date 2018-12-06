@@ -10,6 +10,7 @@ import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.Aldeano;
+import Models.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -87,5 +88,20 @@ public class PartidaTest {
         Posicionable plazaJugadorUno = partida.obtenerElementoEn(new Coordenada(4,4));
 
         partida.crearAldeano((PlazaCentral) plazaJugadorUno);
+    }
+
+    @Test(expected = partidaFinalizadaError.class)
+    public void testCastilloEnemigoDestruidoGanaPartidaNoPasaTurno(){
+        Partida partida = new Partida("uno","dos");
+        Coordenada posCastilloEnemigo = new Coordenada(12,15);
+        Castillo castilloEnemigo = (Castillo)partida.obtenerElementoEn(posCastilloEnemigo);
+        castilloEnemigo.setVida(1);
+        Espadachin unEspadachin = new Espadachin();
+        Casillero posEspadachin = new Casillero(new Coordenada(11,15));
+        unEspadachin.setCasillero(posEspadachin);
+
+        partida.atacar(unEspadachin,castilloEnemigo);
+
+        partida.terminarTurno();
     }
 }
