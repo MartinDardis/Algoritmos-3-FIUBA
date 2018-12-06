@@ -15,6 +15,7 @@ import Models.Posicionable;
 import Models.Partida.Partida;
 import Models.juego.Jugador;
 import Models.escenario.Coordenada;
+import org.apache.commons.lang3.ObjectUtils;
 
 public class PantallaPrincipal extends StackPane{
 
@@ -39,6 +40,7 @@ public class PantallaPrincipal extends StackPane{
     private Button cartelNombre;
     private Button cartelOro;
     private Button cartelPoblacion;
+    private Button cartelSalud;
 
     public PantallaPrincipal(Stage ventana, Partida partida) {
 
@@ -64,7 +66,7 @@ public class PantallaPrincipal extends StackPane{
         String nombreJugador = jugadorActual.getNombre();
         nombreJugador = "Jugador: " + nombreJugador;
         cartelNombre = new Button(nombreJugador);
-        cartelNombre.setTranslateX(325);
+        cartelNombre.setTranslateX(250);
         cartelNombre.setTranslateY(-225);
         cartelNombre.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelNombre);
@@ -74,8 +76,8 @@ public class PantallaPrincipal extends StackPane{
         String oroJugador = Integer.toString(oro);
         oroJugador = "Oro: " + oroJugador;
         cartelOro = new Button(oroJugador);
-        cartelOro.setTranslateX(325);
-        cartelOro.setTranslateY(-170);
+        cartelOro.setTranslateX(410);
+        cartelOro.setTranslateY(-225);
         cartelOro.getStyleClass().add("recuadroInfo");
        /* if (oro <= 0){
             cartelOro.getStyleClass().removeAll();
@@ -88,13 +90,16 @@ public class PantallaPrincipal extends StackPane{
         String poblacionJugador = Integer.toString(poblacion);
         poblacionJugador = "Poblacion: " + poblacionJugador + "/50";
         cartelPoblacion = new Button(poblacionJugador);
-        cartelPoblacion.setTranslateX(325);
-        cartelPoblacion.setTranslateY(-115);
+        cartelPoblacion.setTranslateX(250);
+        cartelPoblacion.setTranslateY(-165);
         cartelPoblacion.getStyleClass().add("recuadroInfo");
         /*if (poblacion == 50){
             cartelPoblacion.getStyleClass().add("infoBorde");
         }*/
         getChildren().addAll(cartelPoblacion);
+
+
+
 
     }
 
@@ -104,22 +109,25 @@ public class PantallaPrincipal extends StackPane{
         getChildren().remove(cartelOro);
         getChildren().remove(cartelPoblacion);
 
+
         Jugador jugadorActual = partida.getActual();
 
         String nombreJugador = jugadorActual.getNombre();
-        nombreJugador = "Jugador: " + nombreJugador;
+        nombreJugador = "Jugador actual: " + nombreJugador;
         cartelNombre = new Button(nombreJugador);
-        cartelNombre.setTranslateX(325);
+        cartelNombre.setTranslateX(250);
         cartelNombre.setTranslateY(-225);
         cartelNombre.getStyleClass().add("recuadroInfo");
+        cartelOro.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelNombre);
 
         int oro = jugadorActual.getOro();
         String oroJugador = Integer.toString(oro);
         oroJugador = "Oro: " + oroJugador;
         cartelOro = new Button(oroJugador);
-        cartelOro.setTranslateX(325);
-        cartelOro.setTranslateY(-170);
+        cartelOro.setTranslateX(410);
+        cartelOro.setTranslateY(-225);
+        cartelOro.getStyleClass().add("recuadroInfo");
         cartelOro.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelOro);
 
@@ -127,8 +135,9 @@ public class PantallaPrincipal extends StackPane{
         String poblacionJugador = Integer.toString(poblacion);
         poblacionJugador = "Poblacion: " + poblacionJugador + "/50";
         cartelPoblacion = new Button(poblacionJugador);
-        cartelPoblacion.setTranslateX(325);
-        cartelPoblacion.setTranslateY(-115);
+        cartelPoblacion.setTranslateX(250);
+        cartelPoblacion.setTranslateY(-165);
+        cartelPoblacion.getStyleClass().add("recuadroInfo");
         cartelPoblacion.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelPoblacion);
 
@@ -289,6 +298,15 @@ public class PantallaPrincipal extends StackPane{
     }
 
 
-
-
+    public void imprimirVida(Posicionable entidad) {
+            int saludActual = getActual().Posicionable().getVida();
+            String saludPosionableActual = Integer.toString(saludActual);
+            saludPosionableActual = "Salud: " + saludPosionableActual;
+            cartelSalud = new Button(saludPosionableActual);
+            cartelSalud.setTranslateX(410);
+            cartelSalud.setTranslateY(-165);
+            cartelSalud.setMinWidth(150);
+            cartelSalud.getStyleClass().add("recuadroInfo");
+            getChildren().add(cartelSalud);
+    }
 }
