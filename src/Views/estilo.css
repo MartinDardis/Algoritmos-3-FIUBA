@@ -89,6 +89,17 @@
     -fx-border-color: #000000;
 }
 
+.cuartel{
+    -fx-background-color: #ff0078;
+    -fx-border-color: #000000;
+}
+
+.cuartelSeleccionado{
+    -fx-background-color: #ff0078;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
 .plazaSeleccionada{
     -fx-background-color: #FFDEAD;
     -fx-border-color: white;

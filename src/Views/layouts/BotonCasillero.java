@@ -1,5 +1,6 @@
 package Views.layouts;
 import Models.edificios.Castillo;
+import Models.edificios.Cuartel;
 import Models.edificios.PlazaCentral;
 import Models.unidades.Aldeano;
 import javafx.geometry.Insets;
@@ -54,6 +55,10 @@ public class BotonCasillero extends Button {
             //this.setTextAlignment(TextAlignment.CENTER);
             //this.setText("P");
         }
+        else if(entidad instanceof Cuartel){
+            this.setPadding(new Insets(5,5,5,5));
+            this.getStyleClass().add("cuartel");
+        }
         else {
             //Image fondo = new Image("Views/img/pastoBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
@@ -76,6 +81,9 @@ public class BotonCasillero extends Button {
         }
         else if (entidad instanceof PlazaCentral){
             this.getStyleClass().add("plazaSeleccionada");
+        }
+        else if(entidad instanceof Cuartel){
+            this.getStyleClass().add("cuartelSeleccionado");
         }
         else this.aplicarEstilo();
 
