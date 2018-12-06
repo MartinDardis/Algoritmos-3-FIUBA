@@ -72,6 +72,7 @@ public class Mapa{
             casilerro.colocar(unEdificio);
         }
         unEdificio.setUbicacion(lista);
+        unEdificio.abrirSalida(origen,this);
     }
 
     private ArrayList <Casillero> obtenerArea(int columnaOrigen, int filaOrigen, int alto, int ancho)throws LugarOcupadoError, PosicionFueraDeCampoError{

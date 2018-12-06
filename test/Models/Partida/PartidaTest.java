@@ -10,6 +10,7 @@ import Models.escenario.Coordenada;
 import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.Aldeano;
+import Models.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -19,10 +20,7 @@ public class PartidaTest {
     @Test
     public void TestCrearUnidadAumentaLaPoblacionDeActual(){
         Partida partida = new Partida("uno","dos");
-        PlazaCentral unaPlaza = new PlazaCentral();
-        Coordenada posSalida = new Coordenada(15,15);//al usar una plaza nueva en este test, dejo esta pos que NO CHOCA con lo inicializado por partida
-        Casillero salida = new Casillero(posSalida);
-        unaPlaza.setSalida(salida);
+        PlazaCentral unaPlaza = (PlazaCentral) partida.obtenerElementoEn(new Coordenada(4,4));//plaza incial
         Jugador actual = partida.getActual();
 
         int poblacionInicial = actual.getPoblacionActual();
@@ -81,11 +79,31 @@ public class PartidaTest {
         assertEquals(dePrueba.getClass(),aldeanoCreado.getClass());
 
     }
-    @Test(expected = EdificioEnConstruccionError.class)
-    public void testEdificioEnConstruccionLanzaErrorAlPedirleCrear(){
+
+    @Test
+    public void testEdificioInciialPuedeCrearSinError(){
+
         Partida partida = new Partida("uno","dos");
         Posicionable plazaJugadorUno = partida.obtenerElementoEn(new Coordenada(4,4));
-
         partida.crearAldeano((PlazaCentral) plazaJugadorUno);
+        Coordenada salida = new Coordenada(4,6);
+        Posicionable aldeanoCreado = partida.obtenerElementoEn(salida);
+
+        assertTrue(aldeanoCreado instanceof Aldeano);
+    }
+
+    @Test(expected = partidaFinalizadaError.class)
+    public void testCastilloEnemigoDestruidoGanaPartidaNoPasaTurno(){
+        Partida partida = new Partida("uno","dos");
+        Coordenada posCastilloEnemigo = new Coordenada(12,15);
+        Castillo castilloEnemigo = (Castillo)partida.obtenerElementoEn(posCastilloEnemigo);
+        castilloEnemigo.setVida(1);
+        Espadachin unEspadachin = new Espadachin();
+        Casillero posEspadachin = new Casillero(new Coordenada(11,15));
+        unEspadachin.setCasillero(posEspadachin);
+
+        partida.atacar(unEspadachin,castilloEnemigo);
+
+        partida.terminarTurno();
     }
 }

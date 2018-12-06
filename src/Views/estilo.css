@@ -39,3 +39,70 @@
             radial-gradient(center 50% 50%, radius 100%, #ff020c, #750013);
 
 }
+
+.recuadroInfo{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    /*-fx-background-radius: 30;*/
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+.infoBorde{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    /*-fx-background-radius: 30;*/
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: #ff020c;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+
+.aldeano{
+        -fx-background-color: #693121;
+        -fx-border-color: #000000;
+}
+
+.aldeanoSeleccionado{
+    -fx-background-color: #693121;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+
+.castillo{
+    -fx-background-color: #234562;
+    -fx-border-color: #000000;
+}
+.castilloSeleccionado{
+    -fx-background-color: #234562;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+.plaza{
+    -fx-background-color: #FFDEAD;
+    -fx-border-color: #000000;
+}
+
+.cuartel{
+    -fx-background-color: #ff0078;
+    -fx-border-color: #000000;
+}
+
+.cuartelSeleccionado{
+    -fx-background-color: #ff0078;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+.plazaSeleccionada{
+    -fx-background-color: #FFDEAD;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+
+}

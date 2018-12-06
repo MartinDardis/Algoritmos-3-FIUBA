@@ -1,8 +1,11 @@
 package Models.edificios;
 import Models.Posicionable;
+import Models.edificios.Estados.EstadoDestruido;
 import Models.edificios.Estados.EstadoEnConstruccion;
 import Models.edificios.Estados.EstadoReparacion;
 import Models.escenario.Casillero;
+import Models.escenario.Coordenada;
+import Models.escenario.Mapa;
 import Models.juego.Jugador;
 import Models.unidades.Unidad;
 
@@ -20,7 +23,6 @@ public class Edificio implements Posicionable {
     protected Jugador propietario;
     protected Casillero salida;
     protected ArrayList<Casillero> ubicacion;
-    //
 
     protected EstadoReparacion estadoReparacion;
     protected int turnosRestantes;
@@ -126,5 +128,14 @@ public class Edificio implements Posicionable {
     protected boolean estaHabilitado() {
         EstadoReparacion estadoActual = this.getEstadoReparacion();
         return (estadoActual.getClass() != EstadoEnConstruccion.class);
+    }
+
+    public void abrirSalida(Coordenada origen, Mapa mapa) {
+        int fila = origen.getFila();
+        int col = origen.getColumna();
+        Coordenada posSalida = new Coordenada(fila, col+this.getAncho());
+        Casillero salida = mapa.obtenerCasillero(posSalida);
+        this.setSalida(salida);
+
     }
 }

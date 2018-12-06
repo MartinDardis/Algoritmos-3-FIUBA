@@ -35,7 +35,7 @@ public class Partida {
         jugador1.crearPlazaCentralInicial(4,4);
         jugador1.crearAldeanosInicialesDesde(7,7);
 
-        jugador2.crearCastilloInicialEn(10,10);
+        jugador2.crearCastilloInicialEn(filaCentral,15);
         jugador2.crearPlazaCentralInicial(campo.getFilas()-5,campo.getColumnas()-5);
         jugador2.crearAldeanosInicialesDesde(7,campo.getColumnas()-7);
 
@@ -57,7 +57,12 @@ public class Partida {
 
     //Cambia el jugador actual al siguiente jugador
     private void actualizarActual() {
-        this.actual = this.actual.getSiguiente();
+        Jugador siguiente =  actual.getSiguiente();
+        if (! siguiente.tieneCastillo()){
+            System.out.println("Partida finalizada");//para debug
+            throw new partidaFinalizadaError();
+        }
+        this.actual = siguiente;
     }
 
     //Realiza las acciones antes de terminar el turno del jugador actual
@@ -65,8 +70,11 @@ public class Partida {
         actual.recolectarOro();
         actual.realizarAtaqueCastillo(objetivosAtacables());
         actual.restaurarEstados();
+        //this.verificarVictoria();
         this.actualizarActual();
     }
+
+
 
     public ArrayList obtenerUnidadesYEdificios() {
         return actual.listaElementos();
@@ -102,12 +110,28 @@ public class Partida {
         actual.construirPlazaCentral(unAldeano,x,y);
     }
 
+    public void construirPlazaCentral(Aldeano unAldeano, Coordenada posicion){
+        actual.construirPlazaCentral(unAldeano,posicion.getFila(),posicion.getColumna());
+    }
+
+
     public void construirCuartel(Aldeano unAldeano,int x,int y){
         actual.construirCuartel(unAldeano,x,y);
     }
 
+    public void construirCuartel(Aldeano unAldeano, Coordenada posicion){
+        actual.construirCuartel(unAldeano,posicion.getFila(),posicion.getColumna());
+    }
+
+
     public void moverUnidad(Unidad unaUnidad,int x,int y){
         actual.moverUnidad(unaUnidad,x,y);
+    }
+
+    public void moverUnidad(Unidad unaUnidad, Coordenada posicion){
+
+        actual.moverUnidad(unaUnidad,posicion.getFila(),posicion.getColumna());
+
     }
 
     public void atacar(Unidad unidadActual, Posicionable posicionableEnemigo){
@@ -121,5 +145,6 @@ public class Partida {
     public Posicionable obtenerElementoEn(Coordenada unaPosc){
         return campo.obtener(unaPosc);
     }
+
 
 }

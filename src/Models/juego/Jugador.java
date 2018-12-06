@@ -6,14 +6,12 @@ import Models.Partida.SalidaOcupadaError;
 import Models.Posicionable;
 import Models.escenario.*;
 import Models.escenario.errores.LugarOcupadoError;
-import Models.juego.errores.NoHayPoblacionError;
-import Models.juego.errores.NoPerteneceAJugadorError;
-import Models.juego.errores.ObjetivoEsDelMismoJugadorError;
-import Models.juego.errores.PoblacionMaximaError;
+import Models.juego.errores.*;
 import Models.unidades.*;
 import Models.edificios.*;
 import Models.edificios.Errores.OroInsuficienteError;
 import Models.unidades.errores.AldeanoOcupadoError;
+import Views.layouts.BotonCasillero;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
 
@@ -23,10 +21,12 @@ public class Jugador {
     private int poblacionActual;//Array de unidades ?
     
     private ArrayList<Posicionable> elementos;
+
     private String nombre;
     private Mapa campo;
     private Jugador siguiente;
     private Castillo castillo;
+
 
     //Constructor para pruebas y para el primer jugador instanciado
     public Jugador(String nuevoNombre, Mapa campo){
@@ -35,6 +35,7 @@ public class Jugador {
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
         elementos = new ArrayList<>();
+
     }
 
     //Constructor a utilizar
@@ -44,6 +45,7 @@ public class Jugador {
         this.poblacionActual = 0; //Pienso en sumar los 3 aldeanos cuando se crean junto al resto, me parece mejor que inicializarlos aca
         this.campo = campo;
         this.siguiente = siguiente;
+
     }
     
 
@@ -137,7 +139,8 @@ public class Jugador {
 
     public void crearPlazaCentralInicial(int fila, int columna){
         Coordenada origen = new Coordenada(fila,columna);
-        PlazaCentral plazaInicial = new PlazaCentral(this);
+        PlazaCentral plazaInicial = new PlazaCentral();
+        plazaInicial.setJugador(this);
         Coordenada salida = new Coordenada( fila ,columna+plazaInicial.getAncho());
 
         Casillero casilleroSalida = campo.obtenerCasillero(salida);
@@ -160,6 +163,9 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral unaPlaza) {
         Casillero salida = unaPlaza.getSalida();
+        if (! soyPropietario(unaPlaza)){
+            throw new NoPerteneceAJugadorError();
+        }
 
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
@@ -176,7 +182,9 @@ public class Jugador {
 
     public void crearEspadachin(Cuartel unCuartel) {
         Casillero salida = unCuartel.getSalida();
-
+        if (! soyPropietario(unCuartel)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -190,7 +198,9 @@ public class Jugador {
 
     public void crearArquero(Cuartel unCuartel) {
         Casillero salida = unCuartel.getSalida();
-
+        if (! soyPropietario(unCuartel)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -204,7 +214,9 @@ public class Jugador {
 
     public void crearArmaAsedio(Castillo unCastillo) {
         Casillero salida = unCastillo.getSalida();
-
+        if (! soyPropietario(unCastillo)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -229,21 +241,27 @@ public class Jugador {
 
     public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError, NoPerteneceAJugadorError {
         if(!elementos.contains(unAldeano)){throw new NoPerteneceAJugadorError();}
-        this.saldoSuficiente(100);//add
+        this.saldoSuficiente(50);//add
         Cuartel unCuartel = unAldeano.construirCuartel(this);
         Coordenada posInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unCuartel,posInicial);
-        this.pagar(100);//add
+        this.pagar(50);//add
         unAldeano.comenzarConstruccion();
         elementos.add(unCuartel);
     }
 
     public void moverUnidad(Unidad unaUnidad, int x, int y) {
-
+        if (! soyPropietario(unaUnidad)){
+            throw new UnidadEnemigaNoPuedeUsarseError();
+        }
         Coordenada destino = new Coordenada(x,y);
         Casillero casilleroDestino = campo.obtenerCasillero(destino);
         unaUnidad.mover(casilleroDestino);
 
+    }
+
+    private boolean soyPropietario(Posicionable unPosicionable) {
+        return this.elementos.contains(unPosicionable);
     }
 
     public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
@@ -253,11 +271,17 @@ public class Jugador {
     }
 
     public void destruirPosicionable(Posicionable unPosicionable){
+        ArrayList<Casillero> casillerosQueOcupa = unPosicionable.getCasillero();
+        for (Casillero unCasillero : casillerosQueOcupa ){
+            Coordenada unaCoord = unCasillero.obtenerPosicion();
+            campo.remover(unaCoord);
+        }
         elementos.remove(unPosicionable);
-        if (unPosicionable.getClass() == Unidad.class){
+        if (unPosicionable instanceof Unidad){
             this.disminuirPoblacion();
         }
     }
+
 
     public void realizarAtaqueCastillo(ArrayList <Posicionable> listaAtacables) {
         for (Posicionable atacable :listaAtacables) {
@@ -265,4 +289,7 @@ public class Jugador {
         }
     }
 
+    public boolean tieneCastillo() {
+        return elementos.contains(this.castillo);
+    }
 }
