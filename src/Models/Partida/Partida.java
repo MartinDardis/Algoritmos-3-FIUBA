@@ -110,6 +110,11 @@ public class Partida {
         actual.construirPlazaCentral(unAldeano,x,y);
     }
 
+    public void construirPlazaCentral(Aldeano unAldeano, Coordenada posicion){
+        actual.construirPlazaCentral(unAldeano,posicion.getFila(),posicion.getColumna());
+    }
+
+
     public void construirCuartel(Aldeano unAldeano,int x,int y){
         actual.construirCuartel(unAldeano,x,y);
     }
