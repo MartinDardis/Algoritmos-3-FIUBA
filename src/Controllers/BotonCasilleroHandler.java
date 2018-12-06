@@ -8,6 +8,7 @@ import Views.PantallaPrincipal;
 
 import Models.Partida.Partida;
 import Models.unidades.Unidad;
+import Models.unidades.Aldeano;
 import Models.edificios.PlazaCentral;
 import Models.Posicionable;
 
@@ -36,6 +37,9 @@ public class BotonCasilleroHandler extends BotonAccionHandler {
 
         if(entidad instanceof PlazaCentral)
             screen.activarBotoneraPlazaCentral();
+
+        if(entidad instanceof Aldeano)
+            screen.activarBotoneraAldeano();
 
         if(entidad instanceof Unidad)
             screen.activarBotoneraMovimiento();

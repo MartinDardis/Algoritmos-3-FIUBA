@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.*;
 import Controllers.Acciones.*;
+import Controllers.Acciones.Construccion.*;
 import Controllers.Acciones.Movimiento.*;
 import Controllers.Acciones.Creacion.*;
 import javafx.scene.control.Button;
@@ -24,6 +25,8 @@ public class PantallaPrincipal extends StackPane{
 
     private Button botonPasarTurno;
     private Button botonCrearAldeano;
+    private Button botonConstruirCuartel;
+
     private Button botonMovimientoDerecha;
     private Button botonMovimientoIzquierda;
     private Button botonMovimientoAbajo;
@@ -146,6 +149,19 @@ public class PantallaPrincipal extends StackPane{
         botonCrearAldeano.setTranslateY(-50);
         botonCrearAldeano.getStyleClass().add("botonInicio");
 
+        botonConstruirCuartel = new Button("Construir Cuartel");
+        botonConstruirCuartel.setOnAction(new BotonConstruirCuartelHandler(partida, this));
+        botonConstruirCuartel.setTranslateX(325);
+        botonConstruirCuartel.setTranslateY(-50);
+        botonConstruirCuartel.getStyleClass().add("botonInicio");
+
+       /* botonConstruirPlaza = new Button("Construir Plaza Central");
+        botonConstruirPlaza.setOnAction(new botonConstruirPlazaHandler(partida, this));
+        botonConstruirPlaza.setTranslateX(325);
+        botonConstruirPlaza.setTranslateY(-50);
+        botonConstruirPlaza.getStyleClass().add("botonInicio");
+        */
+
         botonMovimientoDerecha = new Button(" → ");
         botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
         botonMovimientoDerecha.setTranslateX(385);
@@ -199,7 +215,8 @@ public class PantallaPrincipal extends StackPane{
 
         getChildren().addAll(botonPasarTurno, botonMovimientoDerecha, botonMovimientoIzquierda, botonMovimientoArriba,
                             botonMovimientoAbajo, botonMovimientoDiagonalArribaDerecha, botonMovimientoDiagonalArribaIzquierda,
-                            botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda, botonCrearAldeano);
+                            botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda, botonCrearAldeano,
+                            botonConstruirCuartel);
     }
 
     public void desactivarBotonera(){
@@ -212,6 +229,8 @@ public class PantallaPrincipal extends StackPane{
         this.botonMovimientoDiagonalAbajoDerecha.setVisible(false);
         this.botonMovimientoDiagonalAbajoIzquierda.setVisible(false);
         this.botonCrearAldeano.setVisible(false);
+        this.botonConstruirCuartel.setVisible(false);
+        //this.botonConstruirPlaza.setVisible(false);
     }
 
 
@@ -262,6 +281,11 @@ public class PantallaPrincipal extends StackPane{
         this.botonMovimientoDiagonalArribaIzquierda.setVisible(true);
         this.botonMovimientoDiagonalAbajoDerecha.setVisible(true);
         this.botonMovimientoDiagonalAbajoIzquierda.setVisible(true);
+    }
+
+    public void activarBotoneraAldeano(){
+        this.botonConstruirCuartel.setVisible(true);
+        //this.botonConstruirPlaza.setVisible(true);
     }
 
 

@@ -114,6 +114,11 @@ public class Partida {
         actual.construirCuartel(unAldeano,x,y);
     }
 
+    public void construirCuartel(Aldeano unAldeano, Coordenada posicion){
+        actual.construirCuartel(unAldeano,posicion.getFila(),posicion.getColumna());
+    }
+
+
     public void moverUnidad(Unidad unaUnidad,int x,int y){
         actual.moverUnidad(unaUnidad,x,y);
     }

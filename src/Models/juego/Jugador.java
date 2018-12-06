@@ -241,11 +241,11 @@ public class Jugador {
 
     public void construirCuartel(Aldeano unAldeano, int x, int y)throws AldeanoOcupadoError,LugarOcupadoError, NoPerteneceAJugadorError {
         if(!elementos.contains(unAldeano)){throw new NoPerteneceAJugadorError();}
-        this.saldoSuficiente(100);//add
+        this.saldoSuficiente(50);//add
         Cuartel unCuartel = unAldeano.construirCuartel(this);
         Coordenada posInicial = new Coordenada(x,y);
         this.campo.colocarEdificio(unCuartel,posInicial);
-        this.pagar(100);//add
+        this.pagar(50);//add
         unAldeano.comenzarConstruccion();
         elementos.add(unCuartel);
     }
