@@ -163,6 +163,9 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral unaPlaza) {
         Casillero salida = unaPlaza.getSalida();
+        if (! soyPropietario(unaPlaza)){
+            throw new NoPerteneceAJugadorError();
+        }
 
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
@@ -179,7 +182,9 @@ public class Jugador {
 
     public void crearEspadachin(Cuartel unCuartel) {
         Casillero salida = unCuartel.getSalida();
-
+        if (! soyPropietario(unCuartel)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -193,7 +198,9 @@ public class Jugador {
 
     public void crearArquero(Cuartel unCuartel) {
         Casillero salida = unCuartel.getSalida();
-
+        if (! soyPropietario(unCuartel)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -207,7 +214,9 @@ public class Jugador {
 
     public void crearArmaAsedio(Castillo unCastillo) {
         Casillero salida = unCastillo.getSalida();
-
+        if (! soyPropietario(unCastillo)){
+            throw new NoPerteneceAJugadorError();
+        }
         if (salida.estaOcupado()){
             throw new SalidaOcupadaError();
         }
@@ -251,8 +260,8 @@ public class Jugador {
 
     }
 
-    private boolean soyPropietario(Unidad unaUnidad) {
-        return this.elementos.contains(unaUnidad);
+    private boolean soyPropietario(Posicionable unPosicionable) {
+        return this.elementos.contains(unPosicionable);
     }
 
     public void atacarA(Posicionable unidadActual, Posicionable unidadEnemiga) {
@@ -268,7 +277,7 @@ public class Jugador {
             campo.remover(unaCoord);
         }
         elementos.remove(unPosicionable);
-        if (unPosicionable.getClass() == Unidad.class){
+        if (unPosicionable instanceof Unidad){
             this.disminuirPoblacion();
         }
     }

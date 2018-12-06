@@ -20,10 +20,7 @@ public class PartidaTest {
     @Test
     public void TestCrearUnidadAumentaLaPoblacionDeActual(){
         Partida partida = new Partida("uno","dos");
-        PlazaCentral unaPlaza = new PlazaCentral();
-        Coordenada posSalida = new Coordenada(24,24);//al usar una plaza nueva en este test, dejo esta pos que NO CHOCA con lo inicializado por partida
-        Casillero salida = new Casillero(posSalida);
-        unaPlaza.setSalida(salida);
+        PlazaCentral unaPlaza = (PlazaCentral) partida.obtenerElementoEn(new Coordenada(4,4));//plaza incial
         Jugador actual = partida.getActual();
 
         int poblacionInicial = actual.getPoblacionActual();
