@@ -18,6 +18,7 @@ public class BotonPasarTurnoHandler extends BotonAccionHandler {
         this.partida.terminarTurno();
         System.out.print("Turno finaliazdo");
         this.screen.dibujarCampo();
+        this.screen.actualizarCartelesJugador();
         desactivarBotonera();
     }
 }

@@ -12,6 +12,7 @@ import Views.layouts.*;
 
 import Models.Posicionable;
 import Models.Partida.Partida;
+import Models.juego.Jugador;
 import Models.escenario.Coordenada;
 
 public class PantallaPrincipal extends StackPane{
@@ -32,13 +33,17 @@ public class PantallaPrincipal extends StackPane{
     private Button botonMovimientoDiagonalAbajoDerecha;
     private Button botonMovimientoDiagonalAbajoIzquierda;
 
+    private Button cartelNombre;
+    private Button cartelOro;
+    private Button cartelPoblacion;
+
     public PantallaPrincipal(Stage ventana, Partida partida) {
 
         this.ventana = ventana;
         this.partida = partida;
         this.dibujarCampo();
         this.crearBotonera();
-     //   this.cargarCampo();
+        this.crearCartelesJugador();
     }
 
     public void setActual(BotonCasillero unCasillero){
@@ -49,66 +54,134 @@ public class PantallaPrincipal extends StackPane{
         return this.casilleroActual;
     }
 
+    public void crearCartelesJugador(){
+
+        Jugador jugadorActual = partida.getActual();
+
+        String nombreJugador = jugadorActual.getNombre();
+        nombreJugador = "Jugador: " + nombreJugador;
+        cartelNombre = new Button(nombreJugador);
+        cartelNombre.setTranslateX(325);
+        cartelNombre.setTranslateY(-225);
+        cartelNombre.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelNombre);
+
+        int oro = jugadorActual.getOro();
+        String oroJugador = Integer.toString(oro);
+        oroJugador = "Oro: " + oroJugador;
+        cartelOro = new Button(oroJugador);
+        cartelOro.setTranslateX(325);
+        cartelOro.setTranslateY(-170);
+        cartelOro.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelOro);
+
+        int poblacion = jugadorActual.getPoblacionActual();
+        String poblacionJugador = Integer.toString(poblacion);
+        poblacionJugador = "Poblacion: " + poblacionJugador + "/50";
+        cartelPoblacion = new Button(poblacionJugador);
+        cartelPoblacion.setTranslateX(325);
+        cartelPoblacion.setTranslateY(-115);
+        cartelPoblacion.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelPoblacion);
+
+    }
+
+    public void actualizarCartelesJugador(){
+
+        getChildren().remove(cartelNombre);
+        getChildren().remove(cartelOro);
+        getChildren().remove(cartelPoblacion);
+
+        Jugador jugadorActual = partida.getActual();
+
+        String nombreJugador = jugadorActual.getNombre();
+        nombreJugador = "Jugador: " + nombreJugador;
+        cartelNombre = new Button(nombreJugador);
+        cartelNombre.setTranslateX(325);
+        cartelNombre.setTranslateY(-225);
+        cartelNombre.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelNombre);
+
+        int oro = jugadorActual.getOro();
+        String oroJugador = Integer.toString(oro);
+        oroJugador = "Oro: " + oroJugador;
+        cartelOro = new Button(oroJugador);
+        cartelOro.setTranslateX(325);
+        cartelOro.setTranslateY(-170);
+        cartelOro.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelOro);
+
+        int poblacion = jugadorActual.getPoblacionActual();
+        String poblacionJugador = Integer.toString(poblacion);
+        poblacionJugador = "Poblacion: " + poblacionJugador + "/50";
+        cartelPoblacion = new Button(poblacionJugador);
+        cartelPoblacion.setTranslateX(325);
+        cartelPoblacion.setTranslateY(-115);
+        cartelPoblacion.getStyleClass().add("botonInicio");
+        getChildren().addAll(cartelPoblacion);
+
+    }
+
 
     public void crearBotonera() {
 
         botonPasarTurno = new Button("Pasar turno");
         botonPasarTurno.setOnAction(new BotonPasarTurnoHandler(partida, this));
-        botonPasarTurno.setTranslateX(300);
+        botonPasarTurno.setTranslateX(325);
         botonPasarTurno.setTranslateY(-280);
         botonPasarTurno.getStyleClass().add("botonInicio");
 
         botonCrearAldeano = new Button("Crear Aldeano");
         botonCrearAldeano.setOnAction(new BotonCrearAldeanoHandler(partida, this));
-        botonCrearAldeano.setTranslateX(300);
-        botonCrearAldeano.setTranslateY(-200);
+        botonCrearAldeano.setTranslateX(325);
+        botonCrearAldeano.setTranslateY(-50);
         botonCrearAldeano.getStyleClass().add("botonInicio");
 
         botonMovimientoDerecha = new Button(" → ");
         botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
-        botonMovimientoDerecha.setTranslateX(360);
+        botonMovimientoDerecha.setTranslateX(385);
         botonMovimientoDerecha.setTranslateY(200);
         botonMovimientoDerecha.getStyleClass().add("botonInicio");
 
         botonMovimientoIzquierda = new Button(" ← ");
         botonMovimientoIzquierda.setOnAction(new BotonMovimientoIzquierdaHandler(partida, this));
-        botonMovimientoIzquierda.setTranslateX(240);
+        botonMovimientoIzquierda.setTranslateX(265);
         botonMovimientoIzquierda.setTranslateY(200);
         botonMovimientoIzquierda.getStyleClass().add("botonInicio");
 
         botonMovimientoArriba = new Button(" ↑ ");
         botonMovimientoArriba.setOnAction(new BotonMovimientoArribaHandler(partida, this));
-        botonMovimientoArriba.setTranslateX(300);
+        botonMovimientoArriba.setTranslateX(325);
         botonMovimientoArriba.setTranslateY(155);
         botonMovimientoArriba.getStyleClass().add("botonInicio");
 
         botonMovimientoAbajo = new Button(" ↓ ");
         botonMovimientoAbajo.setOnAction(new BotonMovimientoAbajoHandler(partida, this));
-        botonMovimientoAbajo.setTranslateX(300);
+        botonMovimientoAbajo.setTranslateX(325);
         botonMovimientoAbajo.setTranslateY(245);
         botonMovimientoAbajo.getStyleClass().add("botonInicio");
 
         botonMovimientoDiagonalArribaDerecha = new Button(" ↗ ");
         botonMovimientoDiagonalArribaDerecha.setOnAction(new BotonMovimientoDiagonalArribaDerechaHandler(partida, this));
-        botonMovimientoDiagonalArribaDerecha.setTranslateX(360);
+        botonMovimientoDiagonalArribaDerecha.setTranslateX(385);
         botonMovimientoDiagonalArribaDerecha.setTranslateY(155);
         botonMovimientoDiagonalArribaDerecha.getStyleClass().add("botonInicio");
 
         botonMovimientoDiagonalArribaIzquierda = new Button(" ↖ ");
         botonMovimientoDiagonalArribaIzquierda.setOnAction(new BotonMovimientoDiagonalArribaIzquierdaHandler(partida, this));
-        botonMovimientoDiagonalArribaIzquierda.setTranslateX(240);
+        botonMovimientoDiagonalArribaIzquierda.setTranslateX(265);
         botonMovimientoDiagonalArribaIzquierda.setTranslateY(155);
         botonMovimientoDiagonalArribaIzquierda.getStyleClass().add("botonInicio");
 
         botonMovimientoDiagonalAbajoDerecha = new Button(" ↘ ");
         botonMovimientoDiagonalAbajoDerecha.setOnAction(new BotonMovimientoDiagonalAbajoDerechaHandler(partida, this));
-        botonMovimientoDiagonalAbajoDerecha.setTranslateX(360);
+        botonMovimientoDiagonalAbajoDerecha.setTranslateX(385);
         botonMovimientoDiagonalAbajoDerecha.setTranslateY(245);
         botonMovimientoDiagonalAbajoDerecha.getStyleClass().add("botonInicio");
 
         botonMovimientoDiagonalAbajoIzquierda = new Button(" ↙ ");
         botonMovimientoDiagonalAbajoIzquierda.setOnAction(new BotonMovimientoDiagonalAbajoIzquierdaHandler(partida, this));
-        botonMovimientoDiagonalAbajoIzquierda.setTranslateX(240);
+        botonMovimientoDiagonalAbajoIzquierda.setTranslateX(265);
         botonMovimientoDiagonalAbajoIzquierda.setTranslateY(245);
         botonMovimientoDiagonalAbajoIzquierda.getStyleClass().add("botonInicio");
 

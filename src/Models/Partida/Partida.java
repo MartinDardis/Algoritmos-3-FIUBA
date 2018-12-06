@@ -136,4 +136,5 @@ public class Partida {
         return campo.obtener(unaPosc);
     }
 
+
 }

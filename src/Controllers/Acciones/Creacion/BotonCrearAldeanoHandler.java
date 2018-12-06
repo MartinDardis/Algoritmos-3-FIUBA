@@ -27,6 +27,7 @@ public class BotonCrearAldeanoHandler extends BotonAccionHandler {
         BotonCasillero actual = screen.getActual();
         partida.crearAldeano((PlazaCentral) actual.Posicionable());
         screen.dibujarCampo();
+        this.screen.actualizarCartelesJugador();
         desactivarBotonera();
 
     }
