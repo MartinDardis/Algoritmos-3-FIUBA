@@ -63,16 +63,22 @@ public class PantallaPrincipal extends StackPane{
         cartelNombre = new Button(nombreJugador);
         cartelNombre.setTranslateX(325);
         cartelNombre.setTranslateY(-225);
-        cartelNombre.getStyleClass().add("botonInicio");
+        cartelNombre.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelNombre);
 
         int oro = jugadorActual.getOro();
+
         String oroJugador = Integer.toString(oro);
         oroJugador = "Oro: " + oroJugador;
         cartelOro = new Button(oroJugador);
         cartelOro.setTranslateX(325);
         cartelOro.setTranslateY(-170);
-        cartelOro.getStyleClass().add("botonInicio");
+        cartelOro.getStyleClass().add("recuadroInfo");
+       /* if (oro <= 0){
+            cartelOro.getStyleClass().removeAll();
+            cartelOro.setStyle(null);
+            cartelOro.getStyleClass().add("infoBorde");
+        }*/
         getChildren().addAll(cartelOro);
 
         int poblacion = jugadorActual.getPoblacionActual();
@@ -81,7 +87,10 @@ public class PantallaPrincipal extends StackPane{
         cartelPoblacion = new Button(poblacionJugador);
         cartelPoblacion.setTranslateX(325);
         cartelPoblacion.setTranslateY(-115);
-        cartelPoblacion.getStyleClass().add("botonInicio");
+        cartelPoblacion.getStyleClass().add("recuadroInfo");
+        /*if (poblacion == 50){
+            cartelPoblacion.getStyleClass().add("infoBorde");
+        }*/
         getChildren().addAll(cartelPoblacion);
 
     }
@@ -99,7 +108,7 @@ public class PantallaPrincipal extends StackPane{
         cartelNombre = new Button(nombreJugador);
         cartelNombre.setTranslateX(325);
         cartelNombre.setTranslateY(-225);
-        cartelNombre.getStyleClass().add("botonInicio");
+        cartelNombre.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelNombre);
 
         int oro = jugadorActual.getOro();
@@ -108,7 +117,7 @@ public class PantallaPrincipal extends StackPane{
         cartelOro = new Button(oroJugador);
         cartelOro.setTranslateX(325);
         cartelOro.setTranslateY(-170);
-        cartelOro.getStyleClass().add("botonInicio");
+        cartelOro.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelOro);
 
         int poblacion = jugadorActual.getPoblacionActual();
@@ -117,7 +126,7 @@ public class PantallaPrincipal extends StackPane{
         cartelPoblacion = new Button(poblacionJugador);
         cartelPoblacion.setTranslateX(325);
         cartelPoblacion.setTranslateY(-115);
-        cartelPoblacion.getStyleClass().add("botonInicio");
+        cartelPoblacion.getStyleClass().add("recuadroInfo");
         getChildren().addAll(cartelPoblacion);
 
     }
