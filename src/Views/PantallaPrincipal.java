@@ -30,6 +30,7 @@ public class PantallaPrincipal extends StackPane{
     private Button botonPasarTurno;
     private Button botonCrearAldeano;
     private Button botonConstruirCuartel;
+    private Button botonConstruirPlaza;
 
     private Button botonMovimientoDerecha;
     private Button botonMovimientoIzquierda;
@@ -105,9 +106,6 @@ public class PantallaPrincipal extends StackPane{
             cartelPoblacion.getStyleClass().add("infoBorde");
         }*/
         getChildren().addAll(cartelPoblacion);
-
-
-
 
     }
 
@@ -190,12 +188,11 @@ public class PantallaPrincipal extends StackPane{
         botonConstruirCuartel.setTranslateY(-50);
         botonConstruirCuartel.getStyleClass().add("botonInicio");
 
-       /* botonConstruirPlaza = new Button("Construir Plaza Central");
-        botonConstruirPlaza.setOnAction(new botonConstruirPlazaHandler(partida, this));
+        botonConstruirPlaza = new Button("Construir Plaza Central");
+        botonConstruirPlaza.setOnAction(new BotonConstruirPlazaHandler(partida, this));
         botonConstruirPlaza.setTranslateX(325);
-        botonConstruirPlaza.setTranslateY(-50);
+        botonConstruirPlaza.setTranslateY(0);
         botonConstruirPlaza.getStyleClass().add("botonInicio");
-        */
 
         botonMovimientoDerecha = new Button(" → ");
         botonMovimientoDerecha.setOnAction(new BotonMovimientoDerechaHandler(partida, this));
@@ -279,10 +276,14 @@ public class PantallaPrincipal extends StackPane{
         this.botonCrearEspadachin.setVisible(false);
         this.botonCrearArquero.setVisible(false);
         this.botonConstruirCuartel.setVisible(false);
+
         this.botonCrearAsedio.setVisible(false);
         this.botonMontarAsedio.setVisible(false);
         this.botonDesmontarAsedio.setVisible(false);
         //this.botonConstruirPlaza.setVisible(false);
+
+        this.botonConstruirPlaza.setVisible(false);
+
     }
 
 
@@ -337,7 +338,7 @@ public class PantallaPrincipal extends StackPane{
 
     public void activarBotoneraAldeano(){
         this.botonConstruirCuartel.setVisible(true);
-        //this.botonConstruirPlaza.setVisible(true);
+        this.botonConstruirPlaza.setVisible(true);
     }
 
     public void activarBotoneraAsedio(){
