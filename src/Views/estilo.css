@@ -67,6 +67,37 @@
         -fx-border-color: #000000;
 }
 
+.espadachin{
+    -fx-background-color: #d45510;
+    -fx-border-color: #000000;
+}
+.espadachinSeleccionado{
+    -fx-background-color: #d45510;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+.arquero{
+    -fx-background-color: #00d4af;
+    -fx-border-color: #000000;
+}
+.arqueroSeleccionado{
+    -fx-background-color: #00d4af;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+.asedio {
+    -fx-background-color: #f2e800;
+    -fx-border-color: #000000;
+}
+.asedioSeleccionado{
+    -fx-background-color: #f2e800;
+    -fx-border-color: white;
+    -fx-border-width: 3;
+}
+
+
+
 .aldeanoSeleccionado{
     -fx-background-color: #693121;
     -fx-border-color: white;

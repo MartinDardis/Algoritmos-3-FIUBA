@@ -17,6 +17,9 @@ import Models.juego.Jugador;
 import Models.escenario.Coordenada;
 import org.apache.commons.lang3.ObjectUtils;
 
+import javax.accessibility.AccessibleComponent;
+import javax.swing.*;
+
 public class PantallaPrincipal extends StackPane{
 
     private Stage ventana;
@@ -41,6 +44,11 @@ public class PantallaPrincipal extends StackPane{
     private Button cartelOro;
     private Button cartelPoblacion;
     private Button cartelSalud;
+    private Button botonCrearEspadachin;
+    private Button botonCrearArquero;
+    private Button botonCrearAsedio;
+    private Button botonMontarAsedio;
+    private Button botonDesmontarAsedio;
 
     public PantallaPrincipal(Stage ventana, Partida partida) {
 
@@ -158,6 +166,24 @@ public class PantallaPrincipal extends StackPane{
         botonCrearAldeano.setTranslateY(-50);
         botonCrearAldeano.getStyleClass().add("botonInicio");
 
+        botonCrearEspadachin = new Button("Crear espadachin");
+        botonCrearEspadachin.setOnAction(new BotonCrearEspadachinHandler(partida,this));
+        botonCrearEspadachin.setTranslateY(-50);
+        botonCrearEspadachin.setTranslateX(260);
+        botonCrearEspadachin.getStyleClass().add("botonInicio");
+
+        botonCrearArquero = new Button("Crear arquero");
+        botonCrearArquero.setOnAction(new BotonCrearArqueroHandler(partida,this));
+        botonCrearArquero.setTranslateY(-50);
+        botonCrearArquero.setTranslateX(425);
+        botonCrearArquero.getStyleClass().add("botonInicio");
+
+        botonCrearAsedio = new Button("Crear asedio");
+        botonCrearAsedio.setOnAction(new BotonCrearAsedioHandler(partida,this));
+        botonCrearAsedio.setTranslateY(-50);
+        botonCrearAsedio.setTranslateX(325);
+        botonCrearAsedio.getStyleClass().add("botonInicio");
+
         botonConstruirCuartel = new Button("Construir Cuartel");
         botonConstruirCuartel.setOnAction(new BotonConstruirCuartelHandler(partida, this));
         botonConstruirCuartel.setTranslateX(325);
@@ -219,13 +245,25 @@ public class PantallaPrincipal extends StackPane{
         botonMovimientoDiagonalAbajoIzquierda.setTranslateY(245);
         botonMovimientoDiagonalAbajoIzquierda.getStyleClass().add("botonInicio");
 
+        botonMontarAsedio = new Button("Montar");
+        botonMontarAsedio.setOnAction(new BotonMontarAsedioHandler(partida, this));
+        botonMontarAsedio.setTranslateX(260);
+        botonMontarAsedio.setTranslateY(-50);
+        botonMontarAsedio.getStyleClass().add("botonInicio");
+
+        botonDesmontarAsedio = new Button("Desmontar");
+        botonDesmontarAsedio.setOnAction(new BotonDesmontarAsedioHandler(partida, this));
+        botonDesmontarAsedio.setTranslateX(425);
+        botonDesmontarAsedio.setTranslateY(-50);
+        botonDesmontarAsedio.getStyleClass().add("botonInicio");
+
         this.setStyle("-fx-background-color: grey");
         this.desactivarBotonera();
 
         getChildren().addAll(botonPasarTurno, botonMovimientoDerecha, botonMovimientoIzquierda, botonMovimientoArriba,
                             botonMovimientoAbajo, botonMovimientoDiagonalArribaDerecha, botonMovimientoDiagonalArribaIzquierda,
                             botonMovimientoDiagonalAbajoDerecha, botonMovimientoDiagonalAbajoIzquierda, botonCrearAldeano,
-                            botonConstruirCuartel);
+                            botonConstruirCuartel,botonCrearEspadachin,botonCrearArquero,botonCrearAsedio,botonMontarAsedio,botonDesmontarAsedio);
     }
 
     public void desactivarBotonera(){
@@ -238,7 +276,12 @@ public class PantallaPrincipal extends StackPane{
         this.botonMovimientoDiagonalAbajoDerecha.setVisible(false);
         this.botonMovimientoDiagonalAbajoIzquierda.setVisible(false);
         this.botonCrearAldeano.setVisible(false);
+        this.botonCrearEspadachin.setVisible(false);
+        this.botonCrearArquero.setVisible(false);
         this.botonConstruirCuartel.setVisible(false);
+        this.botonCrearAsedio.setVisible(false);
+        this.botonMontarAsedio.setVisible(false);
+        this.botonDesmontarAsedio.setVisible(false);
         //this.botonConstruirPlaza.setVisible(false);
     }
 
@@ -297,6 +340,11 @@ public class PantallaPrincipal extends StackPane{
         //this.botonConstruirPlaza.setVisible(true);
     }
 
+    public void activarBotoneraAsedio(){
+        this.botonMontarAsedio.setVisible(true);
+        this.botonDesmontarAsedio.setVisible(true);
+    }
+
 
     public void imprimirVida(Posicionable entidad) {
             int saludActual = getActual().Posicionable().getVida();
@@ -308,5 +356,14 @@ public class PantallaPrincipal extends StackPane{
             cartelSalud.setMinWidth(150);
             cartelSalud.getStyleClass().add("recuadroInfo");
             getChildren().add(cartelSalud);
+    }
+
+    public void activarBotoneraCuartel() {
+        this.botonCrearEspadachin.setVisible(true);
+        this.botonCrearArquero.setVisible(true);
+    }
+
+    public void activarBotoneraCastillo(){
+        this.botonCrearAsedio.setVisible(true);
     }
 }
