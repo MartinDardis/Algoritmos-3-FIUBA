@@ -39,6 +39,10 @@ public class BotonCasilleroHandler extends BotonAccionHandler {
 
         if(entidad instanceof Unidad)
             screen.activarBotoneraMovimiento();
+
+        if (entidad!=null){
+            screen.imprimirVida(entidad);
+        }
     }
 
 }
