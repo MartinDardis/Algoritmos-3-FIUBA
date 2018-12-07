@@ -14,6 +14,7 @@ public class Arquero extends Unidad {
         this.danioAUnidad = 15;
         this.danioAEdificio = 10;
         this.rangoAtaque = 3;
+        this.estadoAccion = new EstadoDisponible();
     }
 
     //Constructor simplificado para pruebas

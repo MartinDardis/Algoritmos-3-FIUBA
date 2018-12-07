@@ -3,6 +3,9 @@ import Models.edificios.Castillo;
 import Models.edificios.Cuartel;
 import Models.edificios.PlazaCentral;
 import Models.unidades.Aldeano;
+import Models.unidades.ArmaDeAsedio;
+import Models.unidades.Arquero;
+import Models.unidades.Espadachin;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
@@ -59,6 +62,18 @@ public class BotonCasillero extends Button {
             this.setPadding(new Insets(5,5,5,5));
             this.getStyleClass().add("cuartel");
         }
+        else if(entidad instanceof Espadachin){
+            this.setPadding(new Insets(5,5,5,5));
+            this.getStyleClass().add("espadachin");
+        }
+        else if(entidad instanceof Arquero){
+            this.setPadding(new Insets(5,5,5,5));
+            this.getStyleClass().add("arquero");
+        }
+        else if (entidad instanceof ArmaDeAsedio){
+            this.setPadding(new Insets(5,5,5,5));
+            this.getStyleClass().add("asedio");
+        }
         else {
             //Image fondo = new Image("Views/img/pastoBorde.jpg");
             //this.setGraphic(new ImageView(fondo));
@@ -85,6 +100,15 @@ public class BotonCasillero extends Button {
         else if(entidad instanceof Cuartel){
             this.getStyleClass().add("cuartelSeleccionado");
         }
+        else if(entidad instanceof Espadachin){
+            this.getStyleClass().add("espadachinSeleccionado");
+        }
+        else if(entidad instanceof Arquero){
+            this.getStyleClass().add("arqueroSeleccionado");
+        }else if(entidad instanceof ArmaDeAsedio){
+            this.getStyleClass().add("asedioSeleccionado");
+        }
+
         else this.aplicarEstilo();
 
     }

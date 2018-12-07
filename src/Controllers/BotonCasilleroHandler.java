@@ -1,6 +1,9 @@
 package Controllers;
 
 import Controllers.Acciones.BotonAccionHandler;
+import Models.edificios.Castillo;
+import Models.edificios.Cuartel;
+import Models.unidades.ArmaDeAsedio;
 import javafx.event.ActionEvent;
 
 import Views.layouts.*;
@@ -37,12 +40,18 @@ public class BotonCasilleroHandler extends BotonAccionHandler {
 
         if(entidad instanceof PlazaCentral)
             screen.activarBotoneraPlazaCentral();
+        if (entidad instanceof Cuartel)
+            screen.activarBotoneraCuartel();
+        if (entidad instanceof Castillo)
+            screen.activarBotoneraCastillo();
 
         if(entidad instanceof Aldeano)
             screen.activarBotoneraAldeano();
 
         if(entidad instanceof Unidad)
             screen.activarBotoneraMovimiento();
+        if (entidad instanceof ArmaDeAsedio)
+            screen.activarBotoneraAsedio();
 
         if (entidad!=null){
             screen.imprimirVida(entidad);
